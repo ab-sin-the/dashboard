@@ -28,12 +28,13 @@ from rrd.model.graph import DashboardGraph
 from rrd import consts
 from rrd.utils.graph_urls import generate_graph_urls 
 from rrd import config
+default_screen_name = "DefaultScreen"
+
 
 @app.route("/screen", methods=["GET", "POST"])
 def dash_screens():
     top_screens = DashboardScreen.gets_by_pid(pid='0') or []
     top_screens = sorted(top_screens, key=lambda x:x.name)
-
     return render_template("screen/index.html", **locals())
 
 @app.route("/screen/<int:sid>/delete")
@@ -94,7 +95,8 @@ def dash_graph_delete(gid):
 def dash_screen(sid):
     start = request.args.get("start")
     end = request.args.get("end")
-
+    print(start)
+    print(end)
     top_screens = DashboardScreen.gets_by_pid(pid=0)
     top_screens = sorted(top_screens, key=lambda x:x.name)
 
@@ -174,7 +176,7 @@ def dash_graph_add(sid):
 
     if request.method == "POST":
         title = request.form.get("title").strip()
-
+        
         hosts = request.form.get("hosts", "").strip()
         hosts = hosts and hosts.split("\n") or []
         hosts = [x.strip() for x in hosts]

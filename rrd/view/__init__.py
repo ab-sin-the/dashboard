@@ -65,8 +65,13 @@ def app_before():
             not path.startswith("/auth/register"):
         return redirect("/auth/login")
 
+    
     if path.startswith("/screen"):
         g.nav_menu = "nav_screen"
+    elif path.startswith("portal/dashboard/"):
+        g.nav_menu = "nav_dashboard"
+    elif path.startswith("/portal/home"):
+        g.nav_menu = "p_home"
     elif path.startswith("/portal/hostgroup") or path.startswith("/portal/group"):
         g.nav_menu = "p_hostgroup"
     elif path.startswith("/portal/template"):
@@ -77,5 +82,8 @@ def app_before():
         g.nav_menu = "p_nodata"
     elif path.startswith("/portal/alarm-dash"):
         g.nav_menu = "p_alarm-dash"
+    elif path == "/":
+        return redirect("portal/home")
     else:
         g.nav_menu = ""
+    

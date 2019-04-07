@@ -76,7 +76,6 @@ class DashboardGraph(object):
         if r.status_code != 200:
             raise Exception(r.text)
         j = r.json()
-
         graph_id = j and j.get("id")
         return graph_id and cls.get(graph_id)
 
@@ -129,3 +128,7 @@ class DashboardGraph(object):
             grh = cls.get(id)
             grh and grh.update(hosts=hosts, counters=counters)
         
+    @classmethod
+    def create_graph_obj(cls, id, title, hosts, counters, screen_id,
+                timespan=3600, graph_type='h', method='', position=0):
+        return cls(id, title, hosts, counters, screen_id, timespan, graph_type, method. position)

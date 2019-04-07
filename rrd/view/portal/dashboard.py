@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 # Copyright 2017 Xiaomi, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,21 +14,13 @@
 # limitations under the License.
 
 
-__author__ = 'Ulric Qin'
+__author__ = 'Yiwen Chen'
+from rrd import app
+from flask import request, g, render_template, jsonify
 
-__all__ = [
-        "api",
-        "cluster",
-        "expression",
-        "group",
-        "home",
-        "host",
-        "nodata",
-        "plugin",
-        "strategy",
-        "template",
-        "alarm",
-        "alert_link",
-        "welcome",
-        "dashboard"
-        ]
+
+@app.route('/portal/dashboard')
+def dashboard_get():
+    return render_template(
+        'portal/dashboard/index.html'
+    )
