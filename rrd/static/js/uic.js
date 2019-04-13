@@ -56,10 +56,12 @@ function login() {
 			err_message_quietly(json.msg);
 		} else {
 			ok_message_quietly('sign in successfully', function() {
-				var redirect_url = '/user/profile';
+				var redirect_url = '/portal/home';
 				if (json.data.length > 0) {
-					redirect_url = json.data;
+					redirect_url = '/portal/home'
+					// redirect_url = json.data;
 				}
+				
 				location.href = redirect_url;
 			});
 		}
@@ -108,7 +110,7 @@ function register() {
 			err_message_quietly(json.msg);
 		} else {
 			ok_message_quietly('sign up successfully', function() {
-				location.href = '/auth/login';
+				location.href = '/portal/home';
 			});
 		}
 	}, "json");

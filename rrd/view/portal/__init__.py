@@ -30,5 +30,6 @@ __all__ = [
         "alarm",
         "alert_link",
         "welcome",
-        "dashboard"
+        "dashboard",
+        "process"
         ]
