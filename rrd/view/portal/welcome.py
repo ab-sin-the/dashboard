@@ -54,21 +54,18 @@ def welcome_page_get():
     for screen in screens:
         if screen.name == default_screen_name:
             default_screen = screen
-    
+
     if not default_screen:
         abort(404, "Default Screen not Created.")
 
-    pid = default_screen.pid
+    pid = default_screen.id
 
     sub_screens = DashboardScreen.gets_by_pid(pid = pid) 
 
-    default_sub_screen = None
-    for sub_screen in screens:
-        if sub_screen.name == default_screen_name:
+    default_sub_screen = sub_screens[0]
+    for sub_screen in sub_screens:
+        if sub_screen.name == "ALL":
             default_sub_screen = sub_screen
-    
-    if not default_sub_screen:
-        abort(404, "Default Sub Screen not Exists.")
 
     graphs = DashboardGraph.gets_by_screen_id(default_sub_screen.id)
     all_graphs = []
