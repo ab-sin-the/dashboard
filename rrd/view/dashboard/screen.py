@@ -91,6 +91,7 @@ def dash_graph_delete(gid):
     DashboardGraph.remove(gid)
     return redirect("/screen/" + graph.screen_id)
 
+
 @app.route("/screen/<int:sid>")
 def dash_screen(sid):
     start = request.args.get("start")

@@ -169,3 +169,29 @@ $(function(){
 
     </div>
 {%- endmacro %}
+
+
+{% macro screen_home_menu(current_top_screen, current_sub_screen, sub_screens) -%}
+    <div class="btn-group">
+      <button class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+        {%if current_sub_screen %}
+            {{current_sub_screen.name}}
+        {%else%}
+            选择
+        {%endif%}
+        <span class="caret"></span>
+      </button>
+
+      <ul class="dropdown-menu" role="menu">
+
+        {%for c in sub_screens%}
+        <li class="screen" role="presentation">
+            <a role="menuitem" href="/screen/home/{{c.id}}"><small>{{c.name}}</small></a>
+            <hr style="margin:2px;"/>
+        </li>
+        </li>
+        {%endfor%}
+      </ul>
+
+    </div>
+{%- endmacro %}
