@@ -16,6 +16,7 @@
 
                 {% if data.expression.writable(g.user) %}
                     <div class="pull-right">
+                        {%if g.user.name == 'root'%}
                         <button onclick="pause_expression('{{data.expression.id}}')" class="btn btn-default">
                             <span id="i-{{data.expression.id}}" class="glyphicon glyphicon-{% if data.expression.pause %}play{% else %}pause{% endif %} orange"></span>
                         </button>
@@ -26,6 +27,7 @@
                         <button onclick="delete_expression('{{ data.expression.id }}');" class="btn btn-default">
                             <span class="glyphicon glyphicon-trash orange"></span>
                         </button>
+                        {%endif%}
                     </div>
                 {% endif %}
             </div>

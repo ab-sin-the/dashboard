@@ -34,8 +34,8 @@
                     {{ left }}{{ v.action.html()|safe }}{{ right }}</span>
 
                 {% if v.writable(g.user) %}
+                <div class="pull-right">
                     {% if g.user.name == 'root'%}
-                    <div class="pull-right">
                         <button onclick="pause_expression('{{v.id}}')" class="btn btn-default">
                             <span id="i-{{v.id}}" class="glyphicon glyphicon-{% if v.pause %}play{% else %}pause{% endif %} orange"></span>
                         </button>

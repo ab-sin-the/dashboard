@@ -123,7 +123,9 @@ $(function(){
       </button>
 
       <ul class="dropdown-menu" role="menu">
-        <li><a href="/screen/add"> <small>+ 导航</small></a></li>
+            {%if g.user.name == 'root'%}
+            <li><a href="/screen/add"> <small>+ 导航</small></a></li>
+            {%endif%}
         <li>
             <div class="form-group search-area">
                 <input class="form-control" id="searchinput" type="search" placeholder="搜索..">
