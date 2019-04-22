@@ -158,7 +158,9 @@ $(function(){
 
       <ul class="dropdown-menu" role="menu">
         {%if current_top_screen %}
-        <li><a href="/screen/add?pid={{current_top_screen.id}}"> + screen</a></li>
+            {% if g.user.name == 'root'%}
+            <li><a href="/screen/add?pid={{current_top_screen.id}}"> + screen</a></li>
+            {%endif%}
         {%endif%}
 
         {%for c in sub_screens%}
