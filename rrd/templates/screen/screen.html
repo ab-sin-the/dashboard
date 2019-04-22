@@ -11,11 +11,13 @@
                 <li> {{screen_layout.screen_sub_menu(pscreen, screen, sub_screens)}} </li>
 
                 {%if screen%}
+                    {%if g.user.name == 'root'%}
                     <li><a href="/screen/{{screen.id}}/edit"><i class="icon-edit"></i>编辑</a></li>
                     <li><a href="javascript:;" class="icon-muledit"><i></i>批量编辑</a></li>
                     <li><a href="/screen/{{screen.id}}/delete" onclick="return confirm('确定要删除这个screen?');"><i class="icon-trash"></i>删除</a></li>
                     <li><a href="/screen/{{screen.id}}/clone" onclick="return confirm('确定要复制出来一个新的screen吗?');">克隆</a></li>
                     <li><a href="/screen/{{screen.id}}/graph"><i class="icon-plus"></i>+graph</a></li>
+                    {%endif%}
                     {%if g.legend == "on"%}
                     <li><a href="#" onclick="fn_query({legend: 'off'})"><i class="icon-plus"></i>隐藏legend</a></li>
                     {%else%}

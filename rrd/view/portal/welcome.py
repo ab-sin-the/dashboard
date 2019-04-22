@@ -50,6 +50,12 @@ def welcome_page_get():
     start = request.args.get("start")
     end = request.args.get("end")
     screens = DashboardScreen.gets_all()
+    user = g.user
+    if user.name == 'root':
+        show_root = True
+    else:
+        show_root = False
+
     default_screen = None
     for screen in screens:
         if screen.name == default_screen_name:

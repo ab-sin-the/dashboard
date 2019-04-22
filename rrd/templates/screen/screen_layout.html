@@ -82,10 +82,11 @@ $(function(){
                                                 <a href="{{big_graph|safe}}&start=-86400&graph_type=a" target="__blank" class="btn btn-link btn-xs">查看大图</a>
                                             {%endif%}
                                             </li>
-
+                                            {%if g.user.name == 'root'%}
                                             <li>
                                                 <a href="/graph/{{graph.id}}/edit" target="__blank" class="btn btn-link btn-xs">编辑</a>
                                             </li>
+                                            {%endif%}
                                         </ul>
                                     </div>
                                     <span class="panel-title graph-title">{{graph.title}}</span>
