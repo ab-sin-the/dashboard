@@ -16,6 +16,7 @@
                     [第<span class="orange">#{{case.current_step}}</span>次/最大{{case.max_step}}次]
                     <span class="orange">{{case.timestamp|time_duration}}</span>
                     <span class="gray">[</span>
+                    
                     <a href="/portal/template/view/{{case.template_id}}" target="_blank">template</a>
 
                     {%if case.strategy_id>0%}
@@ -28,8 +29,11 @@
                     <a href="/portal/expression/view/{{case.expression_id}}" target="_blank">expression</a>
                     {%endif%}
 
+                    {%if g.user.name == 'root'%}
                     <span class="cut-line">¦</span>
                     <a href="javascript:alarm_case_rm('{{case.id}}');">delete</a>
+                    {%endif%}
+
                     <span class="cut-line">¦</span>
                     <a href="/portal/alarm-dash/case/event?case_id={{case.id}}">{{_('event list')}}</a>
                     <span class="gray">]</span>
@@ -49,7 +53,9 @@
                 {%endfor%}
                 <a href="javascript:alarm_case_all_select();">{{_('select all')}}</a>/
                 <a href="javascript:alarm_case_reverse_select();">{{_('reverse select')}}</a>
+                {%if g.user.name == 'root'%}
                 <button class="btn btn-warning btn-sm" onclick="alarm_case_batch_rm();">{{_('batch delete')}}</button>
+                {%endif%}
             </div>
         </div>
 

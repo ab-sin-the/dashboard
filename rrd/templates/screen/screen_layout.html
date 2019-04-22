@@ -133,7 +133,9 @@ $(function(){
         <li class="screen" role="presentation">
             <span role="menuitem" style="margin-left:15px;line-height:25px;"> 
             <a href="/screen/{{c.id}}"><small>{{c.name}}</small></a>
+            {%if g.user.name == 'root'%}
             <a href='/screen/{{c.id}}/delete' class="glyphicon glyphicon-remove pull-right" style="margin-right:10px;" onclick="return confirm('确定要删除这个screen?');"></a>
+            {%endif%}
             </span>
             <hr style="margin:5px;"/>
         </li>

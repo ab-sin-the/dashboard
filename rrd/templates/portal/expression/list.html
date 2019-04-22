@@ -12,11 +12,13 @@
         <input type="checkbox" name="mine" id="mine" {% if data.mine == '1' %}checked="checked"{% endif %}>
         <span>mine</span>
 
+        {%if g.user.name == 'root'%}
         <div class="pull-right">
             <a href="{{ url_for('expression_add_get') }}" class="btn btn-default">
                 <span class="glyphicon glyphicon-plus"></span>
             </a>
         </div>
+        {%endif%}
     </div>
 
     <div>
@@ -32,6 +34,7 @@
                     {{ left }}{{ v.action.html()|safe }}{{ right }}</span>
 
                 {% if v.writable(g.user) %}
+                    {% if g.user.name == 'root'%}
                     <div class="pull-right">
                         <button onclick="pause_expression('{{v.id}}')" class="btn btn-default">
                             <span id="i-{{v.id}}" class="glyphicon glyphicon-{% if v.pause %}play{% else %}pause{% endif %} orange"></span>
@@ -43,6 +46,7 @@
                         <button onclick="delete_expression('{{ v.id }}');" class="btn btn-default">
                             <span class="glyphicon glyphicon-trash orange"></span>
                         </button>
+                    {% endif%}
                     </div>
                 {% endif %}
             </div>

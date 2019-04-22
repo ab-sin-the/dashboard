@@ -10,7 +10,7 @@
                     <li> {{screen_layout.screen_home_menu(pscreen, screen, sub_screens)}} </li>
                     {%if show_root%}
                         <li><a href="/screen/{{screen.id}}/delete" onclick="return confirm('确定要删除这个screen?');"><i class="icon-trash"></i>删除</a></li>
-                        <li><a href="/screen/{{screen.id}}/graph"><i class="icon-plus"></i>+graph</a></li>
+                    <li><a href="/screen/{{screen.id}}/graph"><i class="icon-plus"></i>+graph</a></li>
                     {%endif%}
                     {%if g.legend == "on"%}
                     <li><a href="#" onclick="fn_query({legend: 'off'})"><i class="icon-plus"></i>隐藏legend</a></li>
