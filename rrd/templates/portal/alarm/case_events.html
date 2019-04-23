@@ -14,7 +14,7 @@
                     {%if evt.status==0%}PROBLEM{%else%}OK{%endif%} P{{case.priority}}
                     [第<span class="orange">#{{evt.step}}</span>次/最大{{case.max_step}}次]
                     <span class="orange">{{evt.timestamp|time_duration}}</span>
-                    {%if g.user.name == 'root'%}
+                    {%if g.user.is_root() or g.user.is_admin()%}
                     <span class="gray">[</span>
                     <a href="javascript:alarm_case_event_rm('{{evt.id}}');">delete</a>
                     <span class="gray">]</span>
@@ -35,7 +35,7 @@
                 {%endfor%}
                 <a href="javascript:alarm_case_event_all_select();">{{_('select all')}}</a>/
                 <a href="javascript:alarm_case_event_reverse_select();">{{_('reverse select')}}</a>
-                {%if g.user.name == 'root'%}
+                {%if g.user.is_root() or g.user.is_admin()%}
                 <button class="btn btn-warning btn-sm" onclick="alarm_case_event_batch_rm();">{{_('batch delete')}}</button>
                 {%endif%}
             </div>

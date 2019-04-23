@@ -179,7 +179,7 @@
                                 <div class="form-group">
                                     <input id="counter-filter" type="text" class="form-control input-sm">
                                     <button class="btn btn-default btn-sm btn-info" onclick="filter_counter();return false;">{{_('quick filter')}}</button>
-                                    {%if g.user.name == 'root'%}
+                                    {%if g.user.is_root() or g.user.is_admin()%}
                                     <button class="btn btn-default btn-sm" onclick="fn_delete_counters();return false;">{{_('delete counters')}}</button>
                                     {%endif%}
                                 </div>

@@ -29,7 +29,7 @@
                     <a href="/portal/expression/view/{{case.expression_id}}" target="_blank">expression</a>
                     {%endif%}
 
-                    {%if g.user.name == 'root'%}
+                    {%if g.user.is_root() or g.user.is_admin()%}
                     <span class="cut-line">¦</span>
                     <a href="javascript:alarm_case_rm('{{case.id}}');">delete</a>
                     {%endif%}
@@ -53,7 +53,7 @@
                 {%endfor%}
                 <a href="javascript:alarm_case_all_select();">{{_('select all')}}</a>/
                 <a href="javascript:alarm_case_reverse_select();">{{_('reverse select')}}</a>
-                {%if g.user.name == 'root'%}
+                {%if g.user.is_root() or g.user.is_admin()%}
                 <button class="btn btn-warning btn-sm" onclick="alarm_case_batch_rm();">{{_('batch delete')}}</button>
                 {%endif%}
             </div>

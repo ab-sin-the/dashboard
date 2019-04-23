@@ -8,7 +8,7 @@
 
                 {%if screen%}
                     <li> {{screen_layout.screen_home_menu(pscreen, screen, sub_screens)}} </li>
-                    {%if show_root%}
+                    {%if g.user.is_root() or g.user.is_admin()%}
                         <li><a href="/screen/{{screen.id}}/delete" onclick="return confirm('确定要删除这个screen?');"><i class="icon-trash"></i>删除</a></li>
                     <li><a href="/screen/{{screen.id}}/graph"><i class="icon-plus"></i>+graph</a></li>
                     {%endif%}

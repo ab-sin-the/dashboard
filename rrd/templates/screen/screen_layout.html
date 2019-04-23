@@ -82,7 +82,7 @@ $(function(){
                                                 <a href="{{big_graph|safe}}&start=-86400&graph_type=a" target="__blank" class="btn btn-link btn-xs">查看大图</a>
                                             {%endif%}
                                             </li>
-                                            {%if g.user.name == 'root'%}
+                                            {%if g.user.is_root() or g.user.is_admin()%}
                                             <li>
                                                 <a href="/graph/{{graph.id}}/edit" target="__blank" class="btn btn-link btn-xs">编辑</a>
                                             </li>
@@ -123,7 +123,7 @@ $(function(){
       </button>
 
       <ul class="dropdown-menu" role="menu">
-            {%if g.user.name == 'root'%}
+            {%if g.user.is_root() or g.user.is_admin()%}
             <li><a href="/screen/add"> <small>+ 导航</small></a></li>
             {%endif%}
         <li>
@@ -135,7 +135,7 @@ $(function(){
         <li class="screen" role="presentation">
             <span role="menuitem" style="margin-left:15px;line-height:25px;"> 
             <a href="/screen/{{c.id}}"><small>{{c.name}}</small></a>
-            {%if g.user.name == 'root'%}
+            {%if g.user.is_root() or g.user.is_admin()%}
             <a href='/screen/{{c.id}}/delete' class="glyphicon glyphicon-remove pull-right" style="margin-right:10px;" onclick="return confirm('确定要删除这个screen?');"></a>
             {%endif%}
             </span>
@@ -160,7 +160,7 @@ $(function(){
 
       <ul class="dropdown-menu" role="menu">
         {%if current_top_screen %}
-            {% if g.user.name == 'root'%}
+            {% if g.user.is_root() or g.user.is_admin()%}
             <li><a href="/screen/add?pid={{current_top_screen.id}}"> + screen</a></li>
             {%endif%}
         {%endif%}

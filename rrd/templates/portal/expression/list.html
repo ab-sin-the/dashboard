@@ -12,7 +12,7 @@
         <input type="checkbox" name="mine" id="mine" {% if data.mine == '1' %}checked="checked"{% endif %}>
         <span>mine</span>
 
-        {%if g.user.name == 'root'%}
+        {%if g.user.is_root() or g.user.is_admin()%}
         <div class="pull-right">
             <a href="{{ url_for('expression_add_get') }}" class="btn btn-default">
                 <span class="glyphicon glyphicon-plus"></span>
@@ -35,7 +35,7 @@
 
                 {% if v.writable(g.user) %}
                 <div class="pull-right">
-                    {% if g.user.name == 'root'%}
+                    {% if g.user.is_root() or g.user.is_admin()%}
                         <button onclick="pause_expression('{{v.id}}')" class="btn btn-default">
                             <span id="i-{{v.id}}" class="glyphicon glyphicon-{% if v.pause %}play{% else %}pause{% endif %} orange"></span>
                         </button>
