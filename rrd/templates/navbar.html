@@ -22,7 +22,7 @@
           {%if g.user and (g.user.is_root() or g.user.is_admin())%}
           <li {%if g.nav_menu == "p_hostgroup"%}class="active"{%endif%}><a href="/portal/hostgroup">HostGroups</a></li>
           <li {%if g.nav_menu == "p_template"%}class="active"{%endif%}><a href="/portal/template">Templates</a></li>
-          {%endif%}local
+          {%endif%}
           <li {%if g.nav_menu == "p_expression"%}class="active"{%endif%}><a href="/portal/expression">Expressions</a></li>
           {%if g.user and (g.user.is_root() or g.user.is_admin())%}
           <li {%if g.nav_menu == "p_nodata"%}class="active"{%endif%}><a href="/portal/nodata">Nodata</a></li>
