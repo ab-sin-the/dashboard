@@ -8,7 +8,7 @@ import json
 def log_page():
 
     return render_template(
-        'portal/log/index.html', **locals()
+        'portal/file_log/index.html', **locals()
     )
 
 

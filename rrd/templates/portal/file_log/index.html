@@ -1,0 +1,81 @@
+{% extends "portal/layout.html" %}
+{% block more_head %}
+<script src="/static/js/portal_log.js"></script>
+<script>
+
+        $(function(){
+            $("#logfile-search").keydown(function(event){
+                if(event.keyCode == 13){
+                    fn_search_log_file();
+                    event.preventDefault();
+                    return false;
+                }
+            });
+
+        })
+
+</script>
+<style>
+    .log-display {
+        display: block;
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    }
+  </style>
+{% endblock %}
+
+
+{% block content %}
+{% block main_section%}
+        <div class="row">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <img class="loading pull-right" src="/static/img/loading.gif" style="display:none;"></img>
+                            {{_('Display Log Content')}}
+                        </div>
+
+                        <div class="panel-body">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label>Log File Path</label>
+                                    <input id="logfile-search" name="logfile_search" type="text" class="form-control input-sm">
+                                </div>
+                            </form>
+                            <hr/>
+                            <div id="log-file-content" class="log-display"> </div>
+                        </div>
+                        
+                        <table class="table table-striped">
+                            
+                            <thead>
+                                <th width="15"></th> <th></th>
+                            </thead>
+                            <tbody id="tbody-endpoints">
+                                {%for obj in endpoint_objs%}
+                                <tr>
+                                <td><input type="checkbox" class="input shiftCheckbox"
+                                    data-eid="{{obj['id']}}"  data-fullname="{{obj['endpoint']}}"></input></td>
+                                <td>{{obj['endpoint']}}</td>
+                                </tr>
+                                {%endfor%}
+                            </tbody>
+                        </table>
+
+                    </div>
+
+            </div>
+
+    {%endblock%}
+{% endblock %}
