@@ -31,5 +31,6 @@ __all__ = [
         "alert_link",
         "welcome",
         "dashboard",
-        "process"
+        "process",
+        "portal_log"
         ]

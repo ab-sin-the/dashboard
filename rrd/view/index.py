@@ -21,6 +21,8 @@ from rrd import app, config
 from rrd import corelib
 
 
+
+
 def get_api_endpoints(q, tags, page=1, limit=100):
     if not q and not tags:
         raise Exception("no query params given")
@@ -67,6 +69,7 @@ def api_endpoints():
         return json.dumps(ret)
     except Exception as e:
         abort(400, str(ret))
+
 
 @app.route("/api/counters", methods=["POST"])
 def api_get_counters():
