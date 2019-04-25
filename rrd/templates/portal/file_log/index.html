@@ -16,7 +16,7 @@
 
 </script>
 <style>
-    .log-display {
+.log-display {
         display: block;
   width: 100%;
   padding: 6px 12px;
@@ -32,7 +32,10 @@
   -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-    }
+}
+.log-display:empty{
+    border: none;
+}
   </style>
 {% endblock %}
 
@@ -54,7 +57,7 @@
                                         </div>
                             </form>
                             <hr/>
-                            <pre id="log-file-content" class="log-display"> </pre>
+                            <pre id="log-file-content" class="log-display"></pre>
                         </div>
                         
                         <table class="table table-striped">
