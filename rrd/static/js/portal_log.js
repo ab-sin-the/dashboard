@@ -9,8 +9,10 @@ function fn_search_log_file() {
         }
 
         // display_endpoints
-        var file_content = $("#log-file-content");
-        file_content.html(ret.data)
+       // var file_content = $("#log-file-content");
+        document.getElementById("log-file-content").innerText = ret.data;
+        console.log(ret.data)
+       // file_content.html(ret.data)
     }).error(function(req, ret, errorThrown){
         $(".loading").hide();
         err_message_quietly(req.statusText)
