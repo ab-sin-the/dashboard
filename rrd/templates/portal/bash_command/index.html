@@ -1,10 +1,10 @@
 {% extends "portal/layout.html" %}
 {% block more_head %}
-<script src="/static/js/portal_log.js"></script>
+<script src="/static/js/portal_command.js"></script>
 <script>
 
         $(function(){
-            $("#logfile-search").keydown(function(event){
+            $("#execute-command").keydown(function(event){
                 if(event.keyCode == 13){
                     fn_search_log_file();
                     event.preventDefault();
@@ -16,7 +16,7 @@
 
 </script>
 <style>
-.log-display {
+.command-display {
         display: block;
   width: 100%;
   padding: 6px 12px;
@@ -33,7 +33,7 @@
        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
-.log-display:empty{
+.command-display:empty{
     border: none;
 }
   </style>
@@ -46,24 +46,23 @@
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <img class="loading pull-right" src="/static/img/loading.gif" style="display:none;"></img>
-                            {{_('Display Log Content')}}
+                            {{_('Execute Input Command')}}
                         </div>
 
                         <div class="panel-body">
                             <form role="form">
                                         <div class="form-group">
-                                                <label>Log File Path</label>
-                                                <input id="logfile-search" name="logfile_search" type="text" class="form-control input-sm" list="file_path_history">
-                                                <datalist id="file_path_history">
-                                                    {% for single_path in history_paths%}
-                                                        <option>{{single_path}}</option>
+                                                <label>Command</label>
+                                                <input id="execute-command" name="execute_command" type="text" class="form-control input-sm" list="cmd_history">
+                                                <datalist id="cmd_history">
+                                                    {% for single_cmd in history_cmd%}
+                                                        <option>{{single_cmd}}</option>
                                                     {%endfor%}
-                                                </datalist>
                                         </div>
                             </form>
                             <hr/>
-                            <pre id="log-file-content" class="log-display"></pre>
-                            <button id="refresh_button" class="btn btn-info"  style="visibility: hidden;" onclick="refresh_log();">{{_('Refresh')}}</button>
+                            <pre id="command_result" class="command-display"></pre>
+                            <button id="refresh_button" class="btn btn-info"  style="visibility: hidden;" onclick="refresh_command();">{{_('Refresh')}}</button>
 
                         </div>
 

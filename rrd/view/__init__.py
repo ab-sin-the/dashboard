@@ -74,8 +74,8 @@ def app_before():
         g.nav_menu = "p_home"
     elif path.startswith("/portal/process"):
         g.nav_menu = "p_process"
-    elif path.startswith("/portal/file_log"):
-        g.nav_menu = "p_log"
+    elif path.startswith("/portal/file_log") or path.startswith("/portal/bash_command"):
+        g.nav_menu = "nav_bash"
     elif path.startswith("/portal/hostgroup") or path.startswith("/portal/group"):
         g.nav_menu = "p_hostgroup"
     elif path.startswith("/portal/template"):

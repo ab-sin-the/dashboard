@@ -9,7 +9,14 @@
         <ul class="nav navbar-nav navbar-right">
          <li {%if g.nav_menu == "p_home"%}class="active"{%endif%}><a href="/portal/home">Home</a></li>
          <li {%if g.nav_menu == "p_process"%}class="active"{%endif%}><a href="/portal/process">Process</a></li>
-         <li {%if g.nav_menu == "p_log"%}class="active"{%endif%}><a href="/portal/file_log">Log</a></li>
+         <li class="dropdown" {%if g.nav_menu == "nav_bash"%}class="active"{%endif%}>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Bash<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu" style="font-size:12px;">
+                <li><a href="/portal/file_log">Log</a></li>
+                <li><a href="/portal/bash_command">Command</a></li>
+            </ul>
+           </li>
+
          <li {%if g.nav_menu == "nav_dashboard"%}class="active"{%endif%}><a href="/portal/dashboard">Dashboard</a></li>
          <li class="dropdown" {%if g.nav_menu == "nav_screen"%}class="active"{%endif%}>
            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Screen<span class="caret"></span></a>
