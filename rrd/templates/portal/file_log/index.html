@@ -56,7 +56,7 @@
                                                 <input id="logfile-search" name="logfile_search" type="text" class="form-control input-sm" list="file_path_history">
                                                 <datalist id="file_path_history">
                                                     {% for single_path in history_paths%}
-                                                        <option>{{single_path}}</option>
+                                                        <option> {{ single_path }}</option>
                                                     {%endfor%}
                                                 </datalist>
                                         </div>

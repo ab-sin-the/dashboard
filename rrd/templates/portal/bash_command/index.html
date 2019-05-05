@@ -55,7 +55,7 @@
                                                 <label>Command</label>
                                                 <input id="execute-command" name="execute_command" type="text" class="form-control input-sm" list="cmd_history">
                                                 <datalist id="cmd_history">
-                                                    {% for single_cmd in history_cmd%}
+                                                    {% for single_cmd in history_cmds%}
                                                         <option>{{single_cmd}}</option>
                                                     {%endfor%}
                                         </div>
