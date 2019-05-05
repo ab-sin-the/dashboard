@@ -21,3 +21,4 @@ var/
 gitversion
 .DS_Store
 .vscode/
+~/.vscode-root/
