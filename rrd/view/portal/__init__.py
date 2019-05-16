@@ -32,5 +32,7 @@ __all__ = [
         "welcome",
         "dashboard",
         "process",
-        "portal_log"
+        "portal_log",
+        "security_audit",
+        "ntopng",
         ]

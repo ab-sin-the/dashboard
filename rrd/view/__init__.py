@@ -74,7 +74,7 @@ def app_before():
         g.nav_menu = "p_home"
     elif path.startswith("/portal/process"):
         g.nav_menu = "p_process"
-    elif path.startswith("/portal/file_log") or path.startswith("/portal/bash_command"):
+    elif path.startswith("/portal/file_log") or path.startswith("/portal/bash_command") or path.startswith("/portal/security_audit"):
         g.nav_menu = "nav_bash"
     elif path.startswith("/portal/hostgroup") or path.startswith("/portal/group"):
         g.nav_menu = "p_hostgroup"
@@ -84,6 +84,8 @@ def app_before():
         g.nav_menu = "p_expression"
     elif path.startswith("/portal/nodata"):
         g.nav_menu = "p_nodata"
+    elif path.startswith("/ntopng"):
+        g.nav_menu = "p_ntopng"
     elif path.startswith("/portal/alarm-dash"):
         g.nav_menu = "p_alarm-dash"
     elif path == "/":

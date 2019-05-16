@@ -61,7 +61,7 @@ def api_logfile():
             ret['ok'] = True
             return json.dumps(ret)
         file_path = file_path.split()[0]
-        command = "tail -n 100 " + file_path
+        command = "tail -n 100 " + file_path + " | sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g'"
         log_history = commands.getoutput(command)
         if not os.path.isfile(file_path):
             log_history = "File not exist!"
