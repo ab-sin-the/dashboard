@@ -37,8 +37,15 @@
                         </div>
 
                         <div class="panel-body">
-                            <button id="refresh_button" class="btn btn-info" onclick="start_audit('lynis');" >{{_('lynis')}}</button>
-                            <button id="refresh_button" class="btn btn-info" onclick="start_audit('GScan');" >{{_('GScan')}}</button>
+                            <div>
+                                    <button id="refresh_button" class="btn btn-info" onclick="start_audit('lynis');" >{{_('运行lynis')}}</button>
+                                    <button id="refresh_button" class="btn btn-info" onclick="get_report('lynis');" >{{_('获取lynis报告')}}</button>
+                            </div>
+                            <hr/>
+                            <div>
+                                    <button id="refresh_button" class="btn btn-info" onclick="start_audit('GScan');" >{{_('运行GScan')}}</button>
+                                    <button id="refresh_button" class="btn btn-info" onclick="get_report('GScan');" >{{_('获取GScan报告')}}</button>
+                            </div>
                             <hr/>
                             <pre id="audit-result" class="audit-display"></pre>
                         </div>
