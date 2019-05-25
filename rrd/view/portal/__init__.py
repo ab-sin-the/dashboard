@@ -34,5 +34,5 @@ __all__ = [
         "process",
         "portal_log",
         "security_audit",
-        "ntopng",
+        "flows",
         ]

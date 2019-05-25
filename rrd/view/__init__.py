@@ -84,8 +84,8 @@ def app_before():
         g.nav_menu = "p_expression"
     elif path.startswith("/portal/nodata"):
         g.nav_menu = "p_nodata"
-    elif path.startswith("/ntopng"):
-        g.nav_menu = "p_ntopng"
+    elif path.startswith("/portal/flows"):
+        g.nav_menu = "p_flows"
     elif path.startswith("/portal/alarm-dash"):
         g.nav_menu = "p_alarm-dash"
     elif path == "/":
