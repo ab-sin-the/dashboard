@@ -17,12 +17,12 @@ function get_flow_data() {
 function forbid_ip(ip_addr, key){
     ip_addr = ip_addr.split(":")[0];
     button_id = "forbid_button_" + key;
-   // if (ip_addr.split(".").length == 4) {
+    if (ip_addr.split(".").length == 4) {
         $.post('/flow/forbid', {'ip_addr': ip_addr}, function (json) {
             document.getElementById(button_id).innerHTML = "已禁止"
         }, "json");
         return true;
-    //}
+    }
     return false;
 }
 
@@ -51,5 +51,9 @@ function update_table(data) {
     $("#flow_table").html(table_whole);
 }
 
+function update_flow() {
+    get_flow_data()
+    setInterval(get_flow_data, 5000);
+}
 
-window.onload = get_flow_data;
+window.onload = update_flow;
