@@ -1,7 +1,16 @@
 {% extends "portal/layout.html" %}
 {% block content %}
 <script src="/static/js/flows.js"></script>
+<script src="/static/js/bootstrapSwitch.js"></script>
+<link rel="stylesheet" href="/static/css/bootstrapSwitch.css">
 <center><h3> <b>Flow Data</b> </h3></center> 
+<div class="row">
+    <div class="panel panel-body">  <font size=3>自动刷新</font> 
+        <div class="switch switch-small">
+            <input name="auto_refresh_box" id="auto_refresh_box" type="checkbox" onchange="change_auto_refresh(this)" checked />
+        </div>
+    </div>
+</div>
 <table class="table table-hover table-bordered table-striped" style="margin-bottom: 0px; margin-top: 10px;">
     <thead>
         <tr>

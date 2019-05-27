@@ -51,9 +51,15 @@ function update_table(data) {
     $("#flow_table").html(table_whole);
 }
 
-function update_flow() {
-    get_flow_data()
-    setInterval(get_flow_data, 5000);
+var update_flow = setInterval(get_flow_data, 5000);
+
+function change_auto_refresh(auto_refresh) {
+    if (auto_refresh.checked === true) {
+        this.update_flow = setInterval(get_flow_data, 5000);
+    }
+    if (auto_refresh.checked === false) {
+        clearInterval(this.update_flow);
+    }
 }
 
-window.onload = update_flow;
+window.onload = get_flow_data;
