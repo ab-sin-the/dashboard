@@ -28,7 +28,7 @@
             <span class="glyphicon glyphicon-search"></span>
         </button>
         <input type="checkbox" name="mine" id="mine" {% if data.mine == '1' %}checked="checked"{% endif %}>
-        <span>mine</span>
+        <span>只显示与我有关</span>
 
         <div class="pull-right">
             <a href="{{ url_for('nodata_add_get') }}" class="btn btn-default">
@@ -60,7 +60,7 @@
             </div>
         {% else %}
             <hr/>
-            no records
+            没有记录
         {% endfor %}
     </div>
 

@@ -7,50 +7,50 @@
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav navbar-right">
-         <li {%if g.nav_menu == "p_home"%}class="active"{%endif%}><a href="/portal/home">Home</a></li>
-         <li {%if g.nav_menu == "p_process"%}class="active"{%endif%}><a href="/portal/process">Process</a></li>
-         <li {%if g.nav_menu == "p_flows"%}class="active"{%endif%}><a href="/portal/flows">Flows</a></li>
+         <li {%if g.nav_menu == "p_home"%}class="active"{%endif%}><a href="/portal/home">主页</a></li>
+         <li {%if g.nav_menu == "p_process"%}class="active"{%endif%}><a href="/portal/process">进程监控</a></li>
+         <li {%if g.nav_menu == "p_flows"%}class="active"{%endif%}><a href="/portal/flows">网络流监控</a></li>
          <li class="dropdown" {%if g.nav_menu == "nav_bash"%}class="active"{%endif%}>
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Bash<span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">命令相关<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu" style="font-size:12px;">
-                <li><a href="/portal/file_log">Log</a></li>
-                <li><a href="/portal/bash_command">Command</a></li>
+                <li><a href="/portal/file_log">查看日志</a></li>
+                <li><a href="/portal/bash_command">输入命令</a></li>
                 <li><a href="/portal/security_audit">基线核查/入侵检测</a></li>
             </ul>
            </li>
 
-         <li {%if g.nav_menu == "nav_dashboard"%}class="active"{%endif%}><a href="/portal/dashboard">Dashboard</a></li>
+         <li {%if g.nav_menu == "nav_dashboard"%}class="active"{%endif%}><a href="/portal/dashboard">控制面板</a></li>
          <li class="dropdown" {%if g.nav_menu == "nav_screen"%}class="active"{%endif%}>
-           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Screen<span class="caret"></span></a>
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">监控图<span class="caret"></span></a>
            <ul class="dropdown-menu" role="menu" style="font-size:12px;">
-               <li><a href="/screen">screens</a></li>
+               <li><a href="/screen">监控图表</a></li>
                {%if g.user and  (g.user.is_root() or g.user.is_admin())%}
-               <li><a href="/screen/add">+screen</a></li>
+               <li><a href="/screen/add">增加监控图表</a></li>
                {%endif%}
            </ul>
           </li>
           {%if g.user and (g.user.is_root() or g.user.is_admin())%}
-          <li {%if g.nav_menu == "p_hostgroup"%}class="active"{%endif%}><a href="/portal/hostgroup">HostGroups</a></li>
-          <li {%if g.nav_menu == "p_template"%}class="active"{%endif%}><a href="/portal/template">Templates</a></li>
+          <li {%if g.nav_menu == "p_hostgroup"%}class="active"{%endif%}><a href="/portal/hostgroup">服务器组</a></li>
+          <li {%if g.nav_menu == "p_template"%}class="active"{%endif%}><a href="/portal/template">报警模板</a></li>
           {%endif%}
-          <li {%if g.nav_menu == "p_expression"%}class="active"{%endif%}><a href="/portal/expression">Expressions</a></li>
+          <li {%if g.nav_menu == "p_expression"%}class="active"{%endif%}><a href="/portal/expression">报警表达式</a></li>
           {%if g.user and (g.user.is_root() or g.user.is_admin())%}
-          <li {%if g.nav_menu == "p_nodata"%}class="active"{%endif%}><a href="/portal/nodata">Nodata</a></li>
+          <li {%if g.nav_menu == "p_nodata"%}class="active"{%endif%}><a href="/portal/nodata">空数据监控</a></li>
           {%endif%}
           <!--<li {%if g.nav_menu == "p_ntopng"%}class="active"{%endif%}> <a href="/ntopng">Ntopng</a> </li> --> 
-          <li {%if g.nav_menu == "p_alarm-dash"%}class="active"{%endif%}><a href="/portal/alarm-dash/case">Alarm-Dashboard</a></li>
+          <li {%if g.nav_menu == "p_alarm-dash"%}class="active"{%endif%}><a href="/portal/alarm-dash/case">报警控制面板</a></li>
           <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                  {%if g.user%} Welcome {{g.user.name}}{%else%}Sign in{%endif%}<span class="caret"></span></a>
+                  {%if g.user%} 欢迎 {{g.user.name}}{%else%}登录{%endif%}<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu" style="font-size:12px;">
                   {%if g.user%}
-                      <li><a href="/user/profile">Profile</a></li>
-                      <li><a href="/user/list">Users</a></li>
-                      <li><a href="/team/list">Teams</a></li>
-                      <li><a href="/auth/logout">Logout</a></li>
+                      <li><a href="/user/profile">个人信息</a></li>
+                      <li><a href="/user/list">用户</a></li>
+                      <li><a href="/team/list">小组</a></li>
+                      <li><a href="/auth/logout">登出</a></li>
                   {%else%}
-                      <li><a href="/auth/login">Login</a></li>
-                      <li><a href="/auth/register">Sign Up</a></li>
+                      <li><a href="/auth/login">登录</a></li>
+                      <li><a href="/auth/register">注册</a></li>
                   {%endif%}
                   <li><a href="https://github.com/open-falcon/dashboard">fork me on Github</a></li>
               </ul>

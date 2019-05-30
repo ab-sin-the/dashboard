@@ -10,7 +10,7 @@
             <span class="glyphicon glyphicon-search"></span>
         </button>
         <input type="checkbox" name="mine" id="mine" {% if data.mine == '1' %}checked="checked"{% endif %}>
-        <span>mine</span>
+        <span>只显示与我有关</span>
 
         {%if g.user.is_root() or g.user.is_admin()%}
         <div class="pull-right">

@@ -3,8 +3,8 @@
 
     <div class="panel panel-danger">
         <div class="panel-heading">
-            <h4 class="panel-title">{{_('alerting cases')}}
-                <a class="pull-right small" href="/portal/alarm-dash/case?status=PROBLEM">{{_('not recovered cases')}}</a>
+            <h4 class="panel-title">{{_('报警记录')}}
+                <a class="pull-right small" href="/portal/alarm-dash/case?status=PROBLEM">{{_('未覆盖记录')}}</a>
             </h4>
         </div>
         <div class="panel-body">
@@ -17,25 +17,25 @@
                     <span class="orange">{{case.timestamp|time_duration}}</span>
                     <span class="gray">[</span>
                     
-                    <a href="/portal/template/view/{{case.template_id}}" target="_blank">template</a>
+                    <a href="/portal/template/view/{{case.template_id}}" target="_blank">模板</a>
 
                     {%if case.strategy_id>0%}
                     <span class="cut-line">¦</span>
-                    <a href="/portal/strategy/{{case.strategy_id}}" target="_blank">strategy</a>
+                    <a href="/portal/strategy/{{case.strategy_id}}" target="_blank">策略</a>
                     {%endif%}
 
                     {%if case.expression_id>0%}
                     <span class="cut-line">¦</span>
-                    <a href="/portal/expression/view/{{case.expression_id}}" target="_blank">expression</a>
+                    <a href="/portal/expression/view/{{case.expression_id}}" target="_blank">表达式</a>
                     {%endif%}
 
                     {%if g.user.is_root() or g.user.is_admin()%}
                     <span class="cut-line">¦</span>
-                    <a href="javascript:alarm_case_rm('{{case.id}}');">delete</a>
+                    <a href="javascript:alarm_case_rm('{{case.id}}');">删除</a>
                     {%endif%}
 
                     <span class="cut-line">¦</span>
-                    <a href="/portal/alarm-dash/case/event?case_id={{case.id}}">{{_('event list')}}</a>
+                    <a href="/portal/alarm-dash/case/event?case_id={{case.id}}">{{_('事件表')}}</a>
                     <span class="gray">]</span>
                     </br>
 
@@ -51,10 +51,10 @@
                 </div>
                 <hr>
                 {%endfor%}
-                <a href="javascript:alarm_case_all_select();">{{_('select all')}}</a>/
-                <a href="javascript:alarm_case_reverse_select();">{{_('reverse select')}}</a>
+                <a href="javascript:alarm_case_all_select();">{{_('全选')}}</a>/
+                <a href="javascript:alarm_case_reverse_select();">{{_('反选')}}</a>
                 {%if g.user.is_root() or g.user.is_admin()%}
-                <button class="btn btn-warning btn-sm" onclick="alarm_case_batch_rm();">{{_('batch delete')}}</button>
+                <button class="btn btn-warning btn-sm" onclick="alarm_case_batch_rm();">{{_('批量删除')}}</button>
                 {%endif%}
             </div>
         </div>

@@ -46,13 +46,13 @@
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <img class="loading pull-right" src="/static/img/loading.gif" style="display:none;"></img>
-                            {{_('Display Log Content')}}
+                            {{_('显示日志内容')}}
                         </div>
 
                         <div class="panel-body">
                             <form role="form">
                                         <div class="form-group">
-                                                <label>Log File Path</label>
+                                                <label>日志文件路径</label>
                                                 <input id="logfile-search" name="logfile_search" type="text" class="form-control input-sm" list="file_path_history">
                                                 <datalist id="file_path_history">
                                                     {% for single_path in history_paths%}

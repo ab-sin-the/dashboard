@@ -8,7 +8,7 @@ import re
 
 url = "127.0.0.1:3000/lua/get_flows_data.lua?perPage=10"
 user = "admin"
-psw = "adminadmin"
+psw = "admin"
 all_data_type = ["column_duration", "column_server", "column_ndpi", "column_proto_l4", 'column_client', "column_thpt", "column_bytes"]
 
 def remove_html(raw_html):

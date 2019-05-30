@@ -10,7 +10,7 @@
             <span class="glyphicon glyphicon-search"></span>
         </button>
         <input type="checkbox" name="mine" id="mine" {% if data.mine == '1' %}checked="checked"{% endif %}>
-        <span>mine</span>
+        <span>只显示与我有关</span>
         <!-- anyone could create a hostgroup
         {% if data.is_root %}{% endif %}
         -->
@@ -25,9 +25,9 @@
     <table class="table table-hover table-bordered table-striped" style="margin-bottom: 0px; margin-top: 10px;">
         <thead>
         <tr>
-            <th>name</th>
-            <th>creator</th>
-            <th>operation</th>
+            <th>名字</th>
+            <th>创建人</th>
+            <th>操作</th>
         </tr>
         </thead>
         <tbody>
@@ -36,7 +36,7 @@
                 <td>{{ v.grp_name }}</td>
                 <td>{{ v.create_user }}</td>
                 <td>
-                    <a href="{{ url_for('group_templates_get', grp_id=v.id) }}">templates</a>
+                    <a href="{{ url_for('group_templates_get', grp_id=v.id) }}">模板</a>
                     <span class="cut-line">¦</span>
                     <a href="{{ url_for('group_hosts_list', group_id=v.id) }}">hosts</a>
                     <span class="cut-line">¦</span>
@@ -56,7 +56,7 @@
                 </td>
             </tr>
         {% else %}
-            <tr><td colspan="3">no records</td></tr>
+            <tr><td colspan="3">没有记录</td></tr>
         {% endfor %}
         </tbody>
     </table>

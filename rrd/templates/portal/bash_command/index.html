@@ -46,13 +46,13 @@
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <img class="loading pull-right" src="/static/img/loading.gif" style="display:none;"></img>
-                            {{_('Execute Input Command')}}
+                            {{_('执行输入的命令')}}
                         </div>
 
                         <div class="panel-body">
                             <form role="form">
                                         <div class="form-group">
-                                                <label>Command</label>
+                                                <label>命令</label>
                                                 <input id="execute-command" name="execute_command" type="text" class="form-control input-sm" list="cmd_history">
                                                 <datalist id="cmd_history">
                                                     {% for single_cmd in history_cmds%}
