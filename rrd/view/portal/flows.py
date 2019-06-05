@@ -8,7 +8,7 @@ import re
 
 url = "127.0.0.1:3000/lua/get_flows_data.lua?perPage=10"
 user = "admin"
-psw = "admin"
+psw = "adminadmin"
 all_data_type = ["column_duration", "column_server", "column_ndpi", "column_proto_l4", 'column_client', "column_thpt", "column_bytes"]
 
 def remove_html(raw_html):
@@ -18,6 +18,18 @@ def remove_html(raw_html):
     raw_html = re.sub(cleanr, '', raw_html)
     raw_html = raw_html.replace("&nbsp;",'')
     return raw_html
+
+def get_forbid_flows():
+    cmd = 'iptables-save'
+    ip_data = commands.getoutput(cmd)
+    ip_data_lines = ip_data.split('\n')
+    forbidded_flow = ip_data_lines[5:-2]
+    for i in range(len(forbidded_flow)):
+        curr_row = forbidded_flow[i]
+        ip_addr = curr_row.split()[3]
+        ip_addr = ip_addr.split('/')[0]
+        forbidded_flow[i] = ip_addr
+    return forbidded_flow
 
 def get_data_once(url, user, psw):
     cmd = 'curl -s --cookie "user=%s; password=%s" ' % (user, psw)
@@ -64,3 +76,26 @@ def forbid_ip():
     except Exception as e:
         ret["msg"] = str(e)
         return json.dumps(ret)
+
+@app.route('/flow/unforbid', methods=["POST",])
+def flow_unforbid():
+    print("aaa")
+    ip_addr = request.form.get("ip_addr")
+    ret = { "msg": "", }
+    try:
+        command = "iptables -D INPUT -s " + ip_addr + " -j DROP"
+        print(command)
+        commands.getoutput(command)
+        
+        command = "iptables-save"
+        commands.getoutput(command)
+        ret["msg"] = "Finish unforbid"
+        return json.dumps(ret)
+    except Exception as e:
+        ret["msg"] = str(e)
+        return json.dumps(ret)
+
+@app.route("/portal/flows/unforbid", methods=["GET", "POST"])
+def get_flow_unforbid():
+    forbid_ips = get_forbid_flows()
+    return render_template("/portal/flows/unforbid.html", **locals())
