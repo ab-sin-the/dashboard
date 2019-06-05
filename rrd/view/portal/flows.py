@@ -22,8 +22,9 @@ def remove_html(raw_html):
 def get_forbid_flows():
     cmd = 'iptables-save'
     ip_data = commands.getoutput(cmd)
-    ip_data_lines = ip_data.split('\n')
-    forbidded_flow = ip_data_lines[5:-2]
+    ip_data = ip_data.split('OUTPUT ACCEPT')[1]
+    ip_data = ip_data.split('COMMIT')[0]
+    forbidded_flow = ip_data.split('\n')[1:-1]
     for i in range(len(forbidded_flow)):
         curr_row = forbidded_flow[i]
         ip_addr = curr_row.split()[3]

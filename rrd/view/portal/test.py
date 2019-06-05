@@ -29,14 +29,16 @@ def get_data_once(url, user, psw):
 def get_forbid_flows():
     cmd = 'iptables-save'
     ip_data = commands.getoutput(cmd)
-    ip_data_lines = ip_data.split('\n')
-    forbidded_flow = ip_data_lines[5:-2]
-    for i in range(len(forbidded_flow)):
-        curr_row = forbidded_flow[i]
-        ip_addr = curr_row.split()[3]
-        ip_addr = ip_addr.split('/')[0]
-        forbidded_flow[i] = ip_addr
-    return forbidded_flow
+    ip_data = ip_data.split('OUTPUT ACCEPT')[1]
+    ip_data = ip_data.split('COMMIT')[0]
+    ip_data_lines = ip_data.split('\n')[1:-1]
+    #forbidded_flow = ip_data_lines[5:-2]
+    #for i in range(len(forbidded_flow)):
+    #    curr_row = forbidded_flow[i]
+    #    ip_addr = curr_row.split()[3]
+    #    ip_addr = ip_addr.split('/')[0]
+    #    forbidded_flow[i] = ip_addr
+    #return forbidded_flow
 
 if __name__ == "__main__":
     #all_datas = get_data_once(url, user, psw)
