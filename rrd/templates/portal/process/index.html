@@ -1,15 +1,7 @@
 {% extends "portal/layout.html" %}
 {% block content %}
-<script>
-    <!--
-    function timedRefresh(timeoutPeriod) {
-        setTimeout("location.reload(true);",timeoutPeriod);
-    }
-    
-    window.onload = timedRefresh(60000);
-    
-    //   -->
-</script>
+<script src="/static/js/process.js"></script>
+
 <center><h3> <b>活跃进程</b> </h3></center> 
 
 <table class="table table-hover table-bordered table-striped" style="margin-bottom: 0px; margin-top: 10px;">
@@ -23,16 +15,7 @@
         <th>Time</th>
     </tr>
     </thead>
-    <tbody>
-        {% for proc in data %}
-        <tr>
-            {% for prop in proc%}
-            <td>
-                {{prop}}
-            </td>
-            {% endfor %}
-        </tr>
-        {% endfor %}
+    <tbody id="process_table"> 
     </tbody>
 </table>
 
