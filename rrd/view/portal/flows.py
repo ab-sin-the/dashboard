@@ -12,15 +12,21 @@ psw = "adminadmin"
 all_data_type = ["column_duration", "column_server", "column_ndpi", "column_proto_l4", 'column_client', "column_thpt", "column_bytes"]
 
 def remove_html(raw_html):
-    cleanr = re.compile("<A.*?</A>",re.S)
+    cleanr = re.compile("<A.*?>",re.S)
     raw_html = re.sub(cleanr, '', raw_html)
-    cleanr = re.compile("<div.*?</div>",re.S)
+    cleanr = re.compile("</A>",re.S)
+    raw_html = re.sub(cleanr, '', raw_html)
+    cleanr = re.compile("<div.*?>",re.S)
     raw_html = re.sub(cleanr, '', raw_html)
     cleanr = re.compile("</div>",re.S)
     raw_html = re.sub(cleanr, '', raw_html)
-    cleanr = re.compile("<img.*?</img>",re.S)
+    cleanr = re.compile("<img.*?>",re.S)
     raw_html = re.sub(cleanr, '', raw_html)
-    cleanr = re.compile("<i.*?</i>",re.S)
+    cleanr = re.compile("</img>",re.S)
+    raw_html = re.sub(cleanr, '', raw_html)
+    cleanr = re.compile("<i.*?>",re.S)
+    raw_html = re.sub(cleanr, '', raw_html)
+    cleanr = re.compile("</i>",re.S)
     raw_html = re.sub(cleanr, '', raw_html)
     raw_html = raw_html.replace("&nbsp;",'')
     return raw_html
@@ -28,6 +34,8 @@ def remove_html(raw_html):
 def get_forbid_flows():
     cmd = 'iptables-save'
     ip_data = commands.getoutput(cmd)
+    if ip_data == '':
+        return []
     ip_data = ip_data.split('OUTPUT ACCEPT')[1]
     ip_data = ip_data.split('COMMIT')[0]
     forbidded_flow = ip_data.split('\n')[1:-1]
