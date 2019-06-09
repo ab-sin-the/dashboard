@@ -12,7 +12,7 @@
                 {%for case in cases%}
                 <div class="alarm">
                     <input type="checkbox" alarm="{{case.id}}">
-                    {{case.status}} P{{case.priority}}
+                    {%if case.status=='PROBLEM'%}预警{%else%}已恢复{%endif%} P{{case.priority}}
                     [第<span class="orange">#{{case.current_step}}</span>次/最大{{case.max_step}}次]
                     <span class="orange">{{case.timestamp|time_duration}}</span>
                     <span class="gray">[</span>

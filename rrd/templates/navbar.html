@@ -13,7 +13,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">网络流<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu" style="font-size:12px;">
                 <li><a href="/portal/flows">监控</a></li>
-                <li><a href="/portal/flows/unforbid">解禁访问</a></li>
+                <li><a href="/portal/flows/unforbid">黑名单维护</a></li>
             </ul>
            </li>
 
@@ -41,7 +41,7 @@
           <li {%if g.nav_menu == "p_hostgroup"%}class="active"{%endif%}><a href="/portal/hostgroup">服务器组</a></li>
           <li {%if g.nav_menu == "p_template"%}class="active"{%endif%}><a href="/portal/template">报警模板</a></li>
           {%endif%}
-          <li {%if g.nav_menu == "p_expression"%}class="active"{%endif%}><a href="/portal/expression">报警表达式</a></li>
+          <li {%if g.nav_menu == "p_expression"%}class="active"{%endif%}><a href="/portal/expression">报警规则定义</a></li>
           {%if g.user and (g.user.is_root() or g.user.is_admin())%}
           <li {%if g.nav_menu == "p_nodata"%}class="active"{%endif%}><a href="/portal/nodata">空数据监控</a></li>
           {%endif%}
