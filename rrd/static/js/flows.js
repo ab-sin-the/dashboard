@@ -1,5 +1,5 @@
 function get_flow_data() {
-    $.getJSON("/api/get_flow", {ipv4_only: this.if_ipv4_only}, function(ret){
+    $.getJSON("/api/get_flow", {ipv4_only: this.if_ipv4_only, protocol_selection: this.protocol_selection, if_merge_ip: this.merge_ip}, function(ret){
         $(".loading").hide();
         if (!ret.ok) {
             err_message_quietly(ret.msg);
@@ -53,6 +53,9 @@ function update_table(data) {
 
 var update_flow = setInterval(get_flow_data, 5000);
 var if_ipv4_only = false;
+var merge_ip = false;
+var protocol_selection = 'all';
+
 
 function change_auto_refresh(auto_refresh) {
     if (auto_refresh.checked === true) {
@@ -68,12 +71,28 @@ function change_ipv4_show_case() {
     if (this.if_ipv4_only === true) {
         this.if_ipv4_only = false;
         document.getElementById(change_ipv4_button_id).innerHTML = "仅显示IPv4"
-    } else{
+    } else {
         this.if_ipv4_only = true;
         document.getElementById(change_ipv4_button_id).innerHTML = "显示所有IP"
     }
     get_flow_data();
 }
 
+function change_merge_ip_choice() {
+    var change_merge_choice_button_id = "merge_ip_choice_button";
+    if (this.merge_ip === true) {
+        this.merge_ip = false;
+        document.getElementById(change_merge_choice_button_id).innerHTML = "同IP多端口合并"
+    }else {
+        this.merge_ip = true;
+        document.getElementById(change_merge_choice_button_id).innerHTML = "不合并相同IP"
+    }
+    get_flow_data();
+}
+
+function change_protocol_selection(select_choice) {
+    this.protocol_selection = select_choice;
+    get_flow_data();
+}
 
 window.onload = get_flow_data;

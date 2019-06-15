@@ -15,14 +15,14 @@
                     </div>
                     <div class="form-group pull-right">
                             <button id="ipv4_only_button" class="btn btn-default btn-sm btn-info" onclick="change_ipv4_show_case();return false;">{{_('仅显示IPv4')}}</button>
-                            <button class="btn btn-default btn-sm btn-info" onclick="filter_endpoint();return false;">{{_('同IP多端口合并')}}</button>
+                            <button id="merge_ip_choice_button" class="btn btn-default btn-sm btn-info" onclick="change_merge_ip_choice();return false;">{{_('同IP多端口合并')}}</button>
 
                     </div>
                     <div class="form-group pull-right" style="padding-right: 1%">
-                            <select class="form-control input-sm" id="endpoint-limit" onchange="fn_list_endpoints();return false;">
-                                    <option value="50"> 显示所有协议</option>
-                                    <option value="100">仅显示TCP协议</option>
-                                    <option value="500">仅显示UDP协议</option>
+                            <select class="form-control input-sm" id="protocol_selection" onchange="change_protocol_selection(this.value);return false;">
+                                    <option value="all"> 显示所有协议</option>
+                                    <option value="tcp_only">仅显示TCP协议</option>
+                                    <option value="udp_only">仅显示UDP协议</option>
                             </select>
                     </div>
             </div>
