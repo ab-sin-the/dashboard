@@ -4580,6 +4580,25 @@ fieldset[disabled] .navbar-inverse .btn-link:hover,
 fieldset[disabled] .navbar-inverse .btn-link:focus {
   color: #444;
 }
+.mybreadcrumb {
+  padding: 8px 15px;
+  margin-bottom: 20px;
+  list-style: none;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+.mybreadcrumb > li {
+  display: inline-block;
+}
+.mybreadcrumb > li + li:before {
+  padding: 0 5px;
+  color: #ccc;
+  content: " \00a0";
+}
+.mybreadcrumb > .active {
+  color: #777;
+}
+
 .breadcrumb {
   padding: 8px 15px;
   margin-bottom: 20px;

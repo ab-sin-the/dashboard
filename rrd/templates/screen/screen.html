@@ -4,39 +4,29 @@
 
 {% block container %}
     {% block screen_nav %}
+    
     <div class="row">
         <div class="col-md-12">
-            <ul class="breadcrumb">
+            <ul class="mybreadcrumb">
                 <li> {{screen_layout.screen_main_menu(pscreen, top_screens)}} </li>
                 <li> {{screen_layout.screen_sub_menu(pscreen, screen, sub_screens)}} </li>
 
                 {%if screen%}
-                    {%if g.user.is_root() or g.user.is_admin()%}
-                    <li><a href="/screen/{{screen.id}}/edit"><i class="icon-edit"></i>编辑</a></li>
-                    <li><a href="javascript:;" class="icon-muledit"><i></i>批量编辑</a></li>
-                    <li><a href="/screen/{{screen.id}}/delete" onclick="return confirm('确定要删除这个screen?');"><i class="icon-trash"></i>删除</a></li>
-                    <li><a href="/screen/{{screen.id}}/clone" onclick="return confirm('确定要复制出来一个新的screen吗?');">克隆</a></li>
-                    <li><a href="/screen/{{screen.id}}/graph"><i class="icon-plus"></i>+graph</a></li>
-                    {%endif%}
-                    {%if g.legend == "on"%}
-                    <li><a href="#" onclick="fn_query({legend: 'off'})"><i class="icon-plus"></i>隐藏legend</a></li>
-                    {%else%}
-                    <li><a href="#" onclick="fn_query({legend: 'on'})"><i class="icon-plus"></i>显示legend</a></li>
-                    {%endif%}
 
-                    <li>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                布局 <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#" onclick="fn_query({cols: '1'})"><small>1列</small></a></li>
-                                <li><a href="#" onclick="fn_query({cols: '2'})"><small>2列</small></a></li>
-                                <li><a href="#" onclick="fn_query({cols: '3'})"><small>3列</small></a></li>
-                                <li><a href="#" onclick="fn_query({cols: '4'})"><small>4列</small></a></li>
-                            </ul>
-                        </div>
-                    </li>
+                <li>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                            布局 <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#" onclick="fn_query({cols: '1'})"><small>1列</small></a></li>
+                            <li><a href="#" onclick="fn_query({cols: '2'})"><small>2列</small></a></li>
+                            <li><a href="#" onclick="fn_query({cols: '3'})"><small>3列</small></a></li>
+                            <li><a href="#" onclick="fn_query({cols: '4'})"><small>4列</small></a></li>
+                        </ul>
+                    </div>
+                </li>
+
 
                     <li>
                         <div class="btn-group">
@@ -56,6 +46,20 @@
                             </ul>
                         </div>
                     </li>
+                    {%if g.legend == "on"%}
+                    <li class="pull-right"><a href="#" onclick="fn_query({legend: 'off'})"><i class="icon-plus"></i>隐藏legend</a></li>
+                    {%else%}
+                    <li class="pull-right"><a href="#" onclick="fn_query({legend: 'on'})"><i class="icon-plus"></i>显示legend</a></li>
+                    {%endif%}
+                    {%if g.user.is_root() or g.user.is_admin()%}
+                    <li class="pull-right"><a href="/screen/{{screen.id}}/graph"><i class="icon-plus"></i>+graph</a></li>
+                    <li class="pull-right"><a href="/screen/{{screen.id}}/clone" onclick="return confirm('确定要复制出来一个新的screen吗?');">克隆</a></li>
+                    <li class="pull-right"><a href="/screen/{{screen.id}}/delete" onclick="return confirm('确定要删除这个screen?');"><i class="icon-trash"></i>删除</a></li>
+                    <li class="pull-right"><a href="javascript:;" class="icon-muledit"><i></i>批量编辑</a></li>
+                    <li class="pull-right"><a href="/screen/{{screen.id}}/edit"><i class="icon-edit"></i>编辑</a></li>
+                    {%endif%}
+                    
+
                 {%endif%}
             </ul>
         </div>

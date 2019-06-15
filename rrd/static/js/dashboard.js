@@ -340,9 +340,10 @@ function fn_check_all_hosts()
         });
     }else{
         $("#tbody-endpoints").find("input:checkbox").each(function(i, o){
-            $(o).prop("checked", false);
+            $(o).prop("checked", true);
         });
     }
+    fn_list_counters();
 }
 
 function fn_filter_group()
@@ -375,3 +376,5 @@ function fn_collapse_in_groups()
         }
     });
 };
+
+window.onload = fn_list_endpoints;

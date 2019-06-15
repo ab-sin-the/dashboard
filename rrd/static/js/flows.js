@@ -1,5 +1,5 @@
 function get_flow_data() {
-    $.getJSON("/api/get_flow", {}, function(ret){
+    $.getJSON("/api/get_flow", {ipv4_only: this.if_ipv4_only}, function(ret){
         $(".loading").hide();
         if (!ret.ok) {
             err_message_quietly(ret.msg);
@@ -52,6 +52,7 @@ function update_table(data) {
 }
 
 var update_flow = setInterval(get_flow_data, 5000);
+var if_ipv4_only = false;
 
 function change_auto_refresh(auto_refresh) {
     if (auto_refresh.checked === true) {
@@ -61,5 +62,18 @@ function change_auto_refresh(auto_refresh) {
         clearInterval(this.update_flow);
     }
 }
+
+function change_ipv4_show_case() {
+    var change_ipv4_button_id = "ipv4_only_button";
+    if (this.if_ipv4_only === true) {
+        this.if_ipv4_only = false;
+        document.getElementById(change_ipv4_button_id).innerHTML = "仅显示IPv4"
+    } else{
+        this.if_ipv4_only = true;
+        document.getElementById(change_ipv4_button_id).innerHTML = "显示所有IP"
+    }
+    get_flow_data();
+}
+
 
 window.onload = get_flow_data;

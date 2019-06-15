@@ -28,6 +28,10 @@ def remove_html(raw_html):
     raw_html = re.sub(cleanr, '', raw_html)
     cleanr = re.compile("</i>",re.S)
     raw_html = re.sub(cleanr, '', raw_html)
+    cleanr = re.compile("<span.*?>",re.S)
+    raw_html = re.sub(cleanr, '', raw_html)
+    cleanr = re.compile("</span>",re.S)
+    raw_html = re.sub(cleanr, '', raw_html)
     raw_html = raw_html.replace("&nbsp;",'')
     return raw_html
 
@@ -46,14 +50,38 @@ def get_forbid_flows():
         forbidded_flow[i] = ip_addr
     return forbidded_flow
 
-def get_data_once(url, user, psw):
+def get_page_data(url, user, psw, page_num):
     cmd = 'curl -s --cookie "user=%s; password=%s" ' % (user, psw)
-    cmd = cmd + '"' + url + '"'
+    cmd = cmd + '"' + url + '&currentPage=' + str(page_num) +'"'
     flows_data = commands.getoutput(cmd)
-    flows_data = remove_html(flows_data)
-    flows_data = '{' + '{'.join(flows_data.split('{')[1:])
-    flows_data = json.loads(flows_data)
-    return flows_data['data']
+    return flows_data
+
+def ipv4_filter(flows_data, ipv4_only):
+    if ipv4_only == "false":
+        return [flows_data, len(flows_data)]
+    else:
+        new_flows_data = []
+        for data in flows_data:
+            if data['column_client'].count('.') == 3:
+                new_flows_data.append(data)
+        return [new_flows_data, len(new_flows_data)]
+
+def get_data_once(url, user, psw, ipv4_only):
+    max_page_get = 5
+    require_num = 10
+    curr_num = 0
+    page_count = 0
+    return_data = []
+    while (curr_num < require_num) and (page_count < max_page_get):
+        page_count = page_count + 1
+        flows_data = get_page_data(url, user, psw, page_count)
+        print(flows_data)
+        flows_data = remove_html(flows_data)
+        flows_data = '{' + '{'.join(flows_data.split('{')[1:])
+        flows_data = json.loads(flows_data)
+        [flows_data['data'], curr_num] = ipv4_filter(flows_data['data'], ipv4_only)
+        return_data = return_data + flows_data['data']
+    return return_data
 
 @app.route('/portal/flows')
 def get_flow_page():
@@ -64,12 +92,13 @@ def get_flow_page():
 
 @app.route('/api/get_flow')
 def get_flows():
+    ipv4_only = request.args.get("ipv4_only")
     ret = {
             "ok": False,
             "data": "",
             }
     try:
-        flow_data = get_data_once(url, user, psw)
+        flow_data = get_data_once(url, user, psw, ipv4_only)
         ret["data"] = flow_data
         ret['ok'] = True
         return json.dumps(ret)

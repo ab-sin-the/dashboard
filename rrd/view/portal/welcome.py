@@ -71,6 +71,7 @@ def welcome_page_get():
     graphs = DashboardGraph.gets_by_screen_id(default_sub_screen.id)
     all_graphs = []
 
+    screen = default_sub_screen
     for graph in graphs:
         all_graphs.extend(generate_graph_urls(graph, start, end)) or []
     

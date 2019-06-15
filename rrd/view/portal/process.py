@@ -22,14 +22,14 @@ def process_get():
 
 @app.route('/api/get_process')
 def get_process():
-    show_process_num = 6
+    show_process_num = 20
     data = get_process_info(show_process_num)
     ret = {
             "ok": False,
             "data": "",
             }
     try:
-        show_process_num = 6
+        show_process_num = 20
         proc_data = get_process_info(show_process_num)
         ret["data"] = proc_data
         ret['ok'] = True
