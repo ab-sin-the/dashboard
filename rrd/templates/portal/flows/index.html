@@ -49,5 +49,8 @@
 </table>
 
 
+{% import "portal/blocks.html" as blocks %}
+{{ blocks.pager('/portal/flows?', total_row, limit, page) }}
+
 
 {% endblock %}

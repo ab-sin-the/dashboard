@@ -1,12 +1,12 @@
 function get_flow_data() {
-    $.getJSON("/api/get_flow", {ipv4_only: this.if_ipv4_only, protocol_selection: this.protocol_selection, if_merge_ip: this.merge_ip}, function(ret){
+    $.getJSON("/api/get_flow", {ipv4_only: this.if_ipv4_only, protocol_selection: this.protocol_selection, if_merge_ip: this.merge_ip, start_page: this.page_num}, function(ret){
         $(".loading").hide();
         if (!ret.ok) {
             err_message_quietly(ret.msg);
             return_val = ""
             return;
         }
-        update_table(ret.data)
+        update_table(ret.data, ret.total_row)
        // file_content.html(ret.data)
     }).error(function(req, ret, errorThrown){
         $(".loading").hide();
@@ -42,7 +42,7 @@ function create_single_line(data_len) {
     return tableData;
 }
 
-function update_table(data) {
+function update_table(data, total_row) {
     var row_len = data.length;
     var table_whole = ""
     for(var i = 0; i < row_len; i++){
@@ -55,7 +55,19 @@ var update_flow = setInterval(get_flow_data, 5000);
 var if_ipv4_only = false;
 var merge_ip = false;
 var protocol_selection = 'all';
-
+var url = window.location.search;
+if (url.indexOf("?") != -1) {
+    var str = url.substr(1);
+    strs = str.split("&");
+    for (var i = 0; i < strs.length; i ++) {
+        if (unescape(strs[i].split("=")[0]) === 'p') {
+            var page_num = unescape(strs[i].split("=")[1]);
+        }
+    }
+}
+if (page_num === undefined) {
+    page_num = 1;
+}
 
 function change_auto_refresh(auto_refresh) {
     if (auto_refresh.checked === true) {

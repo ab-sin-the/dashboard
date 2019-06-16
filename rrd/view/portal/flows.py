@@ -126,12 +126,15 @@ def add_thpt(thpt_1, thpt_2):
         total_measure = measure2
     return str(total_value) + " " + total_measure
 
-def get_data_once(url, user, psw, ipv4_only, protocol_selection, merge_ip_choice):
-    max_page_get = 5
+def get_data_once(url, user, psw, ipv4_only, protocol_selection, merge_ip_choice, start_page):
+    max_page_get = start_page + 4
     require_num = 10
     curr_num = 0
-    page_count = 0
+    page_count = start_page - 1
     return_data = []
+    
+    total_row = 0
+
     while (curr_num < require_num) and (page_count < max_page_get):
         page_count = page_count + 1
         flows_data = get_page_data(url, user, psw, page_count)
@@ -139,20 +142,22 @@ def get_data_once(url, user, psw, ipv4_only, protocol_selection, merge_ip_choice
         flows_data = '{' + '{'.join(flows_data.split('{')[1:])
         flows_data = unicode(flows_data, errors='ignore')
         flows_data = json.loads(flows_data)
+        total_row = flows_data['totalRows']
         [flows_data['data'], curr_num] = ipv4_filter(flows_data['data'], ipv4_only)
         [flows_data['data'], curr_num] = protocol_filter(flows_data['data'], protocol_selection)
         return_data = return_data + flows_data['data']
     
     if merge_ip_choice == 'false':
-        return return_data
+        return [return_data, total_row]
     else:
         new_return_data = []
         for data in return_data:
             if_stored = False
             for new_data in range(len(new_return_data)):
+                print(new_data)
                 if data['column_client'].split(':')[0] == new_return_data[new_data]['column_client'].split(':')[0]:
                     if_stored = True
-                    new_return_data[new_data]["column_bytes"] = str(float(new_return_data[new_data]["column_bytes"].split('MB')[0]) + float(data["column_bytes"].split('MB')[0])) + ' MB'
+                    new_return_data[new_data]["column_bytes"] = str(float(new_return_data[new_data]["column_bytes"].split()[0]) + float(data["column_bytes"].split()[0])) + ' ' + data["column_bytes"].split()[1]
                     if new_return_data[new_data]["column_ndpi"] != data["column_ndpi"]:
                         new_return_data[new_data]["column_ndpi"] = new_return_data[new_data]["column_ndpi"] + '/' + data["column_ndpi"]
                     if new_return_data[new_data]["column_server"] != data["column_server"]:
@@ -160,10 +165,18 @@ def get_data_once(url, user, psw, ipv4_only, protocol_selection, merge_ip_choice
                     new_return_data[new_data]["column_thpt"] = add_thpt(new_return_data[new_data]["column_thpt"], data["column_thpt"])
             if if_stored == False:
                 new_return_data.append(data)
-        return new_return_data
+        return [new_return_data, total_row]
 
 @app.route('/portal/flows')
 def get_flow_page():
+    limit = int(request.args.get("limit") or 10)
+    page = int(request.args.get("p") or 1)
+    flows_data = get_page_data(url, user, psw, page)
+    flows_data = remove_html(flows_data)
+    flows_data = '{' + '{'.join(flows_data.split('{')[1:])
+    flows_data = unicode(flows_data, errors='ignore')
+    flows_data = json.loads(flows_data)
+    total_row = int(flows_data['totalRows'])
     return render_template(
         'portal/flows/index.html', **locals()
     )
@@ -174,13 +187,19 @@ def get_flows():
     ipv4_only = request.args.get("ipv4_only")
     protocol_selection = request.args.get("protocol_selection")
     merge_ip_choice = request.args.get("if_merge_ip")
+    if request.args.get("start_page") == None:
+        start_page = 1
+    else:
+        start_page = int(request.args.get("start_page"))
     ret = {
             "ok": False,
             "data": "",
+            "total_row": 0,
             }
     try:
-        flow_data = get_data_once(url, user, psw, ipv4_only, protocol_selection, merge_ip_choice)
+        [flow_data, total_row] = get_data_once(url, user, psw, ipv4_only, protocol_selection, merge_ip_choice, start_page)
         ret["data"] = flow_data
+        ret["total_row"] = total_row
         ret['ok'] = True
         return json.dumps(ret)
     except Exception as e:
@@ -208,7 +227,6 @@ def flow_unforbid():
     ret = { "msg": "", }
     try:
         command = "iptables -D INPUT -s " + ip_addr + " -j DROP"
-        print(command)
         commands.getoutput(command)
         
         command = "iptables-save"
