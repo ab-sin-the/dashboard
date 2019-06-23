@@ -46,6 +46,21 @@
                                     <button id="refresh_button" class="btn btn-info" onclick="start_audit('GScan');" >{{_('运行GScan')}}</button>
                                     <button id="refresh_button" class="btn btn-info" onclick="get_report('GScan');" >{{_('获取GScan报告')}}</button>
                             </div>
+
+                            <div id="lynis_details" style="display: none;">
+                                    <hr/>
+                                    <button class="btn btn-info" onclick="get_lynis_details('report')">{{_('完整报告')}}</button>
+                                    <button class="btn btn-info" onclick="get_lynis_details('warning')">{{_('可疑问题')}}</button>
+                                    <button class="btn btn-info" onclick="get_lynis_details('suggestion')">{{_('建议')}}</button>
+                                </div>
+
+                            <div id="GScan_details" style="display: none;">
+                                <hr/>
+                                <button class="btn btn-info" onclick="get_Gscan_details('report')">{{_('完整报告')}}</button>
+                                <button class="btn btn-info" onclick="get_Gscan_details('all')">{{_('所有问题信息')}}</button>
+                                <button class="btn btn-info" onclick="get_Gscan_details('entry_info')">{{_('入侵起点信息')}}</button>
+                                <button class="btn btn-info" onclick="get_Gscan_details('vulun_poss')">{{_('风险及可疑信息')}}</button>
+                            </div>
                             <hr/>
                             <pre id="audit-result" class="audit-display"></pre>
                         </div>

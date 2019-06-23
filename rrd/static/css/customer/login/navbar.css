@@ -1,0 +1,16 @@
+.navbar-word{
+    font-size:14px;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(129,129,129,1);
+    line-height:20px;
+}
+
+.navbar-left{
+    top: 0px;
+    width:80px;
+    height:1024px;
+    background:rgba(255,255,255,1);
+    border:1px solid rgba(242,242,242,1);
+    display: inline;
+}

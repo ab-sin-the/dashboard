@@ -90,3 +90,67 @@ def get_report():
         return json.dumps(ret)
     except Exception as e:
         abort(400, str(ret))
+
+
+def get_lynis_detail(detail_type):
+    command = "cat " + lynis_workdir + "/report/lynis_report"
+    command_res = commands.getoutput(command)
+    if detail_type == 'report':
+        return command_res
+    else:
+        details = command_res.split("================================================================================")
+        problem_details = details[1]
+        problem_details = problem_details.split('----------------------------')
+        warnings = problem_details[1].split('Suggestions')[0]
+        suggestion = problem_details[2].split('Follow-up:')[0]
+        if detail_type == 'warning':
+            return warnings
+        elif detail_type == 'suggestion':
+            return suggestion
+        return "finished"
+
+def get_Gscan_detail(detail_type):
+    command = "cat " + GScan_workdir + "/report/GScan_report"
+    command_res = commands.getoutput(command) 
+    if detail_type == 'report':
+        return command_res
+    else:
+        problems_detail = command_res.split('------------------------------\n')[1]
+        if detail_type == 'all':
+            return problems_detail
+        else:
+            if problems_detail.index('[1][可疑]') != -1:
+                entry_info = problems_detail.split('[1][可疑]')[0]
+                vulun_poss = '[1][可疑]' + problems_detail.split('[1][可疑]')[1]
+            elif problems_detail.index('[1][风险]') != -1:
+                entry_info = problems_detail.split('[1][风险]')[0]
+                vulun_poss = '[1][风险]' + problems_detail.split('[1][风险]')[1]
+            else:
+                entry_info = problems_detail
+                vulun_poss = ""
+            
+            if detail_type == 'entry_info':
+                return entry_info
+            else:
+                return vulun_poss
+
+
+@app.route('/api/security/detail_report')
+def get_detail_report():
+    ret = {
+        "ok": False,
+        "data": "",
+    }
+    try:
+        audit_method = request.args.get("audit_method")
+        detail_type = request.args.get("detail_type")
+        if audit_method == "lynis":
+            res = get_lynis_detail(detail_type)
+        elif audit_method == "GScan":
+            res = get_Gscan_detail(detail_type)
+            
+        ret["data"] = res
+        ret['ok'] = True
+        return json.dumps(ret)
+    except Exception as e:
+        abort(400, str(ret))
