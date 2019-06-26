@@ -1,8 +1,5 @@
-.login-form{
-    position: absolute;
-    left: 33%;
-    top: 24%;
-    width: 33%;
+.login-form{ 
+    margin: 24% auto;
 }
 
 .login-large{
@@ -82,11 +79,8 @@
     display: inline-block;
 }
 
-.register-form{
-    position: absolute;
-    left: 33%;
-    top: 24%;
-    width: 33%;
+.register-form{    
+    margin: 24% auto;
 }
 
 .register-form-word{

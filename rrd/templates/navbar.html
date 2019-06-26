@@ -1,31 +1,53 @@
-<nav class="navbar navbar-default" role="navigation" style="background-color: #fff;">
-<div class="container-fluid">
+
+
+<div class="navbar-left" style="background-color: #fff;">
+        <ul style="font-size:12px;list-style:none; padding: 0px;">
+                {%if g.user%}
+                    <li> <div  class="navbar-left-top-img"><img src="/static/img/ic_brightness_1@2x.png" ></div> </li>
+                    <li  class="navbar-left-user-profile"><a href="/user/profile">  <img src="/static/img/ic_account_circle@2x.png"  height="25px" width="25px"></a></li>
+                    <li class="navbar-left-account"><a href="/user/list"> <img src="/static/img/ic_perm_contact_calendar@2x.png"  height="25px" width="25px"></a></li>
+                    <li class="navbar-left-team"><a href="/team/list"> <img src="/static/img/ic_supervisor_account@2x.png"  height="25px" width="25px"></a></li>
+                    <li class="navbar-left-log-out"> <a href="/auth/logout"> <img src="/static/img/ic_settings_power@2x.png" height="25px" width="25px"></a> </li>
+                {%else%}
+                    <li><a href="/auth/login">登录</a></li>
+                    <li><a href="/auth/register">注册</a></li>
+                {%endif%}
+            </ul>
+</div>
+
+    <!--
+
+    <ul class="nav navbar-nav navbar-word">
+
+        <li class="dropdown">
+                <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown" role="button" aria-expanded="false">
+                    {%if g.user%} 欢迎 {{g.user.name}}{%else%}登录{%endif%}<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu" style="font-size:12px;">
+                    {%if g.user%}
+                        <li><a href="/user/profile">个人信息</a></li>
+                        <li><a href="/user/list">用户</a></li>
+                        <li><a href="/team/list">小组</a></li>
+                        <li><a href="/auth/logout">登出</a></li>
+                    {%else%}
+                        <li><a href="/auth/login">登录</a></li>
+                        <li><a href="/auth/register">注册</a></li>
+                    {%endif%}
+                    <li><a href="https://github.com/open-falcon/dashboard">fork me on Github</a></li>
+                </ul>
+            </li>
+                
+            </ul>
+    -->        
+
+<nav class="navbar navbar-default" role="navigation" style="background:rgba(255,255,255,1);;border:1px solid rgba(242,242,242,1);">
+<div class="container-fluid" style="margin-left: 100px;">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
         </button>
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav navbar-word">
-
-            <li class="dropdown">
-                    <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown" role="button" aria-expanded="false">
-                        {%if g.user%} 欢迎 {{g.user.name}}{%else%}登录{%endif%}<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu" style="font-size:12px;">
-                        {%if g.user%}
-                            <li><a href="/user/profile">个人信息</a></li>
-                            <li><a href="/user/list">用户</a></li>
-                            <li><a href="/team/list">小组</a></li>
-                            <li><a href="/auth/logout">登出</a></li>
-                        {%else%}
-                            <li><a href="/auth/login">登录</a></li>
-                            <li><a href="/auth/register">注册</a></li>
-                        {%endif%}
-                        <li><a href="https://github.com/open-falcon/dashboard">fork me on Github</a></li>
-                    </ul>
-                </li>
-                    
-                </ul>
-        <ul class="nav navbar-nav navbar-right navbar-word">
+            
+        <ul class="nav navbar-nav navbar-right navbar-word pull-left">
 
          <li {%if g.nav_menu == "p_home"%}class="active"{%endif%}><a href="/portal/home">主页</a></li>
          <li {%if g.nav_menu == "p_process"%}class="active"{%endif%}><a href="/portal/process">进程监控</a></li>
@@ -74,4 +96,7 @@
    
         </ul>
     </div>
-</div>
+    </div>
+
+
+</nav>

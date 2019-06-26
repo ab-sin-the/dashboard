@@ -23,6 +23,7 @@
         <link href="/static/css/customer/login/login.css" rel="stylesheet">
         <link href="/static/css/customer/login/navbar.css" rel="stylesheet">
         <link href="/static/css/customer/login/g-title.css" rel="stylesheet">
+        <link href="/static/css/customer/login/container.css" rel="stylesheet">
         <style>
             body {
                 font-size:12px;
@@ -103,7 +104,7 @@
     {% block nav%} {% endblock %}
 
     {% block container_outer %}
-    <div id="container" class="container-fluid" style="min-height:350px; width=100%">
+    <div id="container" class="my-container-fluid" style="min-height:350px; width=100%">
         {% block container %} {% endblock %}
     </div>
     {% endblock %}

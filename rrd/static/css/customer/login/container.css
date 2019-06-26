@@ -1,0 +1,13 @@
+.my-container-fluid {
+	margin-left: 80px;
+	padding-left: 20px;
+	padding-right: 20px;
+*zoom:1;
+}
+.my-container-fluid:before, .my-container-fluid:after {
+	display: table;
+	content: "";
+}
+.my-container-fluid:after {
+	clear: both;
+}
