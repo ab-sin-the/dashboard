@@ -2,20 +2,24 @@
 {% block content %}
 <script src="/static/js/process.js"></script>
 
-<center><h3> <b>活跃进程</b> </h3></center> 
+<div class="active-process pull-left">
+    <div class="active-process-word">
 
-<table class="table table-hover table-bordered table-striped" style="margin-bottom: 0px; margin-top: 10px;">
+            活跃进程
+    </div></div>  
+
+<table class="table table-hover table-bordered table-striped" style="margin-bottom: 0px; margin-top: 10px; background:rgba(255,255,255,1);" >
     <thead>
-    <tr>
-        <th>进程名</th>
-        <th>PID</th>
-        <th>User</th>
-        <th>CPU使用量</th>
-        <th>Memory使用量</th>
+    <tr class="process-th" valign="middle">
+        <th class="process-th-word">进程名</th>
+        <th class="process-th-word">PID</th>
+        <th class="process-th-word">User</th>
+        <th class="process-th-word">CPU使用量</th>
+        <th class="process-th-word">Memory使用量</th>
         <th>Time</th>
     </tr>
     </thead>
-    <tbody id="process_table"> 
+    <tbody class="process-td" id="process_table"> 
     </tbody>
 </table>
 

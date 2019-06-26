@@ -32,12 +32,12 @@ function update_table(data) {
 }
 
 function create_single_line(data_len) {
-    var tableData = "<tr>"
+    var tableData = "<tr class='process-td'>"
     tableData += "<td>" + data_len[0] + "</td>";
     tableData += "<td>" + data_len[1] + "</td>";
     tableData += "<td>" + data_len[2] + "</td>";
-    tableData += "<td>" + data_len[3] + "</td>";
-    tableData += "<td>" + data_len[4] + "</td>";
+    tableData += "<td>" + "<div class='process-progress'>" + "<div class='process-bar' style='width:" + data_len[3] + "'> </div>" + "</div>" + data_len[3] + "</td>";
+    tableData += "<td>" + "<div class='process-progress'>" + "<div class='process-bar' style='width:" + data_len[4] + "'> </div>" + "</div>" + data_len[4] + "</td>";
     tableData += "<td>" + data_len[5] + "</td>";
     tableData += "</tr>"
     return tableData;
