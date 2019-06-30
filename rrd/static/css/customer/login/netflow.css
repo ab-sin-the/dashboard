@@ -1,0 +1,83 @@
+.netflow-block{
+    width:100px;
+    height:40px;
+    background:rgba(255,255,255,1);
+    border-radius:5px;
+    border:1px solid rgba(242,242,242,1);
+    display: inline-block;
+}
+
+.netflow-word{
+    font-size:14px;
+    font-family:PingFangSC-Semibold;
+    font-weight:600;
+    color:rgba(36,95,240,1);
+    line-height:20px;
+    margin: 10px 14px;
+}
+
+.forbid-ip{
+    margin-left: 20px;
+    width:81px;
+    height:40px;
+    background:rgba(255,255,255,1);
+    border-radius:5px;
+    border:1px solid rgba(242,242,242,1);
+    display: inline-block;
+}
+
+
+.forbid-ip-word{
+    font-size:14px;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(177,177,177,1);
+    line-height:20px;
+    margin: 10px 19px;
+}
+
+.show-all-proxy{
+    width:142px;
+    height:40px;
+    background:rgba(255,255,255,1);
+    border-radius:0px 5px 5px 0px;
+    border:1px solid rgba(242,242,242,1);
+}
+
+.show-all-proxy-word{
+    font-size:14px;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(80,80,80,1);
+    line-height:20px;
+    margin-left: 10px;
+}
+
+.combine-same-ip{
+    width:137px;
+    height:40px;
+    background:rgba(255,255,255,1);
+    border-radius:5px 0px 0px 5px;
+    border:1px solid rgba(242,242,242,1);
+    font-size:14px;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(80,80,80,1);
+    line-height:20px;
+}
+
+.ipv4-only{
+    width:110px;
+    height:40px;
+    background:rgba(255,255,255,1);
+    border:1px solid rgba(242,242,242,1);
+    font-size:14px;
+}
+
+.ipv4-only-word{
+    font-size:14px;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(80,80,80,1);
+    line-height:20px;
+}

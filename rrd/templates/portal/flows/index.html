@@ -3,27 +3,48 @@
 <script src="/static/js/flows.js"></script>
 <script src="/static/js/bootstrapSwitch.js"></script>
 <link rel="stylesheet" href="/static/css/bootstrapSwitch.css">
-<center><h3> <b>网络流数据</b> </h3></center> 
 <div class="row">
-    <div class="panel panel-body">  
+    <div class="panel panel-body" style="background-color: transparent">  
         <div class="row">
             <div class="col-md-12">
+                <a href="/portal/flows">
 
-                    <font size=3>自动刷新</font>
-                    <div class="switch switch-small">
-                        <input name="auto_refresh_box" id="auto_refresh_box" type="checkbox" onchange="change_auto_refresh(this)" checked />
+                <div class="netflow-block pull-left">
+                        <div class="netflow-word">
+                                网络数据流
+                        </div>
                     </div>
-                    <div class="form-group pull-right">
-                            <button id="ipv4_only_button" class="btn btn-default btn-sm btn-info" onclick="change_ipv4_show_case();return false;">{{_('仅显示IPv4')}}</button>
-                            <button id="merge_ip_choice_button" class="btn btn-default btn-sm btn-info" onclick="change_merge_ip_choice();return false;">{{_('同IP多端口合并')}}</button>
+                </a>
 
+                <a href="/portal/flows/unforbid">
+
+                <div class="forbid-ip pull-left">
+                        <div class="forbid-ip-word">
+                                被禁IP
+                        </div>
                     </div>
-                    <div class="form-group pull-right" style="padding-right: 1%">
-                            <select class="form-control input-sm" id="protocol_selection" onchange="change_protocol_selection(this.value);return false;">
-                                    <option value="all"> 显示所有协议</option>
+                </a>
+
+                    
+                    <div class="form-group pull-right " style="padding-right: 1%; margin-left: 5px;">
+                            <select class="form-control input-sm show-all-proxy" style="height: 40px"  id="protocol_selection" onchange="change_protocol_selection(this.value);return false;">
+                                    <option value="all">  显示所有协议</option>
                                     <option value="tcp_only">仅显示TCP协议</option>
                                     <option value="udp_only">仅显示UDP协议</option>
                             </select>
+                    </div>
+
+                    <div class="form-group pull-right">
+                            <button id="ipv4_only_button" class="ipv4-only" onclick="change_ipv4_show_case();return false;"> <div class="ipv4-only-word">仅显示IPv4</div> </button>
+                            <button id="merge_ip_choice_button" class="combine-same-ip" onclick="change_merge_ip_choice();return false;">同IP多端口合并</button>
+
+                    </div>
+
+                    <div class="pull-right">
+                            <font size=3>自动刷新</font>
+                            <div class="switch switch-small pull-right">
+                                <input name="auto_refresh_box" id="auto_refresh_box" type="checkbox" onchange="change_auto_refresh(this)" checked />
+                            </div>
                     </div>
             </div>
         </div>
