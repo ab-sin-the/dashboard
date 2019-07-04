@@ -43,35 +43,60 @@
 {% block content %}
 {% block main_section%}
         <div class="row">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <img class="loading pull-right" src="/static/img/loading.gif" style="display:none;"></img>
-                            {{_('显示日志内容')}}
+            <div class="col-md-12">
+                <a href="/portal/file_log">
+                    <div class="command-log pull-left" style="margin-left: 0px;">
+                        <div class="netflow-word">
+                            查看日志
                         </div>
-
-                        <div class="panel-body">
-                            <form role="form">
-                                        <div class="form-group">
-                                                <label>日志文件路径</label>
-                                                <input id="logfile-search" name="logfile_search" type="text" class="form-control input-sm" list="file_path_history">
-                                                <datalist id="file_path_history">
-                                                    {% for single_path in history_paths%}
-                                                        <option> {{ single_path }}</option>
-                                                    {%endfor%}
-                                                </datalist>
-                                        </div>
-                            </form>
-                            <hr/>
-                            <pre id="log-file-content" class="log-display"></pre>
-                            <button id="refresh_button" class="btn btn-info"  style="visibility: hidden;" onclick="refresh_log();">{{_('Refresh')}}</button>
-
-                        </div>
-
                     </div>
-
+                </a>
+                    
+                <a href="/portal/bash_command">
+                    <div class="command-input-command pull-left">
+                        <div class="forbid-ip-word">
+                            输入命令
+                        </div>
+                    </div>
+                </a>
+            
+                <a href="/portal/security_audit">
+                    <div class="command-security-audit pull-left">
+                        <div class="forbid-ip-word">
+                            基线核查/入侵检测
+                        </div>
+                    </div>
+                </a>
             </div>
-        
         </div>
+
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-md-12">
+                <input id="logfile-search" name="logfile_search" type="text" class="command-input-box" list="file_path_history" placeholder="在此处输入想要查看日志文件的路径">
+                <datalist id="file_path_history">
+                    {% for single_path in history_paths%}
+                        <option> {{ single_path }}</option>
+                    {%endfor%}
+                </datalist>
+            </div>
+
+            <div class="col-md-12">
+                    <pre id="log-file-content" class="command-log-display"></pre>
+            </div>
+
+        </div>
+
+        <div class="row" style="margin-top: 10px">
+
+            <div class="col-md-12">
+
+                    <div class="command-button1"> <div class="command-button-word" onclick="fn_search_log_file();">查看</div> </div>
+                    <div class="command-button2"><div class="command-button-word" onclick="refresh_log();">刷新</div></div>
+            </div>
+        </div>
+
+
+  
 
     {%endblock%}
 {% endblock %}

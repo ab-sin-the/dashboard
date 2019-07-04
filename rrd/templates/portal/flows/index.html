@@ -24,7 +24,6 @@
                         </div>
                     </div>
                 </a>
-
                     
                     <div class="form-group pull-right " style="padding-right: 1%; margin-left: 5px;">
                             <select class="form-control input-sm show-all-proxy" style="height: 40px"  id="protocol_selection" onchange="change_protocol_selection(this.value);return false;">
@@ -40,9 +39,11 @@
 
                     </div>
 
-                    <div class="pull-right">
-                            <font size=3>自动刷新</font>
-                            <div class="switch switch-small pull-right">
+                    <div class="auto-refresh pull-right">
+                        <div class="auto-refresh-word pull-left">
+                                自动刷新
+                        </div>
+                            <div class="switch switch-small pull-left" style="min-width: 50px; margin: 5px 5px 5px 0px;">
                                 <input name="auto_refresh_box" id="auto_refresh_box" type="checkbox" onchange="change_auto_refresh(this)" checked />
                             </div>
                     </div>
@@ -52,7 +53,7 @@
     </div>
 </div>
 <table class="table table-hover table-bordered table-striped" style="margin-bottom: 0px; margin-top: 10px;">
-    <thead>
+    <thead class="netflow-table-head-word">
         <tr>
             <th>应用</th>
             <th> 协议</th>
@@ -64,7 +65,7 @@
             <th>禁止访问</th>
         </tr>
     </thead>
-    <tbody id="flow_table">
+    <tbody id="flow_table" class="netflow-table-body-word">
 
     </tbody>
 </table>

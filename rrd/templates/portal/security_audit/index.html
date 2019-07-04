@@ -11,7 +11,7 @@
       color: #555;
       background-color: #fff;
       background-image: none;
-      border: 1px solid #ccc;
+      border: none;
       border-radius: 4px;
       -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
               box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
@@ -29,46 +29,70 @@
 
 {% block content %}
 {% block main_section%}
-        <div class="row">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <img class="loading pull-right" src="/static/img/loading.gif" style="display:none;"></img>
-                            {{_('选择用来执行核查的脚本')}}
-                        </div>
-
-                        <div class="panel-body">
-                            <div>
-                                    <button id="refresh_button" class="btn btn-info" onclick="start_audit('lynis');" >{{_('运行lynis')}}</button>
-                                    <button id="refresh_button" class="btn btn-info" onclick="get_report('lynis');" >{{_('获取lynis报告')}}</button>
-                            </div>
-                            <hr/>
-                            <div>
-                                    <button id="refresh_button" class="btn btn-info" onclick="start_audit('GScan');" >{{_('运行GScan')}}</button>
-                                    <button id="refresh_button" class="btn btn-info" onclick="get_report('GScan');" >{{_('获取GScan报告')}}</button>
-                            </div>
-
-                            <div id="lynis_details" style="display: none;">
-                                    <hr/>
-                                    <button class="btn btn-info" onclick="get_lynis_details('report')">{{_('完整报告')}}</button>
-                                    <button class="btn btn-info" onclick="get_lynis_details('warning')">{{_('可疑问题')}}</button>
-                                    <button class="btn btn-info" onclick="get_lynis_details('suggestion')">{{_('建议')}}</button>
-                                </div>
-
-                            <div id="GScan_details" style="display: none;">
-                                <hr/>
-                                <button class="btn btn-info" onclick="get_Gscan_details('report')">{{_('完整报告')}}</button>
-                                <button class="btn btn-info" onclick="get_Gscan_details('all')">{{_('所有问题信息')}}</button>
-                                <button class="btn btn-info" onclick="get_Gscan_details('entry_info')">{{_('入侵起点信息')}}</button>
-                                <button class="btn btn-info" onclick="get_Gscan_details('vulun_poss')">{{_('风险及可疑信息')}}</button>
-                            </div>
-                            <hr/>
-                            <pre id="audit-result" class="audit-display"></pre>
-                        </div>
+<div class="row">
+        <div class="col-md-12">
+            <a href="/portal/file_log">
+                <div class="command-log pull-left" style="margin-left: 0px;">
+                    <div class="netflow-word-white">
+                        查看日志
                     </div>
-
-            </div>
+                </div>
+            </a>
+                
+            <a href="/portal/bash_command">
+                <div class="command-input-command pull-left">
+                    <div class="forbid-ip-word">
+                        输入命令
+                    </div>
+                </div>
+            </a>
         
+            <a href="/portal/security_audit">
+                <div class="command-security-audit pull-left">
+                    <div class="forbid-ip-word-blue">
+                        基线核查/入侵检测
+                    </div>
+                </div>
+            </a>
         </div>
+    </div>
+    
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-md-12">
+            <div class="command-security-audit-label">基线核查/入侵检测</div>
+            <div class="command-security-audit-run"> 
+                <div id="refresh_button" class="command-security-audit-lynis-button pull-left" onclick="start_audit('lynis');" >运行lynis</div>
+                <div id="refresh_button" class="command-security-audit-get-report-button" onclick="get_report('lynis');">获取lynis报告 </div>
+            </div>
+
+            <div class="command-security-audit-run"> 
+                <div id="refresh_button" class="command-security-audit-GScan-button pull-left" onclick="start_audit('GScan');">运行GScan</div>
+                <div id="refresh_button" class="command-security-audit-get-report-button" style="padding: 10px 23px;" onclick="get_report('GScan');">获取GScan报告 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-md-12">
+            <div id="command-security-audit-display" class="command-detail-report" style="display: none;">
+                    <div id="lynis_details" style="display: none">
+                            <div id="command-lynis-report" class="command-detail-button-clicked pull-left" onclick="get_lynis_details('report')">完整报告</div>
+                            <div id="command-lynis-warning" class="command-detail-button pull-left" onclick="get_lynis_details('warning')">可疑问题</div>
+                            <div id="command-lynis-suggestion" class="command-detail-button pull-left" onclick="get_lynis_details('suggestion')" style="padding: 10px 40px">建议</div>
+                        </div>
+            
+                        <div id="GScan_details" style="display: none"> 
+                                <div id="command-GScan-report" class="command-detail-button-clicked pull-left" onclick="get_Gscan_details('report')">完整报告</div>
+                                <div id="command-GScan-all" class="command-detail-button pull-left" onclick="get_Gscan_details('all')" style="padding: 10px 19px">所有问题信息</div>
+                                <div id="command-GScan-entry-info" class="command-detail-button pull-left" onclick="get_Gscan_details('entry_info')" style="padding: 10px 19px">入侵起点信息</div>
+                                <div id="command-GScan-vulun-poss" class="command-detail-button pull-left" onclick="get_Gscan_details('vulun_poss')" style="padding: 10px 12px">风险及可疑信息</div>
+                        </div>
+            
+                        <pre id="audit-result" class="audit-display"></pre>
+            </div>
+        </div>
+
+    </div>
 
     {%endblock%}
 {% endblock %}

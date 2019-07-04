@@ -3,7 +3,7 @@
 }
 
 .login-large{
-    width:100px;
+    width:64px;
     height:45px;
     font-size:32px;
     font-family:PingFangSC-Semibold;
@@ -13,7 +13,7 @@
 }
 
 .login-username{
-    width:70px;
+    width:42px;
     height:20px;
     font-size:14px;
     font-family:PingFangSC-Semibold;
@@ -24,7 +24,7 @@
 }
 
 .login-password{
-    width:100px;
+    width:28px;
     height:20px;
     font-size:14px;
     font-family:PingFangSC-Semibold;
@@ -94,7 +94,7 @@
 }
 
 .register-large{
-    width:70px;
+    width:64px;
     height:45px;
     font-size:32px;
     font-family:PingFangSC-Semibold;
