@@ -1,56 +1,67 @@
 {% extends "portal/layout.html" %}
 {% block content %}
 
-    <div class="form-inline" role="form">
-        <div class="form-group">
-            <input type="text" value="{{ data.query }}" class="form-control" id="query"
-                   placeholder="search..." onkeydown="if(event.keyCode==13)query_expression()">
-        </div>
-        <button type="button" onclick="query_expression();" class="btn btn-default">
-            <span class="glyphicon glyphicon-search"></span>
-        </button>
-        <input type="checkbox" name="mine" id="mine" {% if data.mine == '1' %}checked="checked"{% endif %}>
-        <span>只显示与我有关</span>
 
-        {%if g.user.is_root() or g.user.is_admin()%}
-        <div class="pull-right">
-            <a href="{{ url_for('expression_add_get') }}" class="btn btn-default">
-                <span class="glyphicon glyphicon-plus"></span>
-            </a>
+    <div class="form-inline" role="form">
+        <div class="col-md-12">
+
+                <div class="expression-search pull-left">
+                        <input type="text" value="{{ data.query }}" class="expression-search-input" id="query"
+                        placeholder="搜索.." onkeydown="if(event.keyCode==13)query_expression()">
+                        <button type="button" onclick="query_expression();" class="btn btn-default" style="border: none; height: 38px; margin-top: 0px; margin-bottom:3px; margin-right: 0px;">
+                                <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </div>
+            
+                    <div class="expression-display-only-related pull-left">
+                            只显示与我有关
+                            <input type="checkbox" name="mine" id="mine" {% if data.mine == '1' %}checked="checked"{% endif %}>
+                    </div>
+            
+            
+                    {%if g.user.is_root() or g.user.is_admin()%}
+                   
+                        <a href="{{ url_for('expression_add_get') }}" class="expression-add-block pull-right">
+                            <span class="glyphicon glyphicon-plus"  style="border: none; height: 35px; margin-top: 3px; margin-bottom:0px; margin-right: 0px;" ></span>
+                            增加报警规则
+                        </a>
+                    </div>
+                    {%endif%}
         </div>
-        {%endif%}
     </div>
 
+    <div class="row" style="margin-top:5px;"></div>
     <div>
         {% set left = '{' %}
         {% set right = '}' %}
         {% for v in data.vs %}
 
-            <hr>
+            <div class="expression-single-block">
 
-            <div class="">{{ v.expression }}</div>
+                    {% if v.writable(g.user) %}
+                    <div class="expression-button-list pull-right ">
+                        {% if g.user.is_root() or g.user.is_admin()%}
+                            <button onclick="pause_expression('{{v.id}}')" class="btn btn-default expression-button">
+                                <span id="i-{{v.id}}" class="glyphicon glyphicon-{% if v.pause %}play{% else %}pause{% endif %} orange" style="color: rgba(100,100,100,3)"></span>
+                            </button>
+                            <a href="{{ url_for('expression_add_get', id=v.id) }}" class="btn btn-default expression-button"
+                               style="text-decoration: none;">
+                                <span class="glyphicon glyphicon-edit orange" style="color:rgba(100,100,100,3);"></span>
+                            </a>
+                            <button onclick="delete_expression('{{ v.id }}');" class="btn btn-default expression-button">
+                                <span class="glyphicon glyphicon-trash orange" style="color:rgba(100,100,100,3);"></span>
+                            </button>
+                        {% endif%}
+                        </div>
+                    {% endif %}
+
+            <div class="expression-expression-word">{{ v.expression }}</div>
             <div class="mt10">
-                <span class="gray">if {{ v.func }}{{ v.op }}{{ v.right_value }}
+                <span class="gray expression-note-word">if {{ v.func }}{{ v.op }}{{ v.right_value }}
                     {{ left }}{{ v.action.html()|safe }}{{ right }}</span>
 
-                {% if v.writable(g.user) %}
-                <div class="pull-right">
-                    {% if g.user.is_root() or g.user.is_admin()%}
-                        <button onclick="pause_expression('{{v.id}}')" class="btn btn-default">
-                            <span id="i-{{v.id}}" class="glyphicon glyphicon-{% if v.pause %}play{% else %}pause{% endif %} orange"></span>
-                        </button>
-                        <a href="{{ url_for('expression_add_get', id=v.id) }}" class="btn btn-default"
-                           style="text-decoration: none;">
-                            <span class="glyphicon glyphicon-edit orange"></span>
-                        </a>
-                        <button onclick="delete_expression('{{ v.id }}');" class="btn btn-default">
-                            <span class="glyphicon glyphicon-trash orange"></span>
-                        </button>
-                    {% endif%}
-                    </div>
-                {% endif %}
             </div>
-            <div class="mt10 gray">
+            <div class="mt10 gray expression-note-word">
                 note: {{ v.note }} (Max:{{ v.max_step }}, P{{ v.priority }})
                 by {{ v.create_user }}
             </div>
@@ -58,7 +69,12 @@
         {% else %}
             <hr>
             no records
+
+        </div>
+
         {% endfor %}
+
+
     </div>
 
     {% import "portal/blocks.html" as blocks %}

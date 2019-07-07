@@ -3,6 +3,9 @@
 
     <input type="hidden" id="expression_id" value="{{ data.expression.id }}">
 
+    
+
+
     <div class="panel panel-default">
         <div class="panel-heading">expression detail</div>
         <div class="panel-body">
@@ -15,7 +18,7 @@
                     {{ left }}{{ data.action.html()|safe }}{{ right }}</span>
 
                 {% if data.expression.writable(g.user) %}
-                    <div class="pull-right">
+                    <div class="expression-button-list pull-right">
                         {%if g.user.is_root() or g.user.is_admin()%}
                         <button onclick="pause_expression('{{data.expression.id}}')" class="btn btn-default">
                             <span id="i-{{data.expression.id}}" class="glyphicon glyphicon-{% if data.expression.pause %}play{% else %}pause{% endif %} orange"></span>

@@ -17,7 +17,7 @@ function get_flow_data() {
 function forbid_ip(ip_addr, key){
     ip_addr = ip_addr.split(":")[0];
     button_id = "forbid_button_" + key;
-    if (ip_addr.split(".").length == 4) {
+    if (ip_addr.split(".").length === 4) {
         $.post('/flow/forbid', {'ip_addr': ip_addr}, function (json) {
             document.getElementById(button_id).innerHTML = "已禁止"
         }, "json");
@@ -52,59 +52,119 @@ function update_table(data, total_row) {
 }
 
 var update_flow = setInterval(get_flow_data, 5000);
-var if_ipv4_only = false;
-var merge_ip = false;
-var protocol_selection = 'all';
 var url = window.location.search;
-if (url.indexOf("?") != -1) {
-    var str = url.substr(1);
-    strs = str.split("&");
-    for (var i = 0; i < strs.length; i ++) {
-        if (unescape(strs[i].split("=")[0]) === 'p') {
-            var page_num = unescape(strs[i].split("=")[1]);
-        }
-    }
-}
-if (page_num === undefined) {
+var page_num = get_query_val('p')
+if (page_num === null) {
     page_num = 1;
 }
 
+var merge_ip = get_query_val('merge_ip')
+var if_ipv4_only = get_query_val('ipv4_only')
+var protocol_selection = get_query_val('protocol_choice')
+if (merge_ip === null) {
+    merge_ip = 'false';
+}
+if (if_ipv4_only === null) {
+    if_ipv4_only = 'false';
+}
+if (protocol_selection === null) {
+    protocol_selection = 'all';
+}
+
+
+
 function change_auto_refresh(auto_refresh) {
-    if (auto_refresh.checked === true) {
+    if (auto_refresh.checked == true) {
         this.update_flow = setInterval(get_flow_data, 5000);
     }
-    if (auto_refresh.checked === false) {
+    if (auto_refresh.checked == false) {
         clearInterval(this.update_flow);
     }
 }
 
 function change_ipv4_show_case() {
-    var change_ipv4_button_id = "ipv4_only_button";
-    if (this.if_ipv4_only === true) {
+    if (this.if_ipv4_only == 'true') {
         this.if_ipv4_only = false;
-        document.getElementById(change_ipv4_button_id).innerHTML = "仅显示IPv4"
+        replace_query_val('ipv4_only', false)
     } else {
         this.if_ipv4_only = true;
-        document.getElementById(change_ipv4_button_id).innerHTML = "显示所有IP"
+        replace_query_val('ipv4_only', true)
     }
     get_flow_data();
 }
 
 function change_merge_ip_choice() {
-    var change_merge_choice_button_id = "merge_ip_choice_button";
-    if (this.merge_ip === true) {
+    if (this.merge_ip == 'true') {
         this.merge_ip = false;
-        document.getElementById(change_merge_choice_button_id).innerHTML = "同IP多端口合并"
+        replace_query_val('merge_ip', false);
     }else {
         this.merge_ip = true;
-        document.getElementById(change_merge_choice_button_id).innerHTML = "不合并相同IP"
+        replace_query_val('merge_ip', true);
     }
     get_flow_data();
 }
 
 function change_protocol_selection(select_choice) {
     this.protocol_selection = select_choice;
+    replace_query_val('protocol_choice', select_choice);
     get_flow_data();
 }
 
-window.onload = get_flow_data;
+
+function get_query_val(query_name){
+    var reg_expr = new RegExp("(^|&)" + query_name + "=([^&]*)(&|$)");
+    var res = window.location.search.substr(1).match(reg_expr);
+    if (res != null) {
+        return unescape(res[2]);
+    } else {
+        return null;
+    }
+}
+
+function replace_query_val(query_name, new_val){
+    if (get_query_val(query_name) !== null) {
+        var old_url = this.location.href.toString();
+        var reg_expr = eval('/(' + query_name + '=)([^&]*)/gi');
+        var new_url = old_url.replace(reg_expr, query_name + '=' + new_val); 
+        this.location = new_url;
+        window.location.href = new_url;
+    } else {
+        var old_url = this.location.href.toString();
+        if (old_url.substr(-5) === 'flows') {
+            var new_url = old_url + '?&' + query_name + '=' + new_val;
+        } else {
+            var new_url = old_url + '&' + query_name + '=' + new_val;
+        }
+        this.location = new_url;
+        window.location.href = new_url;
+    }
+}
+
+
+window.onload = () => {
+    get_flow_data();
+    var change_merge_choice_button_id = "merge_ip_choice_button";
+    var change_ipv4_button_id = "ipv4_only_button";
+    var protocol_selection_id = "protocol_selection"
+
+
+    if (this.merge_ip == 'false' ) {
+        document.getElementById(change_merge_choice_button_id).innerHTML = "同IP多端口合并"
+    } else {
+        document.getElementById(change_merge_choice_button_id).innerHTML = "不合并相同IP"
+    }
+
+    if (this.if_ipv4_only == 'false') {
+        document.getElementById(change_ipv4_button_id).innerHTML = "仅显示IPv4"
+    } else {
+        document.getElementById(change_ipv4_button_id).innerHTML = "显示所有IP"
+    }
+
+    if (this.protocol_selection ==  'all') {
+        document.getElementById(protocol_selection_id)[0].selected = true;
+    } else if (this.protocol_selection == 'tcp_only') {
+        document.getElementById(protocol_selection_id)[1].selected = true;
+    } else {
+        document.getElementById(protocol_selection_id)[2].selected = true;
+    }
+}

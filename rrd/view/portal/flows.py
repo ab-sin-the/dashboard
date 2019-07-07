@@ -154,8 +154,7 @@ def get_data_once(url, user, psw, ipv4_only, protocol_selection, merge_ip_choice
         for data in return_data:
             if_stored = False
             for new_data in range(len(new_return_data)):
-                print(new_data)
-                if data['column_client'].split(':')[0] == new_return_data[new_data]['column_client'].split(':')[0]:
+                if data['column_client'].split(':')[0] == new_return_data[new_data]['column_client']:
                     if_stored = True
                     new_return_data[new_data]["column_bytes"] = str(float(new_return_data[new_data]["column_bytes"].split()[0]) + float(data["column_bytes"].split()[0])) + ' ' + data["column_bytes"].split()[1]
                     if new_return_data[new_data]["column_ndpi"] != data["column_ndpi"]:
@@ -164,6 +163,7 @@ def get_data_once(url, user, psw, ipv4_only, protocol_selection, merge_ip_choice
                         new_return_data[new_data]["column_server"] = new_return_data[new_data]["column_server"] + '/' + data["column_server"]
                     new_return_data[new_data]["column_thpt"] = add_thpt(new_return_data[new_data]["column_thpt"], data["column_thpt"])
             if if_stored == False:
+                data['column_client'] = data['column_client'].split(':')[0]
                 new_return_data.append(data)
         return [new_return_data, total_row]
 
@@ -171,6 +171,21 @@ def get_data_once(url, user, psw, ipv4_only, protocol_selection, merge_ip_choice
 def get_flow_page():
     limit = int(request.args.get("limit") or 10)
     page = int(request.args.get("p") or 1)
+    if request.args.get("ipv4_only") == None:
+        curr_ipv4_only = 'false'
+    else:
+        curr_ipv4_only = str(request.args.get("ipv4_only"))
+    
+    if request.args.get("merge_ip") == None:
+        curr_merge_ip = 'false'
+    else:
+        curr_merge_ip = str(request.args.get("merge_ip"))
+
+    if request.args.get("protocol_choice") == None:
+        curr_proc_choice = 'all'
+    else:
+        curr_proc_choice = str(request.args.get("protocol_choice"))
+        
     flows_data = get_page_data(url, user, psw, page)
     flows_data = remove_html(flows_data)
     flows_data = '{' + '{'.join(flows_data.split('{')[1:])

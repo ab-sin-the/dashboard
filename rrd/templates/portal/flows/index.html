@@ -34,8 +34,8 @@
                     </div>
 
                     <div class="form-group pull-right">
-                            <button id="ipv4_only_button" class="ipv4-only" onclick="change_ipv4_show_case();return false;"> <div class="ipv4-only-word">仅显示IPv4</div> </button>
-                            <button id="merge_ip_choice_button" class="combine-same-ip" onclick="change_merge_ip_choice();return false;">同IP多端口合并</button>
+                            <button id="ipv4_only_button" class="ipv4-only" onclick="change_ipv4_show_case();return false;"> <div class="ipv4-only-word"></div> </button>
+                            <button id="merge_ip_choice_button" class="combine-same-ip" onclick="change_merge_ip_choice();return false;"></button>
 
                     </div>
 
@@ -72,7 +72,7 @@
 
 
 {% import "portal/blocks.html" as blocks %}
-{{ blocks.pager('/portal/flows?', total_row, limit, page) }}
+{{ blocks.pager('/portal/flows?ipv4_only='+curr_ipv4_only+'&merge_ip='+curr_merge_ip+'&protocol_choice='+curr_proc_choice,  total_row, limit, page) }}
 
 
 {% endblock %}

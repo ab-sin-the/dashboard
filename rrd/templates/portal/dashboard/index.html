@@ -146,67 +146,52 @@
     <div class="col-md-12">
         <div class="row">
                 <div class="col-md-12" id="counters">
-
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <img class="loading pull-right" src="/static/img/loading.gif" style="display:none;"></img>
-                            {{_('搜索counters')}}
+                    <div class="dashboard-panel">
+                        <div class="dashboard-panel-header">
+                                搜索counters
                         </div>
+                        <div class="dashboard-panel-body-p1" style="border-bottom: hidden;">
+                            <div class="dashboard-panel-body-p1-form" >
+                                    <label class="dashboard-panel-body-p1-form-label" style="margin-top: 10px">Counter</label>
+                                    <input id="counter-search" type="text" class="dashboard-panel-input" placeholder="输入节点关键词，使用空格来分隔它们。">
+                                    <div style="margin: 10px 0px">
+                                        <div class="dashboard-global-search" onclick="fn_list_counters();return false;">全局搜索</div>
 
-                        <div class="panel-body">
-                            <form role="form">
-                                <div class="form-group">
-                                    <label>Counter</label>
-                                    <input id="counter-search" type="text" class="form-control input-sm">
-                                    <p class="help-block"><span class="text-warning">{{_('使用空格来分割关键词')}}</span></p>
-                                </div>
-                            </form>
+                                        <select class="dashboard-counter-num-select" id="counter-limit" onchange="fn_list_counters();return false;">
+                                                <option value="50"> Limit 50</option>
+                                                <option value="100">Limit 100</option>
+                                                <option value="500">Limit 500</option>
+                                        </select>
+                                        <select class="dashboard-counter-num-select" id="counter-page" onchange="fn_list_counters();return false;">
+                                                {%for p in range(1, 21)%}
+                                                <option value="{{p}}"> page {{p}}</option>
+                                                {%endfor%}
+                                        </select>
+                                        {%if g.user.is_root() or g.user.is_admin()%}
+                                        <div class="dashboard-delete-button pull-right" onclick="fn_delete_counters();return false;">删除counters</div>
+                                        {%endif%}
+                                    </div>
 
-                            <form class="form-inline" role="form">
-                                <button class="btn btn-default btn-sm btn-success" onclick="fn_list_counters();return false;">{{_('搜索')}}</button>
-                                <div class="form-group">
-                                    <select class="form-control input-sm" id="counter-limit" onchange="fn_list_counters();return false;">
-                                        <option value="50"> Limit 50</option>
-                                        <option value="100">Limit 100</option>
-                                        <option value="500">Limit 500</option>
-                                    </select>
-                                    <select class="form-control input-sm" id="counter-page" onchange="fn_list_counters();return false;">
-                                        {%for p in range(1, 21)%}
-                                        <option value="{{p}}"> page {{p}}</option>
-                                        {%endfor%}
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <input id="counter-filter" type="text" class="form-control input-sm">
-                                    <button class="btn btn-default btn-sm btn-info" onclick="filter_counter();return false;">{{_('快速过滤')}}</button>
-                                    {%if g.user.is_root() or g.user.is_admin()%}
-                                    <button class="btn btn-default btn-sm" onclick="fn_delete_counters();return false;">{{_('删除counters')}}</button>
-                                    {%endif%}
-                                </div>
+                                    <div style="margin: 10px 0px">
+                                            <input id="counter-filter" type="text" class="dashboard-filter-input" placeholder="输入快捷过滤关键词">
+                                            <button class="dashboard-global-search pull-right" style="margin-top: 5px"  onclick="filter_counter();return false;">{{_('快速过滤')}}</button>
+                                    </div>
 
-                                <div class="dropdown form-group pull-right">
-                                    <a class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" href="#"> {{_('显示方式')}}<span class="caret"></span></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                      <li><a href="#" class="btn btn-link btn-xs" onclick="fn_show_all('h');return false;">{{_('服务器节点视角')}}</a></li>
-                                      <li><a href="#" class="btn btn-link btn-xs" onclick="fn_show_all('k');return false;">{{_('counter视角')}}</a></li>
-                                      <li><a href="#" class="btn btn-link btn-xs" onclick="fn_show_all('a');return false;">{{_('multi视角')}}</a></li>
-                                    </ul>
-                                </div>
+                                    
+                            </div>
+                            <div class="dashboard-panel-body-p1 col-md-12" style="margin-top: 25px">
 
-                            </form>
-
+                                    <table class="table">
+                                            <thead> <tr>
+                                                <th width="30px"><input type="checkbox" id="check_all_counters"></th>
+                                                <th class="dashboard-header-counter">Counters</th>
+                                                <th class="dashboard-header-other" width="60px">{{_('类型')}}</th>
+                                                <th class="dashboard-header-other" width="60px">{{_('间隔')}}</th>
+                                            </tr></thead>
+                                            <tbody id="tbody-counters"> </tbody>
+                                        </table>
+                            </div>
                         </div>
-
-                        <table class="table table-striped">
-                            <thead> <tr>
-                                <th width="30px"><input type="checkbox" id="check_all_counters"></th>
-                                <th >Counters</th>
-                                <th width="60px">{{_('类型')}}</th>
-                                <th width="60px">{{_('间隔')}}</th>
-                            </tr></thead>
-
-                            <tbody id="tbody-counters"> </tbody>
-                        </table>
                     </div>
 
                 </div>
