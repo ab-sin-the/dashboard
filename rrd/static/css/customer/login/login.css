@@ -3,7 +3,6 @@
 }
 
 .login-large{
-    width:64px;
     height:45px;
     font-size:32px;
     font-family:PingFangSC-Semibold;
@@ -12,8 +11,7 @@
     line-height:45px;
 }
 
-.login-username{
-    width:42px;
+.login-word{
     height:20px;
     font-size:14px;
     font-family:PingFangSC-Semibold;
@@ -23,16 +21,6 @@
     margin-top: 30px;
 }
 
-.login-password{
-    width:28px;
-    height:20px;
-    font-size:14px;
-    font-family:PingFangSC-Semibold;
-    font-weight:600;
-    color:rgba(129,129,129,1);
-    line-height:20px;
-    margin-top: 20px;
-}
 
 .login-input{
     width:100%;
@@ -69,6 +57,7 @@
     line-height:17px;
     display: inline;
 }
+
 .register-word{
     margin-top: 7px;
     float: right;
