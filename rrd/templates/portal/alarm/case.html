@@ -3,15 +3,15 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="alarm-title">报警记录</div>
+        <span class="button-blue" style="cursor: unset;">报警记录</span>
 
         <div class="pull-right">
-            <a class="alarm-select-button" href="javascript:alarm_case_all_select();" style="text-decoration:none">全选</a>
-            <a class="alarm-select-button" href="javascript:alarm_case_reverse_select();" style="text-decoration:none">反选</a>
+            <a href="javascript:alarm_case_all_select();" style="text-decoration:none"><span class="button-grey">全选</span> </a>
+            <a href="javascript:alarm_case_reverse_select();" style="text-decoration:none"><span class="button-grey">反选</span> </a>
             {%if g.user.is_root() or g.user.is_admin()%}
-            <div class="alarm-batch-delete" onclick="alarm_case_batch_rm();">批量删除</div>
+            <span class="button-red" onclick="alarm_case_batch_rm();">批量删除</span>
             {%endif%}
-            <a class="alarm-no-cover-button" href="/portal/alarm-dash/case?status=PROBLEM" style="text-decoration: none">未覆盖记录</a>
+            <a href="/portal/alarm-dash/case?status=PROBLEM" style="text-decoration: none"><span class="button-grey">未覆盖记录</span> </a>
         </div>
     </div>
 </div>
@@ -33,7 +33,7 @@
 
                     <div class="pull-right" style="margin: 25px 0px 25px 0px;">
                     
-                            <a href="/portal/template/view/{{case.template_id}}" target="_blank" class="alarm-right-button">模板</a>
+                            <a href="/portal/template/view/{{case.template_id}}" target="_blank" class="alarm-right-button"> 模板</a>
         
                             {%if case.strategy_id>0%}
                             <a href="/portal/strategy/{{case.strategy_id}}" target="_blank" class="alarm-right-button">策略</a>

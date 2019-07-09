@@ -155,7 +155,7 @@
                                     <label class="dashboard-panel-body-p1-form-label" style="margin-top: 10px">Counter</label>
                                     <input id="counter-search" type="text" class="dashboard-panel-input" placeholder="输入节点关键词，使用空格来分隔它们。">
                                     <div style="margin: 10px 0px">
-                                        <div class="dashboard-global-search" onclick="fn_list_counters();return false;">全局搜索</div>
+                                        <span class="large-button-blue" onclick="fn_list_counters();return false;" style="height: 36px; padding: 8px 25px; margin-left: 0px; line-height: 22px;">全局搜索</span>
 
                                         <select class="dashboard-counter-num-select" id="counter-limit" onchange="fn_list_counters();return false;">
                                                 <option value="50"> Limit 50</option>
@@ -168,13 +168,13 @@
                                                 {%endfor%}
                                         </select>
                                         {%if g.user.is_root() or g.user.is_admin()%}
-                                        <div class="dashboard-delete-button pull-right" onclick="fn_delete_counters();return false;">删除counters</div>
+                                        <span class="large-button-red pull-right" onclick="fn_delete_counters();return false;" style="height: 36px; padding: 8px 25px; line-height: 22px;">删除counters</span>
                                         {%endif%}
                                     </div>
 
                                     <div style="margin: 10px 0px">
                                             <input id="counter-filter" type="text" class="dashboard-filter-input" placeholder="输入快捷过滤关键词">
-                                            <button class="dashboard-global-search pull-right" style="margin-top: 5px"  onclick="filter_counter();return false;">{{_('快速过滤')}}</button>
+                                            <span class="large-button-blue pull-right" style="margin-top: 5px; height: 40px; padding: 10px 25px;"  onclick="filter_counter();return false;">{{_('快速过滤')}}</span>
                                     </div>
 
                                     

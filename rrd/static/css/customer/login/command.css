@@ -39,26 +39,6 @@
     border:1px solid rgba(242,242,242,1);
 }
 
-.command-button1{
-    width:116px;
-    height:40px;
-    background:rgba(36,95,240,1);
-    border-radius:5px;
-    margin: 0 10px 0 0px;
-    display: inline-block;
-    cursor: pointer;
-}
-
-.command-button2{
-    width:116px;
-    height:40px;
-    background:rgba(0,181,91,1);
-    border-radius:5px;
-    margin: 0 10px;
-    display: inline-block;
-    cursor: pointer;
-}
-
 .command-button-word{
     font-size:18px;
     font-family:PingFangSC-Semibold;
@@ -99,55 +79,6 @@ input::-webkit-input-placeholder {
     border:1px solid rgba(242,242,242,1);
 }
 
-
-.command-security-audit-lynis-button{
-    margin: 20px 10px 20px 10px;
-    width:135px;
-    height:40px;
-    background:rgba(36,95,240,1);
-    border-radius:5px;
-    font-size:18px;
-    font-family:PingFangSC-Semibold;
-    font-weight:600;
-    color:rgba(255,255,255,1);
-    line-height:25px;
-    padding: 10px 30px;
-    cursor: pointer;
-    display: inline-block;
-}
-
-.command-security-audit-get-report-button{
-    margin: 20px 10px 20px 10px;
-    width:171px;
-    height:40px;
-    background:rgba(36,95,240,1);
-    border-radius:5px;
-    font-size:18px;
-    font-family:PingFangSC-Semibold;
-    font-weight:600;
-    color:rgba(255,255,255,1);
-    line-height:25px;
-    padding: 10px 31px 10px 31px;;
-    cursor: pointer;
-    display: inline-block;
-}
-
-.command-security-audit-GScan-button{
-    margin: 20px 10px 20px 10px;
-    width:135px;
-    height:40px;
-    background:rgba(36,95,240,1);
-    border-radius:5px;
-    font-size:18px;
-    font-family:PingFangSC-Semibold;
-    font-weight:600;
-    color:rgba(255,255,255,1);
-    line-height:25px;
-    padding: 10px 23px;;
-    cursor: pointer;
-    display: inline-block;
-}
-
 .command-detail-report{
     width:100%;
     min-height:500px;
@@ -157,7 +88,6 @@ input::-webkit-input-placeholder {
 
 .command-detail-button{
     margin: 0px;
-    width:124px;
     height:40px;
     background:rgba(242,242,242,1);
     border:1px solid rgba(250,250,250,1);
@@ -173,7 +103,6 @@ input::-webkit-input-placeholder {
 
 .command-detail-button-clicked{
     margin: 0px;
-    width:124px;
     height:40px;
     font-size:14px;
     font-family:PingFangSC-Semibold;

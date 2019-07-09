@@ -8,21 +8,16 @@
         <div class="row">
             <div class="col-md-12">
                 <a href="/portal/flows">
-
-                <div class="netflow-block pull-left">
-                        <div class="netflow-word">
-                                网络数据流
-                        </div>
-                    </div>
+                    <span class="button-blue">
+                            网络数据流
+                    </span>
                 </a>
 
                 <a href="/portal/flows/unforbid">
 
-                <div class="forbid-ip pull-left">
-                        <div class="forbid-ip-word">
-                                被禁IP
-                        </div>
-                    </div>
+                <span class="button-grey">
+                        被禁IP
+                </span>
                 </a>
                     
                     <div class="form-group pull-right " style="padding-right: 1%; margin-left: 5px;">
@@ -34,8 +29,8 @@
                     </div>
 
                     <div class="form-group pull-right">
-                            <button id="ipv4_only_button" class="ipv4-only" onclick="change_ipv4_show_case();return false;"> <div class="ipv4-only-word"></div> </button>
-                            <button id="merge_ip_choice_button" class="combine-same-ip" onclick="change_merge_ip_choice();return false;"></button>
+                            <span id="ipv4_only_button" class="button-deep-grey" onclick="change_ipv4_show_case();return false;"> </span>
+                            <span id="merge_ip_choice_button" class="button-deep-grey" onclick="change_merge_ip_choice();return false;"> </span>
 
                     </div>
 
@@ -43,7 +38,7 @@
                         <div class="auto-refresh-word pull-left">
                                 自动刷新
                         </div>
-                            <div class="switch switch-small pull-left" style="min-width: 50px; margin: 5px 5px 5px 0px;">
+                            <div class="switch switch-small pull-left" style="min-width: 50px; margin: 5px 5px 5px 0px; ">
                                 <input name="auto_refresh_box" id="auto_refresh_box" type="checkbox" onchange="change_auto_refresh(this)" checked />
                             </div>
                     </div>

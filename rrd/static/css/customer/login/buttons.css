@@ -1,0 +1,104 @@
+.button-blue {
+    height:40px;
+    background:rgba(255,255,255,1);
+    border-radius:5px;
+    border:1px solid rgba(242,242,242,1);
+    display: inline-block;
+    cursor: pointer;
+    font-size:14px;
+    font-family:PingFangSC-Semibold;
+    font-weight:600;
+    color:rgba(36,95,240,1);
+    line-height:20px;
+    padding: 10px 19px;
+} 
+
+.button-red {
+    height:40px;
+    background:rgba(255,255,255,1);
+    border-radius:5px;
+    border:1px solid rgba(242,242,242,1);
+    display: inline-block;
+    cursor: pointer;
+    font-size:14px;
+    font-family:PingFangSC-Semibold;
+    font-weight:600;
+    color:rgba(221,77,84,1);
+    line-height:20px;
+    padding: 10px 19px;
+}
+
+.button-grey {
+    height:40px;
+    background:rgba(255,255,255,1);
+    border-radius:5px;
+    border:1px solid rgba(242,242,242,1);
+    display: inline-block;
+    cursor: pointer;
+    font-size:14px;
+    font-family:PingFangSC-Regular;
+    font-weight:600;
+    color:rgba(177,177,177,1);
+    line-height:20px;
+    padding: 10px 19px;
+} 
+
+.button-deep-grey {
+    height:40px;
+    background:rgba(255,255,255,1);
+    border-radius:0px 5px 5px 0px;
+    border:1px solid rgba(242,242,242,1);
+    font-size:14px;
+    display: inline-block;
+    cursor: pointer;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(80,80,80,1);
+    line-height:20px;
+    padding: 10px 19px;
+}
+
+.large-button-blue {
+    margin: 20px 10px 20px 10px;
+    height:40px;
+    background:rgba(36,95,240,1);
+    border-radius:5px;
+    font-size:18px;
+    font-family:PingFangSC-Semibold;
+    font-weight:600;
+    color:rgba(255,255,255,1);
+    line-height:25px;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.large-button-green {
+    margin: 20px 10px 20px 10px;
+    height:40px;
+    background:rgba(0,181,91,1);
+    border-radius:5px;
+    font-size:18px;
+    font-family:PingFangSC-Semibold;
+    font-weight:600;
+    color:rgba(255,255,255,1);
+    line-height:25px;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.large-button-red {
+    margin: 20px 10px 20px 10px;
+    height:40px;
+    background:rgba(221,77,84,1);
+    border-radius:5px;
+    font-size:18px;
+    font-family:PingFangSC-Semibold;
+    font-weight:600;
+    color:rgba(255,255,255,1);
+    line-height:25px;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: inline-block;
+}

@@ -42,20 +42,6 @@
     border:1px solid rgba(242,242,242,1);
 }
 
-.dashboard-global-search{
-    width:104px;
-    height:38px;
-    background:rgba(36,95,240,1);
-    border-radius:5px;
-    font-size:16px;
-    font-family:PingFangSC-Semibold;
-    font-weight:600;
-    color:rgba(255,255,255,1);
-    line-height:22px;
-    padding: 8px 18px;
-    display: inline-block;
-    cursor: pointer;
-}
 
 .dashboard-counter-num-select{
     width:119px;
@@ -70,22 +56,6 @@
     color:rgba(80,80,80,1);
     line-height:22px;
     padding: 8px 18px;
-}
-
-.dashboard-delete-button{
-    width:124px;
-    height:38px;
-    background:rgba(221,77,84,1);
-    border-radius:5px;
-    border:1px solid rgba(242,242,242,1);
-    display: inline-block;
-    font-size:16px;
-    font-family:PingFangSC-Semibold;
-    font-weight:600;
-    color:rgba(255,255,255,1);
-    line-height:22px;
-    padding: 8px 12px;
-    cursor: pointer;
 }
 
 .dashboard-filter-input{

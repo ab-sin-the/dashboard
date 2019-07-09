@@ -6,27 +6,19 @@
 <div class="col-md-12">
 
 <a href="/portal/flows">
-
-    <div class="netflow-block pull-left">
-            <div class="netflow-word-white">
-                    网络数据流
-            </div>
-        </div>
+    <span class="button-grey">
+            网络数据流
+    </span>
     </a>
 
     <a href="/portal/flows/unforbid">
 
-    <div class="forbid-ip pull-left">
-            <div class="forbid-ip-word-blue">
-                    被禁IP
-            </div>
-        </div>
+    <span class="button-blue">
+            被禁IP
+    </span>
     </a>
 
 
-    <div class="forbid-ip-column-choice pull-right" style="display: none">
-                    
-        </div>
 </div>
 </div>
 <table class="table table-hover table-bordered table-striped" style="margin-bottom: 0px; margin-top: 10px;">
@@ -43,7 +35,7 @@
                 {{ip_addr}}
             </td>
             <td>
-                <div class="net-unforbid-button" onclick="unforbid_ip(this)" > 解除封禁</div>
+                <span class="button-deep-grey" style="height: 26px; padding: 6px 10px; line-height:14px;" onclick="unforbid_ip(this)" > 解除封禁</span>
             </td>
         </tr>
         {% endfor %}
