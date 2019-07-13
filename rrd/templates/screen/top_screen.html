@@ -1,10 +1,18 @@
 {% extends "screen/base.html" %}
 
 {% block container %}
+<div class="row">
+        <div class="col-md-12" style="margin-bottom: 10px;">
+            <span class="button-blue pull-left" style="cursor: default;">监控图表</span>
+            <a href="/screen/add">
+                    <span class="button-grey pull-right">+ 增加监控图表</span>
+            </a>
+        </div>
+    </div>
 <div class="row-fluid">
     <a href="#container"></a>
     <div class="col-md-12" style="padding-left:0px;">
-        <ul class="mybreadcrumb">
+        <ul class="mybreadcrumb" style="background: none; padding-left:0px;">
             <li> {{screen_layout.screen_main_menu(screen, top_screens)}} </li>
             <li> {{screen_layout.screen_sub_menu(screen, None, sub_screens)}} </li>
         </ul>

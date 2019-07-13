@@ -70,15 +70,7 @@
            </li>
 
          <li {%if g.nav_menu == "nav_dashboard"%}class="active"{%endif%}><a href="/portal/dashboard">控制面板</a></li>
-         <li class="dropdown" {%if g.nav_menu == "nav_screen"%}class="active"{%endif%}>
-           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">监控图<span class="caret"></span></a>
-           <ul class="dropdown-menu" role="menu" style="font-size:12px;">
-               <li><a href="/screen">监控图表</a></li>
-               {%if g.user and  (g.user.is_root() or g.user.is_admin())%}
-               <li><a href="/screen/add">增加监控图表</a></li>
-               {%endif%}
-           </ul>
-          </li>
+         <li {%if g.nav_menu == "nav_screen"%}class="active"{%endif%}> <a href="/screen">监控图</a> </li>
           <!--
           {%if g.user and (g.user.is_root() or g.user.is_admin())%}
           <li {%if g.nav_menu == "p_hostgroup"%}class="active"{%endif%}><a href="/portal/hostgroup">服务器组</a></li>

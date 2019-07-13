@@ -54,14 +54,16 @@ $(function(){
                 <div class="col-md-{{col}}" id="graph-{{i}}" style="padding:3px;">
                         <div class="panel panel-default chart-container" data-u="{{graph.src}}">
                                 <div class="panel-heading" style="padding: 10px 5px; background: 0%">
-                                    <a class="btn btn-default btn-xs reset-zoom pull-right" style="margin-left:5px;" data-index="{{i}}">
-                                        <span class="glyphicon glyphicon-zoom-out" aria-hidden="true" data-index="{{i}}"></span>
-                                    </a>
+                                    
+                                    
                                     <div class="btn-group pull-right">
                                         <a class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" href="#">
                                             <span class="caret"></span>
                                         </a>
                                         <ul class="dropdown-menu">
+                                            <li> 
+                                                <a class="btn btn-link btn-xs reset-zoom" style="border: none;" data-index="{{i}}">重置监控图宽度</a>
+                                            </li>
                                             <li>
                                                 <a href="javascript:void(0);" class="btn btn-link btn-xs" onclick="return fn_toogle_legend_flot(this, '{{i}}');">切换legend</a>
                                             </li>
@@ -111,32 +113,36 @@ $(function(){
 
 
 {% macro screen_main_menu(current_top_screen, top_screens) -%}
-    <div class="btn-group">
-
-      <button class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+    <div class="btn-group" >
+      <button class="btn btn-default btn-xs dropdown-toggle screen-select" data-toggle="dropdown">
         {%if current_top_screen%}
             {{current_top_screen.name}}
         {%else%}
-            screen首页
+            <span  style="padding:10px 80px; ">图表</span> 
         {%endif%}
         <span class="caret"></span>
       </button>
 
-      <ul class="dropdown-menu" role="menu">
+      <ul class="dropdown-menu" role="menu"  style="width: 100%">
             {%if g.user.is_root() or g.user.is_admin()%}
-            <li><a href="/screen/add"> <small>+ 导航</small></a></li>
+            <li><a href="/screen/add" style="font-size:20px;
+                font-family:PingFangSC-Regular;
+                font-weight:600;
+                color:rgba(80,80,80,1);
+                line-height:20px; padding: 5px 46%;"> + </a></li>
             {%endif%}
         <li>
             <div class="form-group search-area">
-                <input class="form-control" id="searchinput" type="search" placeholder="搜索..">
+                <input  style="border: none;" class="form-control" id="searchinput" type="search" placeholder="搜索..">
+                <hr style="margin: 0px;">
             </div>
         </li>
         {%for c in top_screens%}
         <li class="screen" role="presentation">
             <span role="menuitem" style="margin-left:15px;line-height:25px;"> 
-            <a href="/screen/{{c.id}}"><small>{{c.name}}</small></a>
+            <a href="/screen/{{c.id}}" ><small class=" screen-select-word">{{c.name}}</small></a>
             {%if g.user.is_root() or g.user.is_admin()%}
-            <a href='/screen/{{c.id}}/delete' class="glyphicon glyphicon-remove pull-right" style="margin-right:10px;" onclick="return confirm('确定要删除这个screen?');"></a>
+            <a href='/screen/{{c.id}}/delete' class="glyphicon glyphicon-remove pull-right" style="margin-right:10px; color: grey;" onclick="return confirm('确定要删除这个screen?');"></a>
             {%endif%}
             </span>
             <hr style="margin:5px;"/>
@@ -149,25 +155,30 @@ $(function(){
 
 {% macro screen_sub_menu(current_top_screen, current_sub_screen, sub_screens) -%}
     <div class="btn-group">
-      <button class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+      <button class="btn btn-default btn-xs dropdown-toggle screen-select" data-toggle="dropdown">
         {%if current_sub_screen %}
             {{current_sub_screen.name}}
         {%else%}
-            选择
+        <span  style="padding:10px 80px; ">选择</span> 
         {%endif%}
         <span class="caret"></span>
       </button>
 
-      <ul class="dropdown-menu" role="menu">
+      <ul class="dropdown-menu" role="menu" style="width: 100%;">
         {%if current_top_screen %}
             {% if g.user.is_root() or g.user.is_admin()%}
-            <li><a href="/screen/add?pid={{current_top_screen.id}}"> + screen</a></li>
+            <li><a href="/screen/add?pid={{current_top_screen.id}}" style="font-size:20px;
+                font-family:PingFangSC-Regular;
+                font-weight:600;
+                color:rgba(80,80,80,1);
+                line-height:20px; padding: 5px 46%;"> +</a></li>
+                <hr style="margin: 0px;">
             {%endif%}
         {%endif%}
 
         {%for c in sub_screens%}
         <li class="screen" role="presentation">
-            <a role="menuitem" href="/screen/{{c.id}}"><small>{{c.name}}</small></a>
+            <a role="menuitem" href="/screen/{{c.id}}"><small  class=" screen-select-word">{{c.name}}</small></a>
             <hr style="margin:2px;"/>
         </li>
         </li>

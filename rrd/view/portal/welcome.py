@@ -51,6 +51,19 @@ def welcome_page_get():
     end = request.args.get("end")
     screens = DashboardScreen.gets_all()
 
+    graphs_name = request.args.get("graphs")
+    if graphs_name == None:
+        graphs_name = "all"
+
+    if graphs_name == 'all':
+        default_sub_screen_name = "ALL"
+    elif graphs_name == 'cml':
+        default_sub_screen_name = 'CPU/MEM/LOAD'
+    elif graphs_name == 'disk':
+        default_sub_screen_name = 'DISK'
+    elif graphs_name == 'net':
+        default_sub_screen_name = 'NETWORK'
+
     default_screen = None
     for screen in screens:
         if screen.name == default_screen_name:
@@ -65,7 +78,8 @@ def welcome_page_get():
 
     default_sub_screen = sub_screens[0]
     for sub_screen in sub_screens:
-        if sub_screen.name == "ALL":
+        print(sub_screen.name)
+        if sub_screen.name == default_sub_screen_name:
             default_sub_screen = sub_screen
 
     graphs = DashboardGraph.gets_by_screen_id(default_sub_screen.id)
@@ -83,6 +97,7 @@ def welcome_page_get():
 def home_screen(sid):
     start = request.args.get("start")
     end = request.args.get("end")
+
     print(start)
     print(end)
     top_screens = DashboardScreen.gets_by_pid(pid=0)
