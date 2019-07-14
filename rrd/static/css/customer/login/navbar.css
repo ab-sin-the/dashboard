@@ -26,20 +26,25 @@
 }
 
 .navbar-left-top-img{
-    list-style:none;
     margin: 5px auto;
     height: 45px;
     width: 45px;
 }
 
 .navbar-left-user-profile{
-    margin: 50px auto 30px;
+    margin: 30px auto;
     height: 25px;
     width: 25px;
 }
 
 .navbar-left-account{
     margin: 30px auto;
+    height: 25px;
+    width: 25px;
+}
+
+.navbar-dashboard {
+    margin: 50px auto 30px;
     height: 25px;
     width: 25px;
 }
