@@ -26,12 +26,6 @@ import sys
 sys.path.insert(0, base_dir)
 
 
-import mimetypes 
-mimetypes.add_type("rrd/static/image/svg+xml", ".svg", True) 
-mimetypes.add_type("rrd/static/image/svg+xml", ".svgz", True) 
-mimetypes.add_type("image/svg+xml", ".svg", True) 
-mimetypes.add_type("image/svg+xml", ".svgz", True) 
-
 from rrd import app
 
 if __name__ == "__main__":
