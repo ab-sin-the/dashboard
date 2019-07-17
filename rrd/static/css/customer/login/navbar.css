@@ -32,34 +32,34 @@
 }
 
 .navbar-left-user-profile{
-    margin: 30px auto;
-    height: 25px;
-    width: 25px;
+    margin: 20px auto;
+    height: 40px;
+    width: 40px;
 }
 
 .navbar-left-account{
-    margin: 30px auto;
-    height: 25px;
-    width: 25px;
+    margin: 20px auto;
+    height: 40px;
+    width: 40px;
 }
 
 .navbar-dashboard {
-    margin: 50px auto 30px;
-    height: 25px;
-    width: 25px;
+    margin: 50px auto 20px;
+    height: 40px;
+    width: 40px;
 }
 
 .navbar-left-team{
-    margin: 30px auto;
-    height: 25px;
-    width: 25px;
+    margin: 20px auto;
+    height: 40px;
+    width: 40px;
 }
 
 .navbar-left-log-out{
     position: absolute;
     bottom: 10px;
-    left: 27.5px;
+    left: 20px;
     margin: 30px auto;
-    height: 25px;
-    width: 25px;
+    height: 40px;
+    width: 40px;
 }

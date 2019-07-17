@@ -8,7 +8,7 @@
             <g id="Image/ic_brightness_1" transform="translate(96.000000, 96.000000)">
                 <g id="ic_brightness_1">
                     <polygon id="Bounds" points="0 0 24 0 24 24 0 24"></polygon>
-                    <circle id="Icon" fill="#000000" cx="12" cy="12" r="10"></circle>
+                    <circle id="Icon" fill="#808080" cx="12" cy="12" r="10"></circle>
                 </g>
             </g>
         </g>

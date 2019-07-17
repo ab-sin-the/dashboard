@@ -23,11 +23,6 @@ function button_display() {
     if (graphs_choice == null) {
         graphs_choice = 'all';
     }
-
-    console.log(graphs_choice == 'all')
-    console.log(graphs_choice == 'cml')
-    console.log(graphs_choice == 'disk')
-    console.log(graphs_choice == 'net')
     if (graphs_choice == 'all') {
         document.getElementById(all_button_id).classList = 'button-blue-small';
         document.getElementById(all_button_id).style = 'margin-left:0px;'

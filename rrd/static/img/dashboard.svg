@@ -8,7 +8,7 @@
             <g id="Action/ic_dashboard" transform="translate(384.000000, 240.000000)">
                 <g id="ic_dashboard">
                     <polygon id="Bounds" points="0 0 24 0 24 24 0 24"></polygon>
-                    <path d="M3,13 L11,13 L11,3 L3,3 L3,13 L3,13 Z M3,21 L11,21 L11,15 L3,15 L3,21 L3,21 Z M13,21 L21,21 L21,11 L13,11 L13,21 L13,21 Z M13,3 L13,9 L21,9 L21,3 L13,3 L13,3 Z" id="Icon" fill="#000000"></path>
+                    <path d="M3,13 L11,13 L11,3 L3,3 L3,13 L3,13 Z M3,21 L11,21 L11,15 L3,15 L3,21 L3,21 Z M13,21 L21,21 L21,11 L13,11 L13,21 L13,21 Z M13,3 L13,9 L21,9 L21,3 L13,3 L13,3 Z" id="Icon" fill="#808080"></path>
                 </g>
             </g>
         </g>
