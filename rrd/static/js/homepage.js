@@ -26,6 +26,9 @@ function button_display() {
     if (graphs_choice == 'all') {
         document.getElementById(all_button_id).classList = 'button-blue-small';
         document.getElementById(all_button_id).style = 'margin-left:0px;'
+        document.getElementById(cml_button_id).style = 'margin-left:0px;';
+        document.getElementById(disk_button_id).style = 'margin-left:20px;';
+        document.getElementById(net_button_id).style = 'margin-left:20px;'
     } else if (graphs_choice == 'cml') {
         document.getElementById(cml_button_id).classList = 'button-blue-small';
         document.getElementById(all_button_id).style = 'margin-left:20px;'
