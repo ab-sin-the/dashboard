@@ -51,8 +51,8 @@
 
          <li {%if g.nav_menu == "p_home"%}class="active"{%endif%}><a style="text-align: center; margin-left: 38px;" href="/portal/home">主页</a></li>
          <li {%if g.nav_menu == "p_process"%}class="active"{%endif%}><a style="text-align: center;" href="/portal/process">进程监控</a></li>
-         <li class="dropdown" {%if g.nav_menu == "p_flows"%}class="active"{%endif%}>
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-align: center">网络流<div  style="margin-left:4px; display: inline-block; width: 20px;"><img src="/static/img/dropdown.svg" width="10px"></div></a>
+         <li class="dropdown"  style="height: 70px;" {%if g.nav_menu == "p_flows"%}class="active"{%endif%}>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-align: center; height: 70px;">网络流<div  style="margin-left:4px; display: inline-block; width: 20px;"><img src="/static/img/dropdown.svg" width="10px"></div></a>
             <ul class="dropdown-menu" role="menu" style="font-size:12px;">
                 <li><a href="/portal/flows">监控</a></li>
                 <li><a href="/portal/flows/unforbid">黑名单维护</a></li>
@@ -60,8 +60,8 @@
            </li>
 
 
-         <li class="dropdown" {%if g.nav_menu == "nav_bash"%}class="active"{%endif%}>
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-align: center">命令相关<div  style="margin-left:4px; display: inline-block; width: 20px;"><img src="/static/img/dropdown.svg" width="10px"></div></a>
+         <li class="dropdown" style="height: 70px;" {%if g.nav_menu == "nav_bash"%}class="active"{%endif%}>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-align: center;  height: 70px;">命令相关<div  style="margin-left:4px; display: inline-block; width: 20px; "><img src="/static/img/dropdown.svg" width="10px"></div></a>
             <ul class="dropdown-menu" role="menu" style="font-size:12px;">
                 <li><a href="/portal/file_log">查看日志</a></li>
                 <li><a href="/portal/bash_command">输入命令</a></li>
