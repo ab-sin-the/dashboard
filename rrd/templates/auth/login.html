@@ -15,53 +15,76 @@
 
 {%endblock%}
 
+{% block body_head%}
+<body style="margin: 0; padding: 0; font-size:12px;" class="login-background">
+{%endblock%}
 
 {% block container_outer %}
-<div id="container" class="container-fluid login-form">
-	<div class="row">
-		<div class="col-md-12">
 
-			<div style="margin: 0 auto; max-width: 400px;">
-				<div class="panel panel-default" style="border: none; background:transparent;"> 
-						<h3 class="panel-title login-large">
-							登录
-						</h3>
-					<div  >
-						<div class="form-sign" role="form" style="margin-top: 30px;">
-							<span class="login-word">用户名</span>
-							<div class="form-group">
-								<input type="text" placeholder="name" id="name"
-								class="form-control login-input" required autofocus />
-							</div>
-							<span class="login-word">密码</span>
-							<div class="form-group">
-								<input type="password" placeholder="password" id="password"
-								class="form-control login-input" required />
-							</div>
+	<div id="container" class="container-fluid" >
+		<div class="row">
+			<div class="col-md-6" style="margin-left: 241px; margin-top: 338px; width: 412px; text-transform: uppercase;">
+				<div>
+					<span class="large-bold">
+							Good Night
+					</span>
+				</div>
+				<div style="margin-top: 17px;">
+					<span class="little-grey">
+							With an intuitive vector editor, lightning fast prototyping and powerful collaboration tools, Sketch has everything you need to turn your ideas into incredible products.
+					</span>
+				</div>
+				<div style="margin-top: 59px;">
+					<span class="middle-blue">
+							· The best products start
+					</span>
+				</div>
+			</div>
+			<div class="col-md-6" style="margin-top: 255px;">
+				<div class="login-form">
 
-							<button class="btn btn-default btn-block login-button" type="button" id="sign"
-							onclick="login();">登录</button>
-							<div>
-								<div class="ldap-word">
-
-										<label>
-												<input type="checkbox" id="ldap"> ldap用户
-										</label>
+				<div>
+						<div class="panel panel-default" style="border: none; background:transparent;"> 
+							<h3 class="panel-title login-large">
+								登录
+							</h3>
+						<div  >
+							<div role="form" style="margin-top: 50px;">
+								<span class="login-word">用户名</span>
+								<div class="form-group" style="margin-top: 10px; margin-bottom: 20px;">
+									<input type="text" id="name"
+									class="form-control login-input" required autofocus />
+								</div>
+								<span class="login-word">密码</span>
+								<div class="form-group" style="margin-top: 10px; margin-bottom: 30px;">
+									<input type="password" id="password"
+									class="form-control login-input" required />
 								</div>
 
-								
-								<span class="register-word">
-									没有账户？ <a href="/auth/register">注册新用户</a>
-								</span>
+								<button style="margin: 0px; width: 480px;" class="btn btn-default btn-block large-button-blue" type="button" id="sign"
+								onclick="login();">登录</button>
+								<div style="border: none; margin-top: 30px;">
+
+											<label class="pull-left">
+													<input type="checkbox" id="ldap"> <span class="little-pingfang-grey">ldap用户</span> 
+											</label>
+
+									
+									<span class="little-pingfang-grey pull-right" style="display: inline-block; ">
+										没有账户？ <a href="/auth/register"> <span style="font-family: PingFangSC-Semibold; color:rgba(36, 95, 240, 1) "> 注册新用户</span></a>
+									</span>
+
+								</div>
 
 							</div>
-
 						</div>
 					</div>
 				</div>
 			</div>
 
+			</div>
 		</div>
 	</div>
-</div>
+
+
 {%endblock%}

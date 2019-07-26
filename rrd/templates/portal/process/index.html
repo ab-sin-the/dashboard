@@ -2,19 +2,19 @@
 {% block content %}
 <script src="/static/js/process.js"></script>
 
-<span class="button-blue" style="cursor: default;">
+<span class="button-blue" style="cursor: default; font-weight: 600;  margin-bottom: 15px;">
     活跃进程
 </span>
 
-<table class="table table-hover table-bordered table-striped" style="margin-bottom: 0px; margin-top: 10px; background:rgba(255,255,255,1);" >
+<table class="table table-hover table-bordered table-striped" style="margin-bottom: 0px; margin-top: 0px; background:rgba(255,255,255,1); text-align: center;" >
     <thead>
     <tr class="process-th" valign="middle">
-        <th class="process-th-word">进程名</th>
-        <th class="process-th-word">PID</th>
-        <th class="process-th-word">User</th>
-        <th class="process-th-word">CPU使用量</th>
-        <th class="process-th-word">Memory使用量</th>
-        <th>Time</th>
+        <th class="process-th-word" style="text-align: center">进程名</th>
+        <th class="process-th-word" style="text-align: center">PID</th>
+        <th class="process-th-word" style="text-align: center">User</th>
+        <th class="process-th-word" style="text-align: center">CPU使用量</th>
+        <th class="process-th-word" style="text-align: center">Memory使用量</th>
+        <th class="process-th-word" style="text-align: center">时间</th>
     </tr>
     </thead>
     <tbody class="process-td" id="process_table"> 

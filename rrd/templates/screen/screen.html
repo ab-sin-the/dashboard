@@ -5,36 +5,39 @@
 {% block container %}
     {% block screen_nav %}
     <div class="row">
-            <div class="col-md-12" style="margin-bottom: 10px;">
+            <div class="col-md-12" style="margin-bottom: 15px;">
                 
-                <a class="button-blue pull-left" href="/screen">监控图表</a>
-                <a class="button-grey pull-right" href="/screen/add">
+                <a class="button-blue pull-left" href="/screen" style="font-family:PingFangSC-Semibold; font-weight:600;"> 监控图表</a>
+                <a class="button-grey pull-right" href="/screen/add" style="color: rgba(129,129,129,1);">
                     + 增加监控图表
                 </a>
             </div>
         </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" style="margin-bottom: 5px;">
             <ul class="mybreadcrumb" style="background: none; padding: 0px;">
-                <li> {{screen_layout.screen_main_menu(pscreen, top_screens)}} </li>
-                <li> {{screen_layout.screen_sub_menu(pscreen, screen, sub_screens)}} </li>
+                <div class="pull-left">
+
+                    <div class="pull-left" style="display: inline-block;"> {{screen_layout.screen_main_menu(pscreen, top_screens)}} </div>
+                    <div class="pull-left" style="display: inline-block;"> {{screen_layout.screen_sub_menu(pscreen, screen, sub_screens)}} </div>
+                </div>
 
                 {%if screen%}
                 <div class="pull-right" >
                         <div style="display: inline-block" >
                                 {%if g.user.is_root() or g.user.is_admin()%}
-                                <a href="/screen/{{screen.id}}/edit" class="button-grey pull-left" style="text-decoration: none;">编辑</a>
-                                <a href="javascript:;" class="icon-muledit button-grey pull-left" style="text-decoration: none;">批量编辑</a>
+                                <a href="/screen/{{screen.id}}/edit" class="button-grey pull-left" style="text-decoration: none; color:rgba(80,80,80,1);">编辑</a>
+                                <a href="javascript:;" class="icon-muledit button-grey pull-left" style="text-decoration: none; color:rgba(80,80,80,1);">批量编辑</a>
 
                                 <a class="button-red pull-left" href="/screen/{{screen.id}}/delete" onclick="return confirm('确定要删除这个screen?');" style="text-decoration: none; margin-left: 0px; margin-right: 0px; ">
                                         删除
                                 </a>
-                                <a href="/screen/{{screen.id}}/clone" onclick="return confirm('确定要复制出来一个新的screen吗?');" style="text-decoration: none; " class="button-grey pull-left">
+                                <a href="/screen/{{screen.id}}/clone" onclick="return confirm('确定要复制出来一个新的screen吗?');" style="text-decoration: none; color:rgba(80,80,80,1);" class="button-grey pull-left">
                                     克隆
                                 </a>
                                 
                                 <a href="/screen/{{screen.id}}/graph" style="text-decoration: none; margin-left: 0px; margin-right: 0px;">
-                                    <span class="button-grey pull-left" style="margin-left: 0px; margin-right: 0px;">
+                                    <span class="button-grey pull-left" style="margin-left: 0px; margin-right: 0px; color:rgba(80,80,80,1);">
                                              +graph
                                     </span>
                                 </a>
@@ -42,28 +45,24 @@
         
                             {%if g.legend == "on"%}
                             <a href="#" onclick="fn_query({legend: 'off'})" style="text-decoration: none;">
-                                <span class="button-grey pull-left" style="margin-left: 0px; margin-right: 0px;">
+                                <span class="button-grey pull-left" style="margin-left: 0px; margin-right: 0px; color:rgba(80,80,80,1);">
                                         隐藏legend
                                 </span>
                             </a>
                             {%else%}
                             <a href="#" onclick="fn_query({legend: 'on'})" style="text-decoration: none;">
-                                    <span class="button-grey pull-left" style="margin-left: 0px; margin-right: 0px;">
+                                    <span class="button-grey pull-left" style="margin-left: 0px; margin-right: 0px; color:rgba(80,80,80,1);">
                                         显示legend
                                     </span>
                                 </a>
                             {%endif%}
                         </div>
-                        <div class="btn-group" style="display: inline-block; margin-top: 0px; text-decoration: none; vertical-align: top; margin-left: 20px;">
-                                <button type="button" class="homepage-select " data-toggle="dropdown">
-                                    布局 <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu" style="width: 100%; min-width: 50px;">
-                                    <li><a href="#" onclick="fn_query({cols: '1'})"><small>1列</small></a></li>
-                                    <li><a href="#" onclick="fn_query({cols: '2'})"><small>2列</small></a></li>
-                                    <li><a href="#" onclick="fn_query({cols: '3'})"><small>3列</small></a></li>
-                                    <li><a href="#" onclick="fn_query({cols: '4'})"><small>4列</small></a></li>
-                                </ul>
+                        <div class="btn-group button-red" style="display: inline-block; margin-top: 0px; text-decoration: none; vertical-align: top; margin-left: 15px;">
+                                <div style="display: inline-block; width:20px; margin-right: 20px;">  <a href="#" onclick="fn_query({cols: '1'})" > <img src="/static/img/col-1.svg" width="18px" height="18px"> </a> </div>
+                                <div style="display: inline-block; width:20px; margin-right: 20px;">  <a href="#" onclick="fn_query({cols: '2'})" > <img src="/static/img/col-2.svg" width="18px" height="18px"> </a> </div>
+                                <div style="display: inline-block; width:20px; margin-right: 20px;">  <a href="#" onclick="fn_query({cols: '3'})" > <img src="/static/img/col-3.svg" width="18px" height="18px"> </a> </div>
+                                <div style="display: inline-block; width:20px;"> <a href="#" onclick="fn_query({cols: '4'})"> <img src="/static/img/col-4.svg" width="18px" height="18px"> </a> </div>
+        
                             </div>
                         
                 

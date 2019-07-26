@@ -4,24 +4,27 @@
 <script src="/static/js/bootstrapSwitch.js"></script>
 <link rel="stylesheet" href="/static/css/bootstrapSwitch.css">
 <div class="row">
-    <div class="panel panel-body" style="background-color: transparent">  
+    <div  style="background-color: transparent; border: none; padding-top: 0px; padding-bottom: 0px; padding-left: 15px;">  
         <div class="row">
             <div class="col-md-12">
-                <a href="/portal/flows">
-                    <span class="button-blue">
-                            网络数据流
-                    </span>
-                </a>
-
-                <a href="/portal/flows/unforbid">
-
-                <span class="button-grey">
-                        被禁IP
-                </span>
-                </a>
+                <div style="display: inline-block; margin-right:15px">
+                        <a href="/portal/flows">
+                            <span class="button-blue" style="font-family:PingFangSC-Semibold; font-weight:600;">
+                                    网络数据流
+                            </span>
+                        </a>
+                </div>
+                <div style="display: inline-block; margin-left:0px;" >
+                        <a href="/portal/flows/unforbid">
+        
+                        <span class="button-grey" >
+                                被禁IP
+                        </span>
+                        </a>
+                </div>
                     
-                    <div class="form-group pull-right " style="padding-right: 1%; margin-left: 5px;">
-                            <select class="form-control input-sm show-all-proxy" style="height: 40px"  id="protocol_selection" onchange="change_protocol_selection(this.value);return false;">
+                    <div class="form-group pull-right " style="padding-right: 1%;">
+                            <select class="form-control input-sm show-all-proxy" style="height: 50px"  id="protocol_selection" onchange="change_protocol_selection(this.value);return false;">
                                     <option value="all">  显示所有协议</option>
                                     <option value="tcp_only">仅显示TCP协议</option>
                                     <option value="udp_only">仅显示UDP协议</option>
@@ -29,16 +32,15 @@
                     </div>
 
                     <div class="form-group pull-right">
-                            <span id="ipv4_only_button" class="button-deep-grey" onclick="change_ipv4_show_case();return false;"> </span>
-                            <span id="merge_ip_choice_button" class="button-deep-grey" onclick="change_merge_ip_choice();return false;"> </span>
-
+                            <span id="merge_ip_choice_button" class="button-deep-grey pull-left" onclick="change_merge_ip_choice();return false;"> </span>
+                            <span id="ipv4_only_button" class="button-deep-grey pull-left" onclick="change_ipv4_show_case();return false;"> </span>
                     </div>
 
-                    <div class="auto-refresh pull-right">
-                        <div class="auto-refresh-word pull-left">
+                    <div class="auto-refresh pull-right" style="margin-right: 20px;">
+                        <div class="auto-refresh-word pull-left" >
                                 自动刷新
                         </div>
-                            <div class="switch switch-small pull-left" style="min-width: 50px; margin: 5px 5px 5px 0px; ">
+                            <div class="switch switch-small pull-left" style="min-width: 50px; margin: 10px 0px 10px 5px; ">
                                 <input name="auto_refresh_box" id="auto_refresh_box" type="checkbox" onchange="change_auto_refresh(this)" checked />
                             </div>
                     </div>
@@ -47,17 +49,17 @@
         
     </div>
 </div>
-<table class="table table-hover table-bordered table-striped" style="margin-bottom: 0px; margin-top: 10px;">
+<table class="table table-hover table-bordered table-striped" style="margin-bottom: 0px; margin-top: 0px; text-align: center;">
     <thead class="netflow-table-head-word">
         <tr>
-            <th>应用</th>
-            <th> 协议</th>
-            <th>Client</th>
-            <th>Server</th>
-            <th>连接时长</th>
-            <th>真实传输率</th>
-            <th>总Bytes数</th>
-            <th>禁止访问</th>
+            <th style="text-align: center">应用</th>
+            <th style="text-align: center"> 协议</th>
+            <th style="text-align: center">Client</th>
+            <th style="text-align: center">Server</th>
+            <th style="text-align: center">连接时长</th>
+            <th style="text-align: center">真实传输率</th>
+            <th style="text-align: center">总Bytes数</th>
+            <th style="text-align: center">禁止访问</th>
         </tr>
     </thead>
     <tbody id="flow_table" class="netflow-table-body-word">

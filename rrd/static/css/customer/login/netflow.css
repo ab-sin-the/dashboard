@@ -18,21 +18,21 @@
 
 .auto-refresh{
     width:150px;
-    height:40px;
+    height:50px;
     background:rgba(255,255,255,1);
     border-radius:5px;
     border:1px solid rgba(242,242,242,1);
     margin-right: 10px;
+
 }
 
 .auto-refresh-word{
-    width: 70px;
     font-size:14px;
     font-family:PingFangSC-Regular;
     font-weight:400;
     color:rgba(80,80,80,1);
     line-height:20px;
-    margin: 10px 0px 10px 15px;
+    margin: 15px 0px 15px 20px;
     display: inline-block;
 }
 

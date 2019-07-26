@@ -11,21 +11,21 @@
 
 
 .homepage-select{
-    height:40px;
+    height:50px;
     background:rgba(255,255,255,1);
     border-radius:5px;
     border:1px solid rgba(242,242,242,1);
     display: inline-block;
     font-size:14px;
     font-family:PingFangSC-Regular;
-    font-weight:600;
-    color:rgba(177,177,177,1);
+    font-weight:400;
+    color:rgba(80,80,80,1);
     line-height:20px;
-    padding: 10px 19px;
+    padding: 15px 20px;
 }
 
 .screen-select{
-    height:40px;
+    height:50px;
     background:rgba(255,255,255,1);
     border-radius:5px 0px 0px 5px;
     border:1px solid rgba(242,242,242,1);
@@ -35,7 +35,7 @@
     font-weight:600;
     color:rgba(36,95,240,1);
     line-height:20px;
-    padding: 10px 30px;
+    padding: 15px 30px;
 }
 
 .screen-select-word {

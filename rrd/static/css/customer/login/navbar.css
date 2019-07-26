@@ -2,7 +2,6 @@
     font-size:14px;
     font-family:PingFangSC-Regular;
     font-weight:400;
-    margin: auto 30px;
     color:rgba(129,129,129,1);
     line-height:20px;
 }
@@ -26,40 +25,44 @@
 }
 
 .navbar-left-top-img{
-    margin: 5px auto;
-    height: 45px;
-    width: 45px;
+    height: 50px;
+    width: 50px;
+}
+
+
+.navbar-dashboard {
+    margin: 0 auto;
+    height: 50px;
+    width: 50px;
 }
 
 .navbar-left-user-profile{
-    margin: 20px auto;
-    height: 40px;
-    width: 40px;
+    margin: 0 auto;
+    height: 50px;
+    width: 50px;
 }
 
 .navbar-left-account{
-    margin: 20px auto;
-    height: 40px;
-    width: 40px;
+    margin: 0 auto;
+    height: 50px;
+    width: 50px;
 }
 
-.navbar-dashboard {
-    margin: 50px auto 20px;
-    height: 40px;
-    width: 40px;
-}
 
 .navbar-left-team{
-    margin: 20px auto;
-    height: 40px;
-    width: 40px;
+    margin: 0 auto;
+    height: 50px;
+    width: 50px;
 }
 
 .navbar-left-log-out{
     position: absolute;
-    bottom: 10px;
-    left: 20px;
-    margin: 30px auto;
-    height: 40px;
-    width: 40px;
+    bottom: 15px;
+    left: 15px;
+    height: 50px;
+    width: 50px;
+}
+
+.dropdown-icon{
+    
 }

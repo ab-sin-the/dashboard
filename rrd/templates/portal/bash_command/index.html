@@ -45,28 +45,28 @@
 <div class="row">
         <div class="col-md-12">
             <a href="/portal/file_log">
-                <span class="button-grey pull-left" style="margin: 0px 5px 0px 0px;"> 
+                <span class="button-grey pull-left" style="margin: 0px 10px 0px 0px;"> 
                     查看日志
                 </span>
             </a>
                 
             <a href="/portal/bash_command">
-                <span class="button-blue pull-left" style="margin: 0 5px;">
+                <span class="button-blue pull-left" style="margin: 0 10px; font-weight: 600;">
                     输入命令
                 </span>
             </a>
         
             <a href="/portal/security_audit">
-                <span class="button-grey pull-left" style="margin: 0 5px;">
+                <span class="button-grey pull-left" style="margin: 0 10px;">
                     基线核查/入侵检测
                 </span>
             </a>
         </div>
     </div>
     
-    <div class="row" style="margin-top: 10px">
+    <div class="row" style="margin-top: 15px; margin-bottom: 0px;" >
         <div class="col-md-12">
-            <input id="execute-command" name="execute_command" type="text" class="command-input-box" list="cmd_history" placeholder="在此处输入要执行的命令">
+            <input  style="padding: 15px 20px;" id="execute-command" name="execute_command" type="text" class="command-input-box" list="cmd_history" placeholder="在此处输入要执行的命令">
             <datalist id="cmd_history">
                 {% for single_cmd in history_cmds%}
                     <option>{{single_cmd}}</option>
@@ -75,14 +75,14 @@
         </div>
 
         <div class="col-md-12">
-            <pre id="command_result" class="command-log-display"></pre>    
+            <pre id="command_result" class="command-log-display" style="padding: 15px 20px;"></pre>    
         </div>
     </div>
 
-    <div class="row" style="margin-top: 10px">
+    <div class="row" style="margin-top: 10px; padding: 0px;">
         <div class="col-md-12">
-            <span class="large-button-blue" onclick="fn_search_log_file();" style="margin-left: 0px;"> 查看 </span>
-            <span class="large-button-green" onclick="refresh_command();"> 刷新 </span>
+            <span class="large-button-blue" onclick="fn_search_log_file();" style="margin-left: 0px;  margin-top: 0px; margin-right: 15px;"> 查看 </span>
+            <span class="large-button-green" onclick="refresh_command();" style="margin: 0px;"> 刷新 </span>
         </div>
     </div>
 

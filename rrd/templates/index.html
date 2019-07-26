@@ -5,7 +5,7 @@
     {% block screen_nav %}
     <div class="row" style="margin-bottom: 20px;">
         <div class="col-md-12">
-            <div class="pull-left" style="margin-top: 4px">
+            <div class="pull-left" style="margin-top: 9px">
                     <a href="#" onclick="fn_query({graphs: 'all'})" style="text-decoration: none;">
                         <span id="homepage_button_all" class="homepage-top-link-button" style="margin-left:  20px;">
                             All
@@ -17,55 +17,51 @@
                                 CPU/MEM/LOAD
                         </span>
                     </a>
-                    <a href="#" onclick="fn_query({graphs: 'disk'})" style="text-decoration: none; margin-left: 45px;">
+                    <a href="#" onclick="fn_query({graphs: 'disk'})" style="text-decoration: none; margin-left: 25px;">
                         <span id="homepage_button_disk" class="homepage-top-link-button"> 
                                 DISK
                         </span>
                     </a>
-                    <a href="#" onclick="fn_query({graphs: 'net'})"  style="text-decoration: none; margin-left: 45px;">
+                    <a href="#" onclick="fn_query({graphs: 'net'})"  style="text-decoration: none; margin-left: 25px;">
                         <span id="homepage_button_net" class="homepage-top-link-button"> 
                                 NETWORK
                         </span>
                     </a>
             </div>
             
-            <div class="pull-right" >
+            <div class="pull-right" style="margin-top: 0px;">
                 <div style="display: inline-block" >
                         {%if g.user.is_root() or g.user.is_admin()%}
-                        <a class="button-red pull-left" href="/screen/{{screen.id}}/delete" onclick="return confirm('确定要删除这个screen?');" style="text-decoration: none; margin-left: 0px; margin-right: 0px;">
+                        <a class="button-red pull-left" href="/screen/{{screen.id}}/delete" onclick="return confirm('确定要删除这个screen?');" style="text-decoration: none; margin-left: 0px; margin-right: 0px; color:rgba(221,77,84,1);                        ">
                                 删除
                         </a>
-                        <a class="button-grey pull-left" href="/screen/{{screen.id}}/graph" style="text-decoration: none; margin-left: 0px; margin-right: 0px;">
+                        <a class="button-grey pull-left" href="/screen/{{screen.id}}/graph" style="text-decoration: none; margin-left: 0px; margin-right: 0px; color:rgba(80,80,80,1);">
                                 +graph
                         </a>
                         {%endif%}
 
                     {%if g.legend == "on"%}
-                    <a class="button-grey pull-left" href="#" onclick="fn_query({legend: 'off'})" style="text-decoration: none;">
+                    <a class="button-grey pull-left" href="#" onclick="fn_query({legend: 'off'})" style="text-decoration: none; color:rgba(80,80,80,1);">
                                 隐藏legend
                     </a>
                     {%else%}
-                    <a class="button-grey pull-left " href="#" onclick="fn_query({legend: 'on'})" style="text-decoration: none;">
+                    <a class="button-grey pull-left " href="#" onclick="fn_query({legend: 'on'})" style="text-decoration: none; color:rgba(80,80,80,1);">
                                 显示legend
                         </a>
                     {%endif%}
                 </div>
-                <div class="btn-group" style="display: inline-block; margin-top: 0px; text-decoration: none; vertical-align: top; margin-left: 20px;">
-                        <button type="button" class="homepage-select" data-toggle="dropdown">
-                            布局 <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu" style="width: 100%; min-width: 50px;">
-                            <li><a href="#" onclick="fn_query({cols: '1'})"><small>1列</small></a></li>
-                            <li><a href="#" onclick="fn_query({cols: '2'})"><small>2列</small></a></li>
-                            <li><a href="#" onclick="fn_query({cols: '3'})"><small>3列</small></a></li>
-                            <li><a href="#" onclick="fn_query({cols: '4'})"><small>4列</small></a></li>
-                        </ul>
+                <div class="btn-group button-red" style="display: inline-block; margin-top: 0px; text-decoration: none; vertical-align: top; margin-left: 25px; padding: 13px 20px;">
+                        <div style="display: inline-block; width:20px; margin-right: 20px;">  <a href="#" onclick="fn_query({cols: '1'})" > <img src="/static/img/col-1.svg" width="18px" height="18px"> </a> </div>
+                        <div style="display: inline-block; width:20px; margin-right: 20px;">  <a href="#" onclick="fn_query({cols: '2'})" > <img src="/static/img/col-2.svg" width="18px" height="18px"> </a> </div>
+                        <div style="display: inline-block; width:20px; margin-right: 20px;">  <a href="#" onclick="fn_query({cols: '3'})" > <img src="/static/img/col-3.svg" width="18px" height="18px"> </a> </div>
+                        <div style="display: inline-block; width:20px;"> <a href="#" onclick="fn_query({cols: '4'})"> <img src="/static/img/col-4.svg" width="18px" height="18px"> </a> </div>
+
                     </div>
-                
+            
         
             <div class="btn-group pull-right" style="vertical-align: top;">
-                    <button type="button" class="homepage-select" data-toggle="dropdown">
-                        时间段 <span class="caret"></span>
+                    <button type="button" class="homepage-select" data-toggle="dropdown" style="padding: 16px 10px 16px 20px;">
+                        时间段 <div  style="margin-left:4px; display: inline-block; width: 20px;"><img src="/static/img/dropdown.svg" width="10px"></div>
                     </button>
                     <ul class="dropdown-menu" role="menu" style="width: 100%; min-width: 50px;">
                         <li><a href="#" onclick="fn_query({start: -3600})"><small>1h</small></a></li>
