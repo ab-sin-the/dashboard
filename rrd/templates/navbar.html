@@ -2,11 +2,11 @@
 <div class="navbar-left" style="background-color: #fff;">
         <ul style="font-size:12px;list-style:none; padding: 0px;">
                 {%if g.user%}
-                    <li style="margin: 15px" > <img  class="navbar-left-top-img" src="/static/img/topcircle.svg" > </li>
-                    <li  class="navbar-dashboard" style="margin-top: 25px;"><div style="height: 100%; width: 100%; padding: 13px;"> <a href="/portal/home"><img  src="/static/img/dashboard.svg"  height="24px" width="24px"></a></div></li>
-                    <li  class="navbar-left-user-profile" style="margin-top: 20px;"><div style="height: 100%; width: 100%; padding: 13px;"> <a href="/user/profile"><img src="/static/img/account.svg"  height="24px" width="24px"></a></div></li>
-                    <li class="navbar-left-account" style="margin-top: 20px;" ><div style="height: 100%; width: 100%; padding: 13px;"> <a href="/user/list"><img src="/static/img/personinfo.svg"  height="24px" width="24px"></a> </div></li>
-                    <li class="navbar-left-team" style="margin-top: 20px;"><div style="height: 100%; width: 100%; padding: 13px;"> <a href="/team/list"> <img src="/static/img/team.svg"  height="24px" width="24px"></a></div></li>
+                    <li style="margin: 15px; margin-bottom: 13px;" > <img  class="navbar-left-top-img" src="/static/img/topcircle.svg" > </li>
+                    <li  {%if g.left_nav_menu == "dashboard"%}class="navbar-left-icon-active"{%else%}class="navbar-left-icon"{%endif%}  style="margin-top: 25px;"><div style="height: 100%; width: 100%; padding: 13px;"> <a href="/portal/home"><img  {%if g.left_nav_menu == "dashboard"%} src="/static/img/dashboard-white.svg"{%else%} src="/static/img/dashboard.svg"{%endif%}  height="24px" width="24px"></a></div></li>
+                    <li  {%if g.left_nav_menu == "user_profile"%}class="navbar-left-icon-active"{%else%}class="navbar-left-icon"{%endif%} style="margin-top: 20px;"><div style="height: 100%; width: 100%; padding: 13px;"> <a href="/user/profile"><img {%if g.left_nav_menu == "user_profile"%}src="/static/img/account-white.svg"{%else%} src="/static/img/account.svg" {%endif%}  height="24px" width="24px"></a></div></li>
+                    <li  {%if g.left_nav_menu == "user_list"%}class="navbar-left-icon-active"{%else%}class="navbar-left-icon"{%endif%} style="margin-top: 20px;" ><div style="height: 100%; width: 100%; padding: 13px;"> <a href="/user/list"><img {%if g.left_nav_menu == "user_list"%} src="/static/img/personinfo-white.svg" {%else%}src="/static/img/personinfo.svg" {%endif%}  height="24px" width="24px"></a> </div></li>
+                    <li {%if g.left_nav_menu == "team_list"%}class="navbar-left-icon-active"{%else%}class="navbar-left-icon"{%endif%} style="margin-top: 20px;"><div style="height: 100%; width: 100%; padding: 13px;"> <a href="/team/list"> <img  {%if g.left_nav_menu == "team_list"%} src="/static/img/team-white.svg"{%else%} src="/static/img/team.svg"{%endif%}  height="24px" width="24px"></a></div></li>
                     <li class="navbar-left-log-out"> <div style="height: 100%; width: 100%; padding: 13px;"> <a href="/auth/logout"><img src="/static/img/logout.svg" height="24px" width="24px"></a> </div> </li>
                 {%else%}
                     <li><a href="/auth/login">登录</a></li>
@@ -49,10 +49,10 @@
             
         <ul class="nav navbar-nav navbar-right navbar-word pull-left">
 
-         <li {%if g.nav_menu == "p_home"%}class="active"{%endif%}><a style="text-align: center; margin-left: 38px;" href="/portal/home">主页</a></li>
-         <li {%if g.nav_menu == "p_process"%}class="active"{%endif%}><a style="text-align: center;" href="/portal/process">进程监控</a></li>
-         <li class="dropdown"  style="height: 70px;" {%if g.nav_menu == "p_flows"%}class="active"{%endif%}>
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-align: center; height: 70px;">网络流<div  style="margin-left:4px; display: inline-block; width: 20px;"><img src="/static/img/dropdown.svg" width="10px"></div></a>
+         <li {%if g.nav_menu == "p_home"%}class="active"{%endif%}><a style="text-align: center; margin-left: 36px; padding-left: 28px; padding-right: 28px;" href="/portal/home">主页</a></li>
+         <li {%if g.nav_menu == "p_process"%}class="active"{%endif%}><a style="text-align: center;  padding-right: 28px; padding-left: 28px; " href="/portal/process">进程监控</a></li>
+         <li {%if g.nav_menu == "p_flows"%}class="dropdown active"{%else%}class="dropdown"{%endif%}   style="height: 70px;" >
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-align: center; height: 70px; padding-right: 5px;  padding-right: 28px; padding-left: 28px;">网络流<div  style="margin-left:4px; display: inline-block; width: 20px;"><img src="/static/img/dropdown.svg" width="10px"></div></a>
             <ul class="dropdown-menu" role="menu" style="font-size:12px;">
                 <li><a href="/portal/flows">监控</a></li>
                 <li><a href="/portal/flows/unforbid">黑名单维护</a></li>
@@ -60,8 +60,8 @@
            </li>
 
 
-         <li class="dropdown" style="height: 70px;" {%if g.nav_menu == "nav_bash"%}class="active"{%endif%}>
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-align: center;  height: 70px;">命令相关<div  style="margin-left:4px; display: inline-block; width: 20px; "><img src="/static/img/dropdown.svg" width="10px"></div></a>
+         <li {%if g.nav_menu == "nav_bash"%}class="dropdown active"{%else%}class="dropdown"{%endif%}   style="height: 70px;" >
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-align: center;  height: 70px; padding-right: 5px; padding-right: 28px; padding-left: 28px;">命令相关<div  style="margin-left:4px; display: inline-block; width: 20px; "><img src="/static/img/dropdown.svg" width="10px"></div></a>
             <ul class="dropdown-menu" role="menu" style="font-size:12px;">
                 <li><a href="/portal/file_log">查看日志</a></li>
                 <li><a href="/portal/bash_command">输入命令</a></li>
@@ -69,22 +69,22 @@
             </ul>
            </li>
 
-         <li {%if g.nav_menu == "nav_dashboard"%}class="active"{%endif%}><a style="text-align: center" href="/portal/dashboard">控制面板</a></li>
-         <li {%if g.nav_menu == "nav_screen"%}class="active"{%endif%}> <a style="text-align: center" href="/screen">监控图</a> </li>
+         <li {%if g.nav_menu == "nav_dashboard"%}class="active"{%endif%}><a style="text-align: center; padding-right: 28px; padding-left: 28px;" href="/portal/dashboard">控制面板</a></li>
+         <li {%if g.nav_menu == "nav_screen"%}class="active"{%endif%}> <a style="text-align: center; padding-right: 28px; padding-left: 28px;" href="/screen">监控图</a> </li>
           <!--
           {%if g.user and (g.user.is_root() or g.user.is_admin())%}
           <li {%if g.nav_menu == "p_hostgroup"%}class="active"{%endif%}><a href="/portal/hostgroup">服务器组</a></li>
           <li {%if g.nav_menu == "p_template"%}class="active"{%endif%}><a href="/portal/template">报警模板</a></li>
           {%endif%}
           -->
-          <li {%if g.nav_menu == "p_expression"%}class="active"{%endif%}><a style="text-align: center" href="/portal/expression">报警规则定义</a></li>
+          <li {%if g.nav_menu == "p_expression"%}class="active"{%endif%}><a style="text-align: center; padding-right: 28px; padding-left: 28px;" href="/portal/expression">报警规则定义</a></li>
          
           <!--
           {%if g.user and (g.user.is_root() or g.user.is_admin())%}
           <li {%if g.nav_menu == "p_nodata"%}class="active"{%endif%}><a href="/portal/nodata">空数据监控</a></li>
           {%endif%}
           -->
-          <li {%if g.nav_menu == "p_alarm-dash"%}class="active"{%endif%}><a style="text-align: center" href="/portal/alarm-dash/case">报警控制面板</a></li>
+          <li {%if g.nav_menu == "p_alarm-dash"%}class="active"{%endif%}><a style="text-align: center;padding-right: 28px; padding-left: 28px;" href="/portal/alarm-dash/case">报警控制面板</a></li>
    
         </ul>
     </div>

@@ -68,7 +68,7 @@ def app_before():
     
     if path.startswith("/screen"):
         g.nav_menu = "nav_screen"
-    elif path.startswith("portal/dashboard/"):
+    elif path.startswith("/portal/dashboard"):
         g.nav_menu = "nav_dashboard"
     elif path.startswith("/portal/home"):
         g.nav_menu = "p_home"
@@ -92,4 +92,13 @@ def app_before():
         return redirect("portal/home")
     else:
         g.nav_menu = ""
+
+    if path.startswith("/user/profile"):
+        g.left_nav_menu = "user_profile"
+    elif path.startswith("/user/list"):
+        g.left_nav_menu = "user_list"
+    elif path.startswith("/team/list"):
+        g.left_nav_menu = "team_list"
+    else:
+        g.left_nav_menu = "dashboard"
     

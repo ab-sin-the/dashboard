@@ -30,29 +30,18 @@
 }
 
 
-.navbar-dashboard {
+.navbar-left-icon{
     margin: 0 auto;
     height: 50px;
     width: 50px;
 }
 
-.navbar-left-user-profile{
+.navbar-left-icon-active{
     margin: 0 auto;
     height: 50px;
     width: 50px;
-}
-
-.navbar-left-account{
-    margin: 0 auto;
-    height: 50px;
-    width: 50px;
-}
-
-
-.navbar-left-team{
-    margin: 0 auto;
-    height: 50px;
-    width: 50px;
+    background:rgba(36,95,240,1);
+    border-radius:5px;
 }
 
 .navbar-left-log-out{
