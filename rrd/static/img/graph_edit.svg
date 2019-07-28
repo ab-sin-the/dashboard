@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="13px" viewBox="0 0 13 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>Editor/ic_border_color</title>
+    <desc>Created with Sketch.</desc>
+    <g id="系统监控" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.400000006">
+        <g id="主页" transform="translate(-685.000000, -169.000000)">
+            <g id="编组-5" transform="translate(100.000000, 150.000000)">
+                <g id="Editor/ic_border_color" transform="translate(585.000000, 19.000000)">
+                    <g id="ic_border_color">
+                        <polygon id="Bounds" points="0 0.484848485 12.3208556 0.484848485 12.3208556 12.1212121 0 12.1212121"></polygon>
+                        <path d="M9.11229947,3.87843425 L7.18716578,2.06044181 L2.05347594,6.90842166 L2.05347594,8.7264141 L3.97860963,8.7264141 L9.11229947,3.87843425 L9.11229947,3.87843425 Z M10.6318717,2.44343222 L9.62566845,3.39363627 L7.70053476,1.57564382 L8.70673797,0.625439774 C8.90695187,0.43636856 9.23037433,0.43636856 9.43058824,0.625439774 L10.6318717,1.75986706 C10.8320856,1.94893827 10.8320856,2.254361 10.6318717,2.44343222 Z M0,10.1808081 L12.3208556,10.1808081 L12.3208556,12.12 L0,12.12 L0,10.1808081 Z" id="Icon" fill="#000000"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

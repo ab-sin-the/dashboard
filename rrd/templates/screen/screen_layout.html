@@ -9,7 +9,6 @@ function fn_toogle_legend_flot(a, i) {
     } else {
         $l.hide();
     }
-    $(a).text('切换legend');
     return false;
 }
 
@@ -23,7 +22,6 @@ function fn_toogle_sum_flot(a, i) {
     } else {
         s = 'on';
     }
-    $(a).text('切换求和');
     u = u.set('sum', s);
     var dataU = url.split('?')[0] + u.toString();
     $container.data('u', dataU);
@@ -53,44 +51,31 @@ $(function(){
                 {% set col = (12/layout)|int %}
                 <div class="col-md-{{col}}" id="graph-{{i}}" style="padding:3px;">
                         <div class="panel panel-default chart-container" data-u="{{graph.src}}">
-                                <div class="panel-heading" style="padding: 10px 5px; background: 0%">
+                                <div class="panel-heading" style="padding: 15px 20px; background: 0%">
                                     
                                     
-                                    <div class="btn-group pull-right">
-                                        <a class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" href="#">
-                                            <span class="caret"></span>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li> 
-                                                <a class="btn btn-link btn-xs reset-zoom" style="border: none;" data-index="{{i}}">重置监控图宽度</a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0);" class="btn btn-link btn-xs" onclick="return fn_toogle_legend_flot(this, '{{i}}');">切换legend</a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0);" class="btn btn-link btn-xs" onclick="return fn_toogle_sum_flot(this, '{{i}}');">切换求和</a>
-                                            </li>
-
-                                            <li>
+                                    <div class="pull-right" style="display: inline-block">
+                                        <div class="pull-left" style="display: inline-block; margin-left: 7px;"><a href="javascript:void(0);" class="btn btn-link btn-xs" onclick="return fn_toogle_legend_flot(this, '{{i}}');"> <img src="/static/img/graph_legend.svg"> </a></div>
+                                        <div class="pull-left" style="display: inline-block; margin-left: 7px;"><a href="javascript:void(0);" class="btn btn-link btn-xs" onclick="return fn_toogle_sum_flot(this, '{{i}}');"> <img src="/static/img/graph_sum.svg"> </a></div>
+                                        <div class="pull-left" style="display: inline-block; margin-left: 7px;">
                                             {%set big_graph = graph.src.replace("graph_type=h", "").replace("graph_type=k", "").replace("graph_type=a", "")%}
                                             {%if graph.src.find("/chart/h") >=0 %}
                                                 {%set big_graph = graph.src.replace("/chart/h", "/chart/big")%}
-                                                <a href="{{big_graph|safe}}&start=-86400&graph_type=h" target="__blank" class="btn btn-link btn-xs">查看大图</a>
+                                                <a href="{{big_graph|safe}}&start=-86400&graph_type=h" target="__blank" class="btn btn-link btn-xs"><img src="/static/img/graph_large.svg"> </a>
                                             {%elif graph.src.find("/chart/k") >=0%}
                                                 {%set big_graph = graph.src.replace("/chart/k", "/chart/big")%}
-                                                <a href="{{big_graph|safe}}&start=-86400&graph_type=k" target="__blank" class="btn btn-link btn-xs">查看大图</a>
+                                                <a href="{{big_graph|safe}}&start=-86400&graph_type=k" target="__blank" class="btn btn-link btn-xs"><img src="/static/img/graph_large.svg"> </a>
                                             {%else%}
                                                 {%set big_graph = graph.src.replace("/chart/a", "/chart/big")%}
-                                                <a href="{{big_graph|safe}}&start=-86400&graph_type=a" target="__blank" class="btn btn-link btn-xs">查看大图</a>
+                                                <a href="{{big_graph|safe}}&start=-86400&graph_type=a" target="__blank" class="btn btn-link btn-xs"><img src="/static/img/graph_large.svg"> </a>
                                             {%endif%}
-                                            </li>
-                                            {%if g.user.is_root() or g.user.is_admin()%}
-                                            <li>
-                                                <a href="/graph/{{graph.id}}/edit" target="__blank" class="btn btn-link btn-xs">编辑</a>
-                                            </li>
-                                            {%endif%}
-                                        </ul>
+                                        </div>
+                                        {%if g.user.is_root() or g.user.is_admin()%}
+                                        <div class="pull-left" style="display: inline-block; margin-left: 7px;"><a href="/graph/{{graph.id}}/edit" target="__blank" class="btn btn-link btn-xs" style="border: none"> <img src="/static/img/graph_edit.svg"> </a></div>
+                                        {%endif%}
+                                        <div class="pull-left" style="display: inline-block; margin-left: 7px;"><a class="btn btn-link btn-xs reset-zoom" style="border: none" data-index="{{i}}"> <img src="/static/img/graph_rescale.svg"> </a></div>
                                     </div>
+
                                     <span class="panel-title g-title">{{graph.title}}</span>
                                 </div>
 
@@ -98,7 +83,7 @@ $(function(){
                                     <span class="chart-title"></span>
                                 </div>
 
-                                <div class="chart-{{i}} chart-area panel-body" style="margin:10px;padding:10px;"></div>
+                                <div class="chart-{{i}} chart-area panel-body" style="margin:20px;padding:10px; margin-top: 12px;"></div>
                                 <div class="legend panel-body graph-legend"></div>
                         </div>
                     {%set i=i+1%}
