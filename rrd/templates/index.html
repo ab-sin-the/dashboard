@@ -51,10 +51,10 @@
                     {%endif%}
                 </div>
                 <div class="btn-group button-red" style="display: inline-block; margin-top: 0px; text-decoration: none; vertical-align: top; margin-left: 25px; padding: 13px 20px;">
-                        <div style="display: inline-block; width:20px; margin-right: 20px;">  <a href="#" onclick="fn_query({cols: '1'})" > <img src="/static/img/col-1.svg" width="18px" height="18px"> </a> </div>
-                        <div style="display: inline-block; width:20px; margin-right: 20px;">  <a href="#" onclick="fn_query({cols: '2'})" > <img src="/static/img/col-2.svg" width="18px" height="18px"> </a> </div>
-                        <div style="display: inline-block; width:20px; margin-right: 20px;">  <a href="#" onclick="fn_query({cols: '3'})" > <img src="/static/img/col-3.svg" width="18px" height="18px"> </a> </div>
-                        <div style="display: inline-block; width:20px;"> <a href="#" onclick="fn_query({cols: '4'})"> <img src="/static/img/col-4.svg" width="18px" height="18px"> </a> </div>
+                        <div style="display: inline-block; width:20px; margin-right: 20px;"> <a href="#" onclick="fn_query({cols: '1'})" > {%if col_num==1%} <img src="/static/img/col-1-blue.svg" width="18px" height="18px"> {%else%} <img src="/static/img/col-1.svg" width="18px" height="18px"> {%endif%} </a> </div>
+                        <div style="display: inline-block; width:20px; margin-right: 20px;"> <a href="#" onclick="fn_query({cols: '2'})" > {%if col_num==2%} <img src="/static/img/col-2-blue.svg" width="18px" height="18px"> {%else%} <img src="/static/img/col-2.svg" width="18px" height="18px"> {%endif%} </a> </div>
+                        <div style="display: inline-block; width:20px; margin-right: 20px;"> <a href="#" onclick="fn_query({cols: '3'})" > {%if col_num==3%} <img src="/static/img/col-3-blue.svg" width="18px" height="18px"> {%else%} <img src="/static/img/col-3.svg" width="18px" height="18px"> {%endif%} </a> </div>
+                        <div style="display: inline-block; width:20px;"> <a href="#" onclick="fn_query({cols: '4'})"> {%if col_num==4%} <img src="/static/img/col-4-blue.svg" width="18px" height="18px"> {%else%} <img src="/static/img/col-4.svg" width="18px" height="18px"> {%endif%} </a> </div>
 
                     </div>
             

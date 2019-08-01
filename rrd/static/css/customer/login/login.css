@@ -1,7 +1,6 @@
 .login-form{ 
     width:559px;
     height:514px;
-    margin-left: 78px;
     background:rgba(255,255,255,1);
     box-shadow:0px 4px 20px 0px rgba(0,0,0,0.04);
     border-radius:5px;
@@ -103,4 +102,20 @@
    background-repeat: no-repeat !important;
    background-size: cover;
    background-color: rgba(247,250,255,1) ;
+}
+
+.login-page-body{
+    position: absolute;
+    width: 1050px;
+    overflow: hidden;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+}
+
+.login-left-word{
+    margin-top: 80px;
+    width: 412px; 
+    text-transform: uppercase;
+    float: left;
 }

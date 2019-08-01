@@ -50,7 +50,8 @@ def welcome_page_get():
     start = request.args.get("start")
     end = request.args.get("end")
     screens = DashboardScreen.gets_all()
-
+    col_num = int(request.args.get('cols', 2))
+    print(col_num)
     graphs_name = request.args.get("graphs")
     if graphs_name == None:
         graphs_name = "all"
@@ -78,7 +79,6 @@ def welcome_page_get():
 
     default_sub_screen = sub_screens[0]
     for sub_screen in sub_screens:
-        print(sub_screen.name)
         if sub_screen.name == default_sub_screen_name:
             default_sub_screen = sub_screen
 

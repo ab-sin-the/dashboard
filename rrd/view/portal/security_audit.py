@@ -39,6 +39,11 @@ def security_audit_get():
         'portal/security_audit/index.html'
     )
 
+@app.route('/portal/access_detect')
+def access_detect_get():
+    return render_template(
+        'portal/access_detect/index.html'
+    )
 
 @app.route('/api/security_audit')
 def execute_audit():
