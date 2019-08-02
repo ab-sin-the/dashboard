@@ -157,12 +157,12 @@
                                     <div style="margin: 0px 0px">
                                         <span class="large-button-blue" onclick="fn_list_counters();return false;" style="height: 36px; padding: 8px 25px; margin-left: 0px; line-height: 22px;">全局搜索</span>
 
-                                        <select class="dashboard-counter-num-select" id="counter-limit" onchange="fn_list_counters();return false;">
+                                        <select class="dashboard-counter-num-select select-style" style="background-position-x: 83px;" id="counter-limit" onchange="fn_list_counters();return false;">
                                                 <option value="50"> Limit 50</option>
                                                 <option value="100">Limit 100</option>
                                                 <option value="500">Limit 500</option>
                                         </select>
-                                        <select class="dashboard-counter-num-select" id="counter-page" onchange="fn_list_counters();return false;">
+                                        <select class="dashboard-counter-num-select select-style" style="background-position-x: 70px;" id="counter-page" onchange="fn_list_counters();return false;">
                                                 {%for p in range(1, 21)%}
                                                 <option value="{{p}}"> page {{p}}</option>
                                                 {%endfor%}

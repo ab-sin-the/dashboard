@@ -24,6 +24,16 @@
     padding: 15px 20px;
 }
 
+.select-style {
+    padding-left: 20px;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    background: url("/static/img/dropdown.svg") no-repeat scroll right center rgba(255,255,255,1);
+    background-size: 10px;
+    background-position-x: 115px;
+}
+
 .screen-select{
     height:50px;
     background:rgba(255,255,255,1);
