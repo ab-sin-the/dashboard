@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>Content/ic_clear备份 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-24.8%" y="-9.0%" width="149.5%" height="118.0%" filterUnits="objectBoundingBox" id="filter-1">
+            <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="5" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="10" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.05 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="系统监控" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.400000006">
+        <g id="监控视图_监控图表" transform="translate(-255.000000, -410.000000)">
+            <g id="编组" transform="translate(100.000000, 150.000000)">
+                <g id="编组-2" filter="url(#filter-1)" transform="translate(0.000000, 50.000000)">
+                    <g id="Content/ic_clear" transform="translate(165.000000, 215.000000)">
+                        <g id="ic_clear">
+                            <polygon id="Bounds" points="0 0 20 0 20 20 0 20"></polygon>
+                            <polygon id="Icon" fill="#000000" points="14.1666667 7.00833333 12.9916667 5.83333333 10 8.825 7.00833333 5.83333333 5.83333333 7.00833333 8.825 10 5.83333333 12.9916667 7.00833333 14.1666667 10 11.175 12.9916667 14.1666667 14.1666667 12.9916667 11.175 10"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

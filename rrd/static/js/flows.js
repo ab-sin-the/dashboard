@@ -37,7 +37,7 @@ function create_single_line(data_len) {
     tableData += "<td>" + data_len["column_thpt"] + "</td>";
     tableData += "<td>" + data_len["column_bytes"] + "</td>";
     button_id = "forbid_button_" + data_len["key"];
-    tableData += '<td> <span  style="height:26px;background:rgba(255,255,255,1);border-radius:5px;border:1px solid rgba(242,242,242,1);cursor: pointer; font-size:10px;font-family:PingFangSC-Semibold;font-weight:600;color:rgba(221,77,84,1);padding: 5px 8px" onclick="forbid_ip(' + "'" + data_len["column_client"] + "'" + "," + data_len["key"]  + ')";  id="' + button_id + '" >  禁止访问 ' +  "</span></td>";
+    tableData += '<td> <span  style="height:26px;background:rgba(255,255,255,1);border-radius:5px;border:1px solid rgba(242,242,242,1);cursor: pointer; font-size:10px;font-family:PingFangSC-Semibold;font-weight:600;color:rgba(221,77,84,1);padding: 6px 15px" onclick="forbid_ip(' + "'" + data_len["column_client"] + "'" + "," + data_len["key"]  + ')";  id="' + button_id + '" >  禁止访问 ' +  "</span></td>";
     tableData += "</tr>"
     return tableData;
 }

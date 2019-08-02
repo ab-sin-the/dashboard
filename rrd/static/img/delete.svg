@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="18px" viewBox="0 0 14 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>Action/ic_delete</title>
+    <desc>Created with Sketch.</desc>
+    <g id="系统监控" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.400000006">
+        <g id="报警规则定义" transform="translate(-1371.000000, -199.000000)">
+            <g id="编组" transform="translate(100.000000, 150.000000)">
+                <g id="Action/ic_delete" transform="translate(1266.000000, 46.000000)">
+                    <g id="ic_delete">
+                        <polygon id="Bounds" points="0 0 24 0 24 24 0 24"></polygon>
+                        <path d="M6,19 C6,20.1 6.9,21 8,21 L16,21 C17.1,21 18,20.1 18,19 L18,7 L6,7 L6,19 L6,19 Z M19,4 L15.5,4 L14.5,3 L9.5,3 L8.5,4 L5,4 L5,6 L19,6 L19,4 L19,4 Z" id="Icon" fill="#000000"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

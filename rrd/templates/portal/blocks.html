@@ -13,28 +13,78 @@
 {% set begin_idx = 1 if curr_page <= 3 else curr_page - left %}
 {% set end_idx = begin_idx + right %}
 {% set end_idx = page_num if end_idx > page_num else end_idx %}
-<ul class="pagination">
-    {%if curr_page > 1 %}
-    <li><a href="{{uri}}p=1&limit={{ limit }}">|&lt;</a></li>
-    <li><a href="{{uri}}p={{pre_page}}&limit={{ limit }}">&lt;</a></li>
-    {%else%}
-    <li class="disabled"><a>|&lt;</a></li>
-    <li class="disabled"><a>&lt;</a></li>
+<div> 
+    <div style="display: inline-block; float: left;">
+    <ul class="pagination" style="margin-top: 15px; height:50px; background:rgba(255,255,255,1); border-radius:5px; border:1px solid rgba(242,242,242,1);">
+        {%if curr_page > 1 %}
+        <li><a href="{{uri}}p=1&limit={{ limit }}"  style="margin-left: 7px;"> <img src="/static/img/page-left-end.svg" alt="" height="13px" width="13px"> </a></li>
+        <li><a style="margin-left: 9px; "  href="{{uri}}p={{pre_page}}&limit={{ limit }}"> <img src="/static/img/page-left.svg" alt="" height="13px" width="13px"> </a></li>
+        {%else%}
+        <li class="disabled"><a  style="margin-left: 7px;"> <img src="/static/img/page-left-end.svg" alt="" height="13px" width="13px"> </a></li>
+        <li class="disabled"><a  style="margin-left: 9px; "> <img src="/static/img/page-left.svg" alt="" height="13px" width="13px">  </a></li>
+        {%endif%}
+
+        {%if end_idx < begin_idx + 4%}
+            {% for idx in range(begin_idx, end_idx+1) %}
+            <li class="{%if curr_page == idx %}active{%endif%}" >
+            {% if idx ==begin_idx%}
+            <a href="{{uri}}p={{idx}}&limit={{ limit }}" style="margin-left: 19px; padding-top: 15px; padding-bottom: 13px;">{{idx}}</a>
+            {%else%}
+            <a href="{{uri}}p={{idx}}&limit={{ limit }}" style=" padding-top: 15px; padding-bottom: 13px;">{{idx}}</a>
+            {%endif%}    
+            </li>
+            {% endfor %}
+        {%else%}
+            {% for idx in range(begin_idx, begin_idx + 3) %}
+            <li class="{%if curr_page == idx %}active{%endif%}">
+            <a href="{{uri}}p={{idx}}&limit={{ limit }}"  style=" padding-top: 15px; padding-bottom: 13px;">{{idx}}</a>
+            </li>
+            {% endfor %}
+            <li class="disabled">
+                <span style=" padding-top: 15px; padding-bottom: 13px;">…</span>
+            </li>
+            <li class="{%if curr_page == end_idx %}active{%endif%}">
+                <a href="{{uri}}p={{end_idx}}&limit={{ limit }}" style=" padding-top: 15px; padding-bottom: 13px;">{{end_idx}}</a>
+            </li>
+        {%endif%}
+        {%if curr_page < page_num %}
+        <li><a href="{{uri}}p={{next_page}}&limit={{ limit }}" style="margin-right: 9px; margin-left: 19px;"> <img src="/static/img/page-right.svg" alt="" height="13px" width="13px">  </a></li>
+        <li><a href="{{uri}}p={{page_num}}&limit={{ limit }}"  style="margin-right: 7px; margin-left: 0px;"> <img src="/static/img/page-right-end.svg" alt="" height="13px" width="13px"> </a></li>
+        {%else%}
+        <li
+        class="disabled"><a style="margin-right: 9px; margin-left: 19px;">  <img src="/static/img/page-right.svg" alt="" height="13px" width="13px"></a></li>
+        <li
+        class="disabled"><a  style="margin-right: 7px; margin-left: 0px;"> <img src="/static/img/page-right-end.svg" alt="" height="13px" width="13px"> </a></li>
+        {%endif%}
+    </ul>
     {%endif%}
-    {% for idx in range(begin_idx, end_idx+1) %}
-    <li class="{%if curr_page == idx %}active{%endif%}">
-    <a href="{{uri}}p={{idx}}&limit={{ limit }}">{{idx}}</a>
-    </li>
-    {% endfor %}
-    {%if curr_page < page_num %}
-    <li><a href="{{uri}}p={{next_page}}&limit={{ limit }}">&gt;</a></li>
-    <li><a href="{{uri}}p={{page_num}}&limit={{ limit }}">&gt;|</a></li>
-    {%else%}
-    <li
-    class="disabled"><a>&gt;</a></li>
-    <li
-    class="disabled"><a>&gt;|</a></li>
-    {%endif%}
-</ul>
-{%endif%}
+    </div>
+
+    <div class="input-page" style="float: left;">
+        <input style="height: 20px; margin-top: 15px; border: none; width: 80px; margin-left: 5px;" id="number-jump" type="text" class="dashboard-panel-input" placeholder="输入页数" min="1">
+        <span style="margin-right:15px; float: right; margin-top: 15px; cursor: pointer;" onclick="page_jump()"><img src="/static/img/page-right-arrow.svg" alt=""> </span> 
+    </div>
+
+</div>
+
+<script>
+function page_jump(){
+    var href = $.query;
+    var page_num = $('#number-jump').val();
+    console.log(href)
+    console.log(page_num)
+    href = href.set('p', page_num);
+    window.location.href = href.toString();
+}
+
+function fn_query(kvs) {
+    var href = $.query;
+    for (var k in kvs){
+        href = href.set(k, kvs[k]);
+    }
+    window.location.href = href.toString();
+    return false;
+}
+
+</script>
 {%- endmacro %}

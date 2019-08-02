@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>AV/ic_pause</title>
+    <desc>Created with Sketch.</desc>
+    <g id="系统监控" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.400000006">
+        <g id="报警规则定义" transform="translate(-1244.000000, -201.000000)">
+            <g id="编组" transform="translate(100.000000, 150.000000)">
+                <g id="AV/ic_pause" transform="translate(1138.000000, 46.000000)">
+                    <g id="ic_pause">
+                        <polygon id="Bounds" points="0 0 24 0 24 24 0 24"></polygon>
+                        <path d="M6,19 L10,19 L10,5 L6,5 L6,19 L6,19 Z M14,5 L14,19 L18,19 L18,5 L14,5 L14,5 Z" id="Icon" fill="#000000"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

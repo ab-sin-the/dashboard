@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="6px" viewBox="0 0 10 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>arrow_down</title>
+    <desc>Created with Sketch.</desc>
+    <g id="系统监控" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="监控视图_监控图表" transform="translate(-470.000000, -172.000000)">
+            <g id="编组备份" transform="translate(300.000000, 150.000000)">
+                <g id="arrow_down" transform="translate(175.000000, 25.000000) rotate(-180.000000) translate(-175.000000, -25.000000) translate(165.000000, 15.000000)">
+                    <g id="ic_keyboard_arrow_down">
+                        <polygon id="Bounds" points="0 0 20 0 20 20 0 20"></polygon>
+                        <polygon id="Icon" fill="#B1B1B1" points="6.66666667 7.22222222 10 10.5555556 13.3333333 7.22222222 14.4444444 8.33333333 10 12.7777778 5.55555556 8.33333333"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

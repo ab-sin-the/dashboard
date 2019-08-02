@@ -54,3 +54,12 @@
     color:rgba(80,80,80,1);
 }
 
+.input-page{
+    height:50px;
+    background:rgba(255,255,255,1);
+    border-radius:5px;
+    border:1px solid rgba(242,242,242,1);
+    display: inline-block;
+    margin-left: 20px;
+    margin-top: 15px;
+}
