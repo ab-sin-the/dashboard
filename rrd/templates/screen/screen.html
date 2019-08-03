@@ -8,8 +8,8 @@
             <div class="col-md-12" style="margin-bottom: 15px;">
                 
                 <a class="button-blue pull-left" href="/screen" style="font-family:PingFangSC-Semibold; font-weight:600;"> 监控图表</a>
-                <a class="button-grey pull-right" href="/screen/add" style="color: rgba(129,129,129,1);">
-                    + 增加监控图表
+                <a href="/screen/add">
+                        <span class="button-grey pull-right" style="padding-left: 15px;"><span style="margin-right: 5px;"> <img src="/static/img/add.svg" alt="" style="margin-top: -2px;"></span>       增加监控图表</span>
                 </a>
             </div>
         </div>
@@ -92,7 +92,7 @@
 
     {% block graphs %}
     <div class="my-container-fluid" style="margin-left: 0px; padding-left: 10px;">
-        <div class="row">
+        <div class="row" style="margin-left: -10px; margin-right:-22px;">
             <div class="col-md-12">
                 {{screen_layout.layout_block(g.cols, all_graphs)}}
             </div>

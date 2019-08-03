@@ -223,7 +223,7 @@ function update_expression() {
 
 function pause_expression(id) {
     var pause = '1';
-    if ($('#i-' + id).attr('class').indexOf('play') > 0) {
+    if (document.getElementById('i-' + id).innerHTML.indexOf('play') > 0) { 
         // current: pause
         pause = '0'
     }
@@ -232,9 +232,9 @@ function pause_expression(id) {
             err_message_quietly(json.msg);
         } else {
             if (pause == '1') {
-                $('#i-' + id).attr('class', 'glyphicon glyphicon-play orange')
+                document.getElementById('i-' + id).innerHTML = '<img src="/static/img/play.svg" alt="">'
             } else {
-                $('#i-' + id).attr('class', 'glyphicon glyphicon-pause orange')
+                document.getElementById('i-' + id).innerHTML = '<img src="/static/img/pause.svg" alt="">'
             }
         }
     });

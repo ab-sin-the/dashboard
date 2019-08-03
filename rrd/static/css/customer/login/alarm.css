@@ -28,13 +28,17 @@
 }
 
 .alarm-checkbox {
-    height: 18px;
-    width: 18px;
-    background: transparent;
-    border: 1px black;
-    margin: 10px 10px;
-    background-color: transparent;
     display: inline-block;
+    background: url(/static/img/checkbox_m1_unchecked.svg) no-repeat;
+    background-position: center;
+    width: 24px;
+    height: 24px;
+    border: none;
+}
+
+input[type="checkbox"]:checked + .alarm-checkbox{
+    background: url(/static/img/checkbox_m1_checked.svg) no-repeat;
+    background-position: center; 
 }
 
 .alarm-right-button{

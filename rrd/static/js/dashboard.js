@@ -68,7 +68,7 @@ function fn_list_counters(){
                         display_counter_type = "原始值";
                     }
                     var line_html = '<tr>'
-                    + '<td><input type="checkbox" class="input shiftCheckbox" data-fullkey="'+c[0]+'"></input></td>'
+                    + '<td style="padding-left:5px;"><input type="checkbox" class="input shiftCheckbox" data-fullkey="'+c[0]+'" id="'+c[0]+'" style="display:none;"></input><label for="' + c[0] +'" class="alarm-checkbox" style="background-size: 14px;margin-top: 8px;"></label> </td>'
                     + '<td><a href="javascript:void(0);" onclick="fn_show_chart(\'' + c[0] + '\')" >' + c[0] + '</a></td>'
                     + '<td>'+ display_counter_type +'</td>'
                     + '<td>'+ c[2] +'s</td>'
@@ -87,10 +87,8 @@ function fn_list_counters(){
 function fn_delete_counters(){
     var checked_hosts = new Array();
     $("#tbody-endpoints input:checked").each(function(i, o){
-        if($(o).is(":visible")){
             var hostfullname = $(o).attr("data-fullname");
             checked_hosts.push(hostfullname);
-        }
     });
     if(checked_hosts.length === 0){
         err_message_quietly("先选endpoint：）");
@@ -99,10 +97,8 @@ function fn_delete_counters(){
 
     var checked_items = new Array();
     $("#tbody-counters input:checked").each(function(i, o){
-        if($(o).is(":visible")){
             var key_ = $(o).attr("data-fullkey");
             checked_items.push(key_);
-        }
     });
     if (checked_items.length === 0){
         err_message_quietly("请选择counter");

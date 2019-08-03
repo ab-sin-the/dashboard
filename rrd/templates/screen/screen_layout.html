@@ -103,39 +103,37 @@ $(function(){
 
 {% macro screen_main_menu(current_top_screen, top_screens) -%}
     <div class="btn-group " >
-      <button class="btn btn-default btn-xs dropdown-toggle screen-select" data-toggle="dropdown">
+      <button class="btn btn-default btn-xs dropdown-toggle screen-select" data-toggle="dropdown" style="padding-right: 0px;">
         {%if current_top_screen%}
             {{current_top_screen.name}}
         {%else%}
             <span  style="padding:10px 80px; ">图表</span> 
         {%endif%}
-        <span class="caret"></span>
+        <span class="pull-right" style="padding: 0px 15px; margin-left: 5px;"> <img src="/static/img/dropdown.svg" alt=""></span>
       </button>
 
-      <ul class="dropdown-menu" role="menu"  style="width: 100%">
+      <ul class="dropdown-menu" role="menu"  style="width: 100%;">
             {%if g.user.is_root() or g.user.is_admin()%}
-            <li><a href="/screen/add" style="font-size:20px;
-                font-family:PingFangSC-Regular;
-                font-weight:600;
-                color:rgba(80,80,80,1);
-                line-height:20px; padding: 5px 46%;"> + </a></li>
+            <li style="height: 46px;"><a href="/screen/add" style="padding: 10px 46%;" > <img src="/static/img/add.svg" alt=""> </a></li>
+            <hr style="margin: 2px;">
             {%endif%}
-        <li>
-            <div class="form-group search-area">
-                <input  style="border: none;" class="form-control" id="searchinput" type="search" placeholder="搜索..">
-                <hr style="margin: 0px;">
+
+        <li style="height: 46px;">
+            <div class="form-group search-area" style="height: 46px;">
+                <input  style= "border-style: none; box-shadow:none;" class="form-control" id="searchinput" type="search" placeholder="搜索..">
             </div>
         </li>
+        <hr style="margin: 2px;">
         {%for c in top_screens%}
-        <li class="screen" role="presentation">
+        <li class="screen" role="presentation" style="height: 46px; padding-top: 10px;">
             <span role="menuitem" style="margin-left:15px;line-height:25px;"> 
             <a href="/screen/{{c.id}}" ><small class=" screen-select-word">{{c.name}}</small></a>
             {%if g.user.is_root() or g.user.is_admin()%}
-            <a href='/screen/{{c.id}}/delete' class="glyphicon glyphicon-remove pull-right" style="margin-right:10px; color: grey;" onclick="return confirm('确定要删除这个screen?');"></a>
+            <a href='/screen/{{c.id}}/delete'  style="float: right; margin-right:10px; padding-top: -2px;" onclick="return confirm('确定要删除这个screen?');"><img src="/static/img/clear.svg" alt=""></a>
             {%endif%}
             </span>
-            <hr style="margin:5px;"/>
         </li>
+        <hr style="margin: 2px;">
         {%endfor%}
       </ul>
 
@@ -144,33 +142,29 @@ $(function(){
 
 {% macro screen_sub_menu(current_top_screen, current_sub_screen, sub_screens) -%}
     <div class="btn-group" style="margin-left: 0px;">
-      <button class="btn btn-default btn-xs dropdown-toggle screen-select" data-toggle="dropdown">
+      <button class="btn btn-default btn-xs dropdown-toggle screen-select" data-toggle="dropdown" style="padding-right: 0px;">
         {%if current_sub_screen %}
             {{current_sub_screen.name}}
         {%else%}
         <span  style="padding:10px 80px; ">选择</span> 
         {%endif%}
-        <span class="caret"></span>
+        <span class="pull-right" style="padding: 0px 15px; margin-left: 5px;"> <img src="/static/img/dropdown.svg" alt=""></span>
       </button>
 
       <ul class="dropdown-menu" role="menu" style="width: 100%;">
         {%if current_top_screen %}
             {% if g.user.is_root() or g.user.is_admin()%}
-            <li><a href="/screen/add?pid={{current_top_screen.id}}" style="font-size:20px;
-                font-family:PingFangSC-Regular;
-                font-weight:600;
-                color:rgba(80,80,80,1);
-                line-height:20px; padding: 5px 46%;"> +</a></li>
-                <hr style="margin: 0px;">
+            <li style="height: 46px;"><a href="/screen/add?pid={{current_top_screen.id}}" style="padding: 10px 46%;"> <img src="/static/img/add.svg" alt=""> </a></li>
+            <hr style="margin: 2px;">
             {%endif%}
         {%endif%}
 
         {%for c in sub_screens%}
-        <li class="screen" role="presentation">
+        <li style="height: 46px; padding-top: 10px;" class="screen" role="presentation">
             <a role="menuitem" href="/screen/{{c.id}}"><small  class=" screen-select-word">{{c.name}}</small></a>
-            <hr style="margin:2px;"/>
         </li>
-        </li>
+        <hr style="margin:2px;"/>
+
         {%endfor%}
       </ul>
 
@@ -180,23 +174,22 @@ $(function(){
 
 {% macro screen_home_menu(current_top_screen, current_sub_screen, sub_screens) -%}
     <div class="btn-group">
-      <button class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+      <button class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" style="padding-right: 0px;">
         {%if current_sub_screen %}
             {{current_sub_screen.name}}
         {%else%}
             选择
         {%endif%}
-        <span class="caret"></span>
       </button>
+      <span class="pull-right" style="padding: 0px 15px; margin-left: 5px;"> <img src="/static/img/dropdown.svg" alt=""></span>
 
       <ul class="dropdown-menu" role="menu">
 
         {%for c in sub_screens%}
-        <li class="screen" role="presentation">
+        <li class="screen" role="presentation" style="height: 46px; padding-top: 10px;">
             <a role="menuitem" href="/screen/home/{{c.id}}"><small>{{c.name}}</small></a>
-            <hr style="margin:2px;"/>
         </li>
-        </li>
+        <hr style="margin:2px;"/>
         {%endfor%}
       </ul>
 

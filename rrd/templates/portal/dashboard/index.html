@@ -128,7 +128,7 @@
                                 {%for obj in endpoint_objs%}
                                 <tr>
                                 <td><input type="checkbox" class="input shiftCheckbox"
-                                    data-eid="{{obj['id']}}"  data-fullname="{{obj['endpoint']}}"></input></td>
+                                    data-eid="{{obj['id']}}"  data-fullname="{{obj['endpoint']}}" checked></input></td>
                                 <td>{{obj['endpoint']}}</td>
                                 </tr>
                                 {%endfor%}
@@ -152,29 +152,28 @@
                         </div>
                         <div class="dashboard-panel-body-p1" style="border-bottom: hidden;">
                             <div class="dashboard-panel-body-p1-form" >
-                                    <label class="dashboard-panel-body-p1-form-label" style="margin-top: 10px">Counter</label>
+                                    <label class="dashboard-panel-body-p1-form-label" style="margin-top: 10px; display: block;">Counter</label>
                                     <input style="height: 50px;" id="counter-search" type="text" class="dashboard-panel-input" placeholder="输入节点关键词，使用空格来分隔它们。">
-                                    <div style="margin: 0px 0px">
-                                        <span class="large-button-blue" onclick="fn_list_counters();return false;" style="height: 36px; padding: 8px 25px; margin-left: 0px; line-height: 22px;">全局搜索</span>
+                                    <span class="large-button-blue" onclick="fn_list_counters();return false;" style="height: 36px; padding: 8px 25px; margin-left: 270px; line-height: 22px; margin-top: 10px; margin-bottom: 0px;">全局搜索</span>
+                                    <div style="margin: 0px 0px; margin-top: 20px;">
 
                                         <select class="dashboard-counter-num-select select-style" style="background-position-x: 83px;" id="counter-limit" onchange="fn_list_counters();return false;">
                                                 <option value="50"> Limit 50</option>
                                                 <option value="100">Limit 100</option>
                                                 <option value="500">Limit 500</option>
                                         </select>
-                                        <select class="dashboard-counter-num-select select-style" style="background-position-x: 70px;" id="counter-page" onchange="fn_list_counters();return false;">
+                                        <select class="dashboard-counter-num-select select-style" style="background-position-x: 70px; margin-left: 10px;" id="counter-page" onchange="fn_list_counters();return false;">
                                                 {%for p in range(1, 21)%}
                                                 <option value="{{p}}"> page {{p}}</option>
                                                 {%endfor%}
                                         </select>
-                                        {%if g.user.is_root() or g.user.is_admin()%}
-                                        <span class="large-button-red pull-right" onclick="fn_delete_counters();return false;" style="height: 36px; padding: 8px 25px; line-height: 22px; margin-right: 0px;">删除counters</span>
-                                        {%endif%}
+                                        <input style="height: 50px;" id="counter-filter" type="text" class="dashboard-filter-input" placeholder="输入快捷过滤关键词">
+                                        <span class="large-button-blue" style="margin-top: 0px; height: 38px; padding: 10px 25px; margin-left: 193px;"  onclick="filter_counter();return false;">{{_('快速过滤')}}</span>
+
+                                      
                                     </div>
 
                                     <div style="margin: 10px 0px">
-                                            <input style="height: 50px;" id="counter-filter" type="text" class="dashboard-filter-input" placeholder="输入快捷过滤关键词">
-                                            <span class="large-button-blue pull-right" style="margin-top: 5px; height: 40px; padding: 10px 25px; margin-right: 0px;"  onclick="filter_counter();return false;">{{_('快速过滤')}}</span>
                                     </div>
 
                                     
@@ -182,11 +181,14 @@
                             <div class="dashboard-panel-body-p1 col-md-12" style="margin-top: 25px; background: #fff">
 
                                     <table class="table">
-                                            <thead> <tr>
-                                                <th width="30px"><input type="checkbox" id="check_all_counters"></th>
+                                            <thead> <tr style="height: 78px;">
+                                                <th width="30px" style="padding-left: 5px;" ><input type="checkbox" id="check_all_counters" style="display: none;"> <label for="check_all_counters" class="alarm-checkbox" style="background-size: 14px;margin-top: 8px;"></label> </th>
                                                 <th class="dashboard-header-counter">Counters</th>
                                                 <th class="dashboard-header-other" width="60px">{{_('类型')}}</th>
                                                 <th class="dashboard-header-other" width="60px">{{_('间隔')}}</th>
+                                                {%if g.user.is_root() or g.user.is_admin()%}
+                                                <th style="padding-right: 70px;"><span class="large-button-red pull-right" onclick="fn_delete_counters();return false;" style="height: 36px; padding: 8px 25px; line-height: 22px; margin: 0px;">删除counters</span></th>
+                                                {%endif%}
                                             </tr></thead>
                                             <tbody id="tbody-counters"> </tbody>
                                         </table>

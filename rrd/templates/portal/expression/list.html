@@ -13,54 +13,61 @@
 <div id="container" class="container-fluid" style="padding-left: 0px;">
 	<div class="row">
             <div class="form-inline" role="form">
-                    <div class="col-md-12" style="margin-bottom: 10px;">
+                    <div class="col-md-12" style="margin-bottom: 10px; padding-right: 0px;" >
             
                             <div class="expression-search pull-left">
                                     <input type="text" value="{{ data.query }}" class="expression-search-input" id="query"
                                     placeholder="搜索.." onkeydown="if(event.keyCode==13)query_expression()">
                                     <button type="button" onclick="query_expression();" class="btn btn-default" style="border: none; height: 38px; margin-top: 0px; margin-bottom:3px; margin-right: 0px;">
-                                            <span class="glyphicon glyphicon-search"></span>
+                                            <span><img src="/static/img/search.svg" alt=""> </span>
                                     </button>
                                 </div>
                         
-                                <div class="expression-display-only-related pull-left">
-                                        只显示与我有关
-                                        <input type="checkbox" name="mine" id="mine" {% if data.mine == '1' %}checked="checked"{% endif %}>
-                                </div>
+                                <span class="expression-display-only-related pull-left" style="padding-right: 0px; display: inline-block;">
+                                       <div style="margin-top: 15px; display: inline-block; margin-right: 12px;">
+                                            只显示与我有关
+                                       </div>
+                                        <div class="model-2 pull-right" style="margin-top: 14px; margin-right: 20px; display: inline-block;">
+                                                <div class="move-checkbox">
+                                                        <input type="checkbox" name="mine" id="mine" {% if data.mine == '1' %}checked="checked"{% endif %}>
+                                                        <label></label>
+                                                </div>
+                                        </div>
+                                </span>
                         
                         
                                 {%if g.user.is_root() or g.user.is_admin()%}
                                
                                     <a href="{{ url_for('expression_add_get') }}" class="expression-add-block pull-right">
-                                        <span class="glyphicon glyphicon-plus"  style="border: none; height: 35px; margin-top: 3px; margin-bottom:0px; margin-right: 0px;" ></span>
-                                        增加报警规则
+                                       <span style="margin-right: 5px;"> <img src="/static/img/add.svg" alt="" style="margin-top: -2px;"></span>
+                                        <div style="display: inline-block; padding-top: 2px;">
+                                            增加报警规则
+                                        </div> 
                                     </a>
                                 </div>
                                 {%endif%}
                     </div>
                 </div>
             
-                <div class="row" style="margin-top:5px;"></div>
-                <div>
+                <div class="row" style="padding: 0px; margin-top: 5px; margin-left: 0px;">
                     {% set left = '{' %}
                     {% set right = '}' %}
                     {% for v in data.vs %}
-            
-                        <div class="expression-single-block">
+                
+                        <div class="expression-single-block" >
             
                                 {% if v.writable(g.user) %}
-                                <div class="expression-button-list pull-right ">
+                                <div class="expression-button-list pull-right">
                                     {% if g.user.is_root() or g.user.is_admin()%}
-                                        <button onclick="pause_expression('{{v.id}}')" class="btn btn-default expression-button">
-                                            <span id="i-{{v.id}}" class="glyphicon glyphicon-{% if v.pause %}play{% else %}pause{% endif %} orange" style="color: rgba(100,100,100,3)"></span>
+                                        <button onclick="pause_expression('{{v.id}}')" class="btn btn-default expression-button" style="padding: 6px 17px;">
+                                             <span id="i-{{v.id}}">{% if v.pause %} <img src="/static/img/play.svg" alt=""> {%else%}<img src="/static/img/pause.svg" alt=""> {%endif%}</span>   
                                         </button>
-                                        <a href="{{ url_for('expression_add_get', id=v.id) }}" class="btn btn-default expression-button"
-                                           style="text-decoration: none;">
-                                            <span class="glyphicon glyphicon-edit orange" style="color:rgba(100,100,100,3);"></span>
+                                        <a href="{{ url_for('expression_add_get', id=v.id) }}" class="btn btn-default expression-button" style="text-decoration: none; padding: 6px 17px">
+                                           <span> <img src="/static/img/edit.svg" alt=""></span>
                                         </a>
-                                        <button onclick="delete_expression('{{ v.id }}');" class="btn btn-default expression-button">
-                                            <span class="glyphicon glyphicon-trash orange" style="color:rgba(100,100,100,3);"></span>
-                                        </button>
+                                        <button onclick="delete_expression('{{ v.id }}');" class="btn btn-default expression-button" style="padding: 6px 17px;">
+                                                <span> <img src="/static/img/delete.svg" alt=""></span>
+                                            </button>
                                     {% endif%}
                                     </div>
                                 {% endif %}
