@@ -40,9 +40,12 @@
                         <div class="auto-refresh-word pull-left" >
                                 自动刷新
                         </div>
-                            <div class="switch switch-small pull-left" style="min-width: 50px; margin: 10px 0px 10px 5px; ">
+                        <div class="model-2 pull-right" style="margin-top: 14px; margin-right: 20px;">
+                            <div class="move-checkbox">
                                 <input name="auto_refresh_box" id="auto_refresh_box" type="checkbox" onchange="change_auto_refresh(this)" checked />
+                                <label></label>
                             </div>
+                        </div>
                     </div>
             </div>
         </div>
@@ -59,7 +62,7 @@
             <th style="text-align: center">连接时长</th>
             <th style="text-align: center">真实传输率</th>
             <th style="text-align: center">总Bytes数</th>
-            <th style="text-align: center">禁止访问</th>
+            <th style="text-align: center; min-width: 100px;">禁止访问</th>
         </tr>
     </thead>
     <tbody id="flow_table" class="netflow-table-body-word" style=" background:rgba(255,255,255,1); border:1px solid rgba(242,242,242,1);">
