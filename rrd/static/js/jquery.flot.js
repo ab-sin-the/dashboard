@@ -2812,7 +2812,7 @@ function formatSizeOrigin(size1, standard, precision) {
 
             // Generate markup for the list of entries, in their final order
             // ADD by www
-            fragments.push('<th>&nbsp;</th><th>last</th><th>min</th><th>avg</th><th>max</th>');
+            fragments.push('<th class="graph-legend-header">NAME</th><th class="graph-legend-header">LAST</th><th class="graph-legend-header">MIN</th><th class="graph-legend-header">AVG</th><th class="graph-legend-header">MAX</th>');
             var summary = {
                 min: Infinity,
                 max: -Infinity,
@@ -2869,7 +2869,7 @@ function formatSizeOrigin(size1, standard, precision) {
 
                 fragments.push(
                     '<td class="legendLabel">' +
-                        '<span style="padding:1px"><span style="width: 10px;height: 10px;display: inline-block;margin-right: 5px;background:' +
+                        '<span style="padding:1px; "><span style="width: 20px;height: 2px;margin-bottom:2px;display: inline-block;margin-right: 5px;background:' +
                          entry.color + '"></span></span>' +
                          entry.label + '</td>',
                     '<td>' + formatSizeOrigin(last, "si", 3) + '</td>',

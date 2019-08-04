@@ -4,7 +4,6 @@
 {% else %}
 {% set uri = _uri + '?' %}
 {% endif %}
-{% if total > limit %}
 {% set page_num = total//limit if total%limit==0 else total//limit+1 %}
 {% set pre_page = curr_page - 1 %}
 {% set pre_page = 1 if pre_page < 1 else pre_page %}
@@ -57,7 +56,6 @@
         class="disabled"><a  style="margin-right: 7px; margin-left: 0px;"> <img src="/static/img/page-right-end.svg" alt="" height="13px" width="13px"> </a></li>
         {%endif%}
     </ul>
-    {%endif%}
     </div>
 
     <div class="input-page" style="float: left;">

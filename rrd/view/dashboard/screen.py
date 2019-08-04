@@ -96,8 +96,7 @@ def dash_graph_delete(gid):
 def dash_screen(sid):
     start = request.args.get("start")
     end = request.args.get("end")
-    print(start)
-    print(end)
+    col_num = int(request.args.get('cols', 2))
     top_screens = DashboardScreen.gets_by_pid(pid=0)
     top_screens = sorted(top_screens, key=lambda x:x.name)
 
