@@ -23,3 +23,10 @@
 	color:rgba(153,153,153,1);
 	line-height:14px;
 }
+
+.audit-display-pre {
+	display: inline;
+	overflow: hidden;
+	background-color: #fff;
+	border: none;
+}

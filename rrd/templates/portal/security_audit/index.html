@@ -72,12 +72,14 @@
         <div class="col-md-12">
             <div id="command-security-audit-display" class="command-detail-report" style="display: none;">
                     <div id="lynis_details" style="display: none">
-                            <span id="command-lynis-report" class="command-detail-button-clicked pull-left" onclick="get_lynis_details('report')">完整报告</span>
+                            <span id="command-lynis-visual-report" class="command-detail-button-clicked pull-left" onclick="get_lynis_details('visual_report')">可视化报告</span>
+                            <span id="command-lynis-report" class="command-detail-button pull-left" onclick="get_lynis_details('report')">完整报告</span>
                             <span id="command-lynis-warning" class="command-detail-button pull-left" onclick="get_lynis_details('warning')">可疑问题</span>
                             <span id="command-lynis-suggestion" class="command-detail-button pull-left" onclick="get_lynis_details('suggestion')" style="padding: 10px 40px">建议</span>
                         </div>
             
                         <pre id="audit-result" class="audit-display"></pre>
+                        <div id="visual-audit-result" class="audit-display"></div>
             </div>
         </div>
 

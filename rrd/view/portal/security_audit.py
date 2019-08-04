@@ -17,6 +17,7 @@
 __author__ = 'Yiwen Chen'
 from rrd import app
 from flask import request, g, render_template, jsonify, abort
+import re
 import json
 import time
 import commands
@@ -97,11 +98,44 @@ def get_report():
         abort(400, str(ret))
 
 
+
+def generate_sub_keyword(keyword, color):
+    keyword_sub = '</pre>'
+    if color == 'red':
+        bg_color = 'rgba(221, 77, 84, 1)'
+    elif color == 'blue':
+        bg_color = 'rgba(36, 95, 240, 1)'
+    elif color == 'green':
+        bg_color = 'rgba(0, 181, 91, 1)'
+
+    keyword_sub = keyword_sub + ' <span style = "height:16px; background:' + bg_color + '; border-radius:2px; padding: 1px 13px; font-size:10px; font-family:PingFangSC-Semibold; font-weight:600; color:rgba(255,255,255,1);line-height:14px;"> ' + keyword + '</span><br/>' + '<pre  class="audit-display-pre">'
+    return keyword_sub 
+
+
+
+
+def replace_key_word(new_command_res, keyword, color):
+    re_expr = r'\[ ' + keyword + r' \]'
+    new_command_res = re.sub(re_expr, generate_sub_keyword(keyword, color) , new_command_res)
+    return new_command_res
+
+def visualize_lynis_report(command_res):
+    keyword_list = ['DONE', 'ENABLED', 'DISABLED', 'NOT ENABLED', 'PROTECTED', 'UNKNOWN', 'NONE', 'WEAK', 'INSTALLED', 'FOUND', 'NOT FOUND', 'OK', 'DIFFERENT' , 'WARNING', 'RUNNING', 'NOT RUNNING', 'SUGGESTION']
+    color = ['green', 'green', 'red', 'red', 'green', 'blue', 'green', 'red', 'green', 'blue', 'green', 'green', 'red', 'red', 'green', 'red', 'blue']
+    new_command_res = command_res
+    for keyword_id in range(len(keyword_list)):
+        new_command_res = replace_key_word(new_command_res, keyword_list[keyword_id], color[keyword_id])
+
+    return '<pre class="audit-display-pre">' + new_command_res
+
+
 def get_lynis_detail(detail_type):
     command = "cat " + lynis_workdir + "/report/lynis_report"
     command_res = commands.getoutput(command)
     if detail_type == 'report':
         return command_res
+    elif detail_type == 'visual_report':
+        return visualize_lynis_report(command_res)
     else:
         details = command_res.split("================================================================================")
         problem_details = details[1]
