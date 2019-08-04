@@ -74,7 +74,7 @@ function get_lynis_details(type) {
             document.getElementById("command-lynis-suggestion").classList = "command-detail-button pull-left"
             document.getElementById("visual-audit-result").innerHTML = '<br>' + ret.data;
             document.getElementById("audit-result").style = "display:none;"
-            document.getElementById("visual-audit-result").style = "display:block;"
+            document.getElementById("visual-audit-result").style = "display:block; margin-top:50px;"
         }
         
         // display result
