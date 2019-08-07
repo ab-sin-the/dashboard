@@ -1,0 +1,1 @@
+<span class="report-dropdown pull-right" onclick="report_display_single(' + str(header_num) + ')"><img src="/static/img/dropdown.svg"></span>

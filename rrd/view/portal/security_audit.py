@@ -112,21 +112,72 @@ def generate_sub_keyword(keyword, color):
     return keyword_sub 
 
 
-
+def replace_found(value):
+    keyword = value.group()
+    keyword = keyword[2:]
+    keyword = keyword[:-2]
+    return generate_sub_keyword(keyword, 'green')
+    
 
 def replace_key_word(new_command_res, keyword, color):
-    re_expr = r'\[ ' + keyword + r' \]'
+    if keyword == 'FOUND':
+        re_expr = r'\[ ' + keyword + r' \]'
+        re_expr2 = r'\[ \d+ ' + keyword + r' \]'
+        re_expr3 = r'\[ ' + keyword + r' \(\d+\) \]'
+        new_command_res = re.sub(re_expr3, replace_found, new_command_res)
+        new_command_res = re.sub(re_expr2, replace_found, new_command_res)
+    else: 
+        re_expr = r'\[ ' + keyword + r' \]'
+    
     new_command_res = re.sub(re_expr, generate_sub_keyword(keyword, color) , new_command_res)
     return new_command_res
 
+header_num = 0
+
+def generate_header(value):
+    global header_num
+    header_name = value.group()
+    header_name = header_name[4:]
+    header_name = header_name[:-37]
+    header_str = '</pre></div><hr style="margin: 0px 0px 13px 0px;"><div id="report_part_'+ str(header_num) + '"> <span class="report-dropdown pull-right" onclick="report_display_single(' + str(header_num) + ')"><img src="/static/img/dropdown.svg"></span> <div class = "visual_report_header" id="report_head_part_'+ str(header_num) +'">'
+    header_str = header_str + header_name
+    header_str = header_str + '</div><pre class="audit-display-pre">'
+    header_num = header_num + 1
+    return header_str
+
+def count_num(result_each):
+    combined_result = ""
+    for result in result_each:
+        num = result.count("rgba(221, 77, 84, 1)")
+        if num == 0:
+            combined_result = combined_result + result + '<hr style="margin:15px 0px;">'
+        else:
+            result_end_index = result.find('</div>')
+            new_result = result[:result_end_index] + '<span class="problem-num">' + str(num) + "</span>" +result[result_end_index:]
+            combined_result = combined_result + new_result + '<hr style="margin:15px 0px;">'
+    return combined_result
+
+def visualize_title(result):
+    global header_num
+    header_num = 1
+    re_expr_2 = r'\[ Lynis 2.7.4 \]'
+    re_expr_3 = r'=+\n*  \-\[ Lynis 2.7.4 Results \]\-'
+    re_expr = r'\[\+\].*([\n])\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-'
+    result = re.sub(re_expr_2,'</pre><div class = "visual_report_header" id="report_head_part_0' + '" style="margin-bottom:0px;"> Lynis 2.7.4 </div><pre class="audit-display-pre">' , result)
+    result = re.sub(re_expr, generate_header, result)
+    result = re.sub(re_expr_3,'</pre> </div><hr style="margin: 0px 0px 13px 0px;">  <div id="report_part_'+ str(header_num) + '"> <span class="report-dropdown pull-right" onclick="report_display_single(' + str(header_num) + ')"><img src="/static/img/dropdown.svg"></span> <div class = "visual_report_header" id="report_head_part_'+ str(header_num) +'"> Lynis 2.7.4 Result </div><pre class="audit-display-pre">' , result)
+    result_each = result.split('<hr style="margin: 0px 0px 13px 0px;">')
+    result = count_num(result_each)
+    return result
+
 def visualize_lynis_report(command_res):
-    keyword_list = ['DONE', 'ENABLED', 'DISABLED', 'NOT ENABLED', 'PROTECTED', 'UNKNOWN', 'NONE', 'WEAK', 'INSTALLED', 'FOUND', 'NOT FOUND', 'OK', 'DIFFERENT' , 'WARNING', 'RUNNING', 'NOT RUNNING', 'SUGGESTION']
-    color = ['green', 'green', 'red', 'red', 'green', 'blue', 'green', 'red', 'green', 'blue', 'green', 'green', 'red', 'red', 'green', 'red', 'blue']
+    keyword_list = ['DONE', 'ENABLED', 'DISABLED', 'NOT ENABLED', 'PROTECTED', 'UNKNOWN', 'NONE', 'WEAK', 'INSTALLED', 'FOUND', 'NOT FOUND', 'OK', 'DIFFERENT' , 'WARNING', 'RUNNING', 'NOT RUNNING', 'SUGGESTION', 'NOT DISABLED', 'SKIPPED', 'ACTIVE', 'NO', 'FILES FOUND', 'NOT ACTIVE']
+    color = ['green', 'green', 'red', 'red', 'green', 'blue', 'green', 'red', 'green', 'green', 'blue', 'green', 'red', 'red', 'green', 'red', 'blue', 'green', 'green', 'green', 'blue', 'blue', 'red']
     new_command_res = command_res
     for keyword_id in range(len(keyword_list)):
         new_command_res = replace_key_word(new_command_res, keyword_list[keyword_id], color[keyword_id])
-
-    return '<pre class="audit-display-pre">' + new_command_res
+    new_command_res = visualize_title(new_command_res)
+    return '<div id="report_part_0"><span class="report-dropdown pull-right" onclick="report_display_single(' + str(0) + ')"><img src="/static/img/dropdown.svg"></span><pre class="audit-display-pre">' + new_command_res + '</div>'
 
 
 def get_lynis_detail(detail_type):

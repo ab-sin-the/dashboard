@@ -26,7 +26,7 @@
 
 .audit-display-pre {
 	display: inline;
-	overflow: hidden;
+	overflow: inherit;
 	background-color: #fff;
 	border: none;
 	font-size: 14px;
@@ -34,4 +34,32 @@
 	color: #555;
 	padding: 0px;
 	margin: 0px;
+}
+
+.visual_report_header {
+	font-size:14px;
+	font-family:PingFangSC-Semibold;
+	font-weight:600;
+	color:rgba(18,26,42,1);
+	line-height:20px;
+	margin-bottom: 15px;
+}
+
+
+.problem-num{
+	height:20px;
+	background:rgba(221,77,84,1);
+	border-radius:10px;
+	font-size:14px;
+	font-family:PingFangSC-Semibold;
+	font-weight:600;
+	color:rgba(255,255,255,1);
+	line-height:20px;
+	padding: 0px 14px;
+	margin-left: 20px;
+}
+
+.report-dropdown{
+	margin-right: 8px;
+	cursor: pointer;
 }

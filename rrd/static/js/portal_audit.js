@@ -83,3 +83,45 @@ function get_lynis_details(type) {
         err_message_quietly(req.statusText)
     })
 }
+
+function report_display_all(){
+    start_num = 0;
+    while(report_display_single(start_num, 2) == true) {
+        start_num = start_num + 1;
+    } 
+}
+
+function report_hide_all(){
+    start_num = 0;
+    while(report_display_single(start_num, 3) == true) {
+        start_num = start_num + 1;
+    }
+}
+
+function report_display_single(num, mode=1){
+    part_id_name = 'report_part_' + num;
+    part_head_id_name = 'report_head_part_' + num
+    if (document.getElementById(part_id_name) != null){
+        if (mode == 1){
+            if (document.getElementById(part_id_name).style.height != '20px'){
+                document.getElementById(part_id_name).style.height = '20px';
+                document.getElementById(part_id_name).style.overflow = 'hidden';
+                document.getElementById(part_head_id_name).style.marginBottom = '0px';
+            }else{
+                document.getElementById(part_id_name).style.height = '';
+                document.getElementById(part_head_id_name).style.marginBottom = '15px';
+            }
+        } else if (mode == 2){
+            document.getElementById(part_id_name).style.height = '';
+            document.getElementById(part_head_id_name).style.marginBottom = '15px';
+        } else if (mode == 3) {
+            document.getElementById(part_id_name).style.height = '20px';
+            document.getElementById(part_id_name).style.overflow = 'hidden';
+            document.getElementById(part_head_id_name).style.marginBottom = '0px';
+        }
+        return true;
+    }
+    else{
+        return false;
+    }
+}
