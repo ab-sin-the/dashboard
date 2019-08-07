@@ -171,8 +171,8 @@ def visualize_title(result):
     return result
 
 def visualize_lynis_report(command_res):
-    keyword_list = ['DONE', 'ENABLED', 'DISABLED', 'NOT ENABLED', 'PROTECTED', 'UNKNOWN', 'NONE', 'WEAK', 'INSTALLED', 'FOUND', 'NOT FOUND', 'OK', 'DIFFERENT' , 'WARNING', 'RUNNING', 'NOT RUNNING', 'SUGGESTION', 'NOT DISABLED', 'SKIPPED', 'ACTIVE', 'NO', 'FILES FOUND', 'NOT ACTIVE']
-    color = ['green', 'green', 'red', 'red', 'green', 'blue', 'green', 'red', 'green', 'green', 'blue', 'green', 'red', 'red', 'green', 'red', 'blue', 'green', 'green', 'green', 'blue', 'blue', 'red']
+    keyword_list = ['DONE', 'ENABLED', 'DISABLED', 'NOT ENABLED', 'PROTECTED', 'UNKNOWN', 'NONE', 'WEAK', 'INSTALLED', 'FOUND', 'NOT FOUND', 'OK', 'DIFFERENT' , 'WARNING', 'RUNNING', 'NOT RUNNING', 'SUGGESTION', 'NOT DISABLED', 'SKIPPED', 'ACTIVE', 'NO', 'FILES FOUND', 'NOT ACTIVE', 'ACCEPT', 'YES', 'DEFAULT', 'systemd']
+    color = ['green', 'green', 'red', 'red', 'green', 'blue', 'green', 'red', 'green', 'green', 'blue', 'green', 'red', 'red', 'green', 'red', 'blue', 'green', 'green', 'green', 'blue', 'blue', 'red', 'green', 'green', 'green', 'green']
     new_command_res = command_res
     for keyword_id in range(len(keyword_list)):
         new_command_res = replace_key_word(new_command_res, keyword_list[keyword_id], color[keyword_id])
