@@ -50,3 +50,13 @@ input[type="checkbox"]:checked + .alarm-checkbox{
     line-height:20px;
     margin: 0px 15px;
 }
+
+.alarm-status{
+    font-size:14px;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    line-height:22px;
+    padding: 2px 4px;
+    border-radius: 10px;
+}

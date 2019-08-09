@@ -145,6 +145,26 @@ def generate_header(value):
     header_num = header_num + 1
     return header_str
 
+
+def generate_header_Gscan(value):
+    global header_num
+    header_name = value.group()
+    header_str = '</pre></div><hr style="margin: 0px 0px 13px 0px;"><div id="Gscan_report_part_'+ str(header_num) + '"> <span class="report-dropdown pull-right" onclick="report_display_single(' + str(header_num) + ')"><img src="/static/img/dropdown.svg"></span> <div class = "visual_report_header" id="report_head_part_'+ str(header_num) +'">'
+    header_str = header_str + header_name
+    header_str = header_str + '</div><pre class="audit-display-pre">'
+    header_num = header_num + 1
+    return header_str
+
+def visualize_Gscan_title(result):
+    global header_num
+    header_num = 1
+    split_word_list = ['主机信息获取', '检测系统初始化扫描', '开始文件类安全扫描', '开始主机历史操作类安全扫描', '开始进程类安全扫描', '开始网络链接类安全扫描', '开始恶意后门类安全扫描', '开始账户类安全扫描', '开始日志类安全扫描', '开始配置类安全扫描', '开始Rootkit类安全扫描', '开始Webshell安全扫描', '所有问题信息']
+    for word in split_word_list:
+        result = re.sub(word, generate_header_Gscan, result)
+    result_each = result.split('<hr style="margin: 0px 0px 13px 0px;">')
+    result = count_num(result_each)
+    return result
+
 def count_num(result_each):
     combined_result = ""
     for result in result_each:
@@ -199,11 +219,35 @@ def get_lynis_detail(detail_type):
             return suggestion
         return "finished"
 
+def replace_key_word_Gscan(new_command_res, keyword, color):
+    re_expr = r'\[ ' + keyword + r'  \]'
+    print(keyword)
+    new_command_res = re.sub(re_expr, generate_sub_keyword(keyword, color) , new_command_res)
+    return new_command_res
+
+
+def visualize_Gscan_report(command_res):
+    keyword_list = ['OK', '存在风险', '警告', '跳过']
+    color = ['green', 'red', 'red', 'blue']
+    new_command_res = command_res
+    for keyword_id in range(len(keyword_list)):
+        new_command_res = replace_key_word_Gscan(new_command_res, keyword_list[keyword_id], color[keyword_id])
+    cut_line = r'\-\-\-\-\-\-\-\-(\-)+(\n)\根\据\系\统\分\析\的\情\况'
+    new_command_res = re.sub(cut_line, '\n所有问题信息\n根据系统分析的情况' , new_command_res)
+    new_command_res = re.sub(r'\n\开\始\扫\描\当\前\系\统\安\全\状\态...\n', '' , new_command_res)
+
+    new_command_res = visualize_Gscan_title(new_command_res)
+    return '<pre class="audit-display-pre">' + new_command_res
+
+
+
 def get_Gscan_detail(detail_type):
     command = "cat " + GScan_workdir + "/report/GScan_report"
     command_res = commands.getoutput(command) 
     if detail_type == 'report':
         return command_res
+    elif detail_type == 'visual_report':
+        return visualize_Gscan_report(command_res)
     else:
         problems_detail = command_res.split('------------------------------\n')[1]
         if detail_type == 'all':
@@ -243,4 +287,5 @@ def get_detail_report():
         ret['ok'] = True
         return json.dumps(ret)
     except Exception as e:
+        print(e)
         abort(400, str(ret))

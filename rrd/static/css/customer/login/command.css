@@ -110,5 +110,6 @@ input::-webkit-input-placeholder {
     color:rgba(36,95,240,1);
     line-height:20px;
     padding: 15px 33px;
+    background:rgba(255,255,255,1);
     display: inline-block;
 }

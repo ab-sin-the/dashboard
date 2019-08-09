@@ -27,7 +27,7 @@
                     </div>
 
                         <div style="display: inline-block; margin-top: 10px; margin-bottom: 5px;">
-                            {%if case.status=='PROBLEM'%}预警{%else%}已恢复{%endif%} P{{case.priority}}
+                            {%if case.status=='PROBLEM'%} <span class="alarm-status" style="background-color: rgba(221,77,84,1);">预警</span> {%else%}<span class="alarm-status" style="background-color: rgba(0,181,91,1);">已恢复</span> {%endif%} P{{case.priority}}
                             [第<span class="blue">#{{case.current_step}}</span>次/最大{{case.max_step}}次]
                             <span class="gray">{{case.timestamp|time_duration}}</span>
                         </div>
